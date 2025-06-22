@@ -1,0 +1,592 @@
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mode-block {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    transform: scale(0.95);
+    opacity: 1 !important;
+    cursor: pointer;
+    min-height: 520px !important;
+    min-width: 389px !important;
+    max-width: 389px !important;
+    padding: 40px 25px !important;
+    font-size: 1.3em !important;
+    background-size: cover !important;
+    background-position: center !important;
+    box-sizing: border-box !important;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: white !important;
+    will-change: transform !important;
+    transform-style: preserve-3d !important;
+}
+
+.mode-block:hover {
+    transform: scale(1);
+    z-index: 10;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Отключение эффектов при наведении для неактивной карточки соревновательного режима */
+.mode-block.mode-rating.disabled:hover,
+.mobile-card.disabled#mobileCardRating:hover {
+    transform: scale(0.95) !important;
+    box-shadow: none !important;
+    z-index: 0 !important;
+}
+
+/* Дополнительное правило для темной темы */
+html[data-theme="dark"] .mode-block.mode-rating.disabled:hover,
+html[data-theme="dark"] .mobile-card.disabled#mobileCardRating:hover,
+[data-bs-theme='dark'] .mode-block.mode-rating.disabled:hover,
+[data-bs-theme='dark'] .mobile-card.disabled#mobileCardRating:hover,
+[data-theme='dark'] .mode-block.mode-rating.disabled:hover,
+[data-theme='dark'] .mobile-card.disabled#mobileCardRating:hover {
+    transform: scale(0.95) !important;
+    box-shadow: none !important;
+    z-index: 0 !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.mode-select-inner {
+    gap: 0 !important;
+    justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.mode-block h4 {
+    font-size: 1.8em !important;
+    margin-bottom: 0.8em !important;
+    margin-top: 0 !important;
+}
+
+.mode-block p {
+    font-size: 1em !important;
+    line-height: 1.4 !important;
+    margin-top: 0;
+    color: white !important;
+}
+
+.mobile-card-container {
+    width: 97.5%;
+    height: 480px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.mobile-cards {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.mobile-card {
+    flex: 0 0 50%;
+    width: 50%;
+    height: 100%;
+    color: white !important;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    aspect-ratio: 0.75;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    will-change: transform !important;
+    transform-style: preserve-3d !important;
+}
+
+.mobile-card h4 {
+    font-size: 1.68em !important;
+    margin-bottom: 0.6em !important;
+    margin-top: 0 !important;
+}
+
+.mobile-card p {
+    font-size: 1.02em !important;
+    line-height: 1.3 !important;
+    color: white !important;
+}
+
+.mobile-indicator-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.mobile-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: #ccc;
+}
+
+.mobile-indicator.active {
+    background-color: #007bff;
+}
+
+/* Стили для модального окна с правилами соревновательного режима */
+.rating-rules-modal {
+    border: 2px solid #198754;
+    box-shadow: 0 0 15px rgba(25, 135, 84, 0.6);
+    border-radius: 10px;
+}
+
+.rating-rules-modal .modal-header {
+    border-bottom: 1px solid #198754;
+    position: relative;
+}
+
+.rating-rules-modal .modal-footer {
+    border-top: 1px solid #198754;
+}
+
+.rating-rules-modal .modal-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.rating-rules-modal .btn-close {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Стили для светлой темы модального окна */
+html[data-theme="light"] .rating-rules-modal .modal-content {
+    background-color: #fff !important;
+    color: #212529 !important;
+}
+
+/* Стили для темной темы модального окна */
+html[data-theme="dark"] .rating-rules-modal .modal-content,
+[data-bs-theme='dark'] .rating-rules-modal .modal-content,
+[data-theme='dark'] .rating-rules-modal .modal-content,
+.rating-rules-modal .modal-content.dark-theme {
+    background-color: #212529 !important;
+    color: #fff !important;
+}
+
+/* Стили для светлой темы */
+html[data-theme="light"] .rating-rules-modal {
+    background-color: #fff;
+    color: #212529;
+}
+
+html[data-theme="light"] .rating-rules-modal .modal-header,
+html[data-theme="light"] .rating-rules-modal .modal-footer {
+    background-color: #f8f9fa;
+}
+
+/* Делаем заголовок "Запрещено:" красным в светлой теме */
+html[data-theme="light"] .rule-block:first-child .rule-block-title {
+    color: #dc3545;
+}
+
+/* Стили для тёмной темы */
+html[data-theme="dark"] .rating-rules-modal {
+    background-color: #212529;
+    color: #fff;
+}
+
+html[data-theme="dark"] .rating-rules-modal .modal-header,
+html[data-theme="dark"] .rating-rules-modal .modal-footer {
+    background-color: #2b3035;
+}
+
+html[data-theme="dark"] .rating-rules-modal .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Исправление для кнопки в темной теме */
+html[data-theme="dark"] .rating-rules-modal .btn-success {
+    background-color: #198754 !important;
+    border-color: #198754 !important;
+    color: #fff !important;
+}
+
+html[data-theme="dark"] .rating-rules-modal .btn-success:hover {
+    background-color: #157347 !important;
+    border-color: #146c43 !important;
+}
+
+/* Стили для темной темы карточек */
+[data-bs-theme='dark'] .mode-block.mode-free h4,
+[data-theme='dark'] .mode-block.mode-free h4,
+[data-bs-theme='dark'] .mobile-card#mobileCardFree h4,
+[data-theme='dark'] .mobile-card#mobileCardFree h4 {
+    color: #0d6efd !important;
+}
+
+[data-bs-theme='dark'] .mode-block.mode-rating h4,
+[data-theme='dark'] .mode-block.mode-rating h4,
+[data-bs-theme='dark'] .mobile-card#mobileCardRating h4,
+[data-theme='dark'] .mobile-card#mobileCardRating h4 {
+    color: darkgoldenrod !important;
+}
+
+/* Стили для контента карточек */
+.mode-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 25px;
+    position: absolute;
+    top: 35%;
+    bottom: auto;
+    transform: none;
+    transition: none !important;
+    z-index: 5;
+    /* Предотвращаем изменение контента при анимации */
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+}
+
+.mode-content h4 {
+    margin-bottom: 15px !important;
+    transition: none !important;
+}
+
+.mode-content p {
+    transition: none !important;
+}
+
+.mobile-card .mode-content {
+    padding: 0 15px;
+    transition: none !important;
+}
+
+/* Принудительно устанавливаем стили для текста внутри карточек */
+.mode-block p,
+.mobile-card p {
+    width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    /* Предотвращаем изменение текста при анимации */
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+}
+
+/* Стили для неактивной карточки соревновательного режима */
+.mode-block.mode-rating.disabled,
+.mobile-card.disabled#mobileCardRating {
+    pointer-events: none !important;
+    cursor: default !important;
+    position: relative;
+}
+
+/* Полупрозрачный слой для неактивной карточки соревновательного режима */
+.mode-block.mode-rating.disabled::after,
+.mobile-card.disabled#mobileCardRating::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Полупрозрачный слой для темной темы */
+html[data-theme="dark"] .mode-block.mode-rating.disabled::after,
+html[data-theme="dark"] .mobile-card.disabled#mobileCardRating::after,
+[data-bs-theme='dark'] .mode-block.mode-rating.disabled::after,
+[data-bs-theme='dark'] .mobile-card.disabled#mobileCardRating::after,
+[data-theme='dark'] .mode-block.mode-rating.disabled::after,
+[data-theme='dark'] .mobile-card.disabled#mobileCardRating::after {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Изоляция ссылки от эффектов карточки */
+.mode-block.mode-rating.disabled .login-container,
+.mobile-card.disabled#mobileCardRating .login-container {
+    isolation: isolate;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 20;
+    pointer-events: auto !important;
+}
+
+/* Стили для ссылки внутри неактивной карточки */
+.mode-block.mode-rating.disabled a.login-link,
+.mobile-card.disabled#mobileCardRating a.login-link {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative;
+    z-index: 25;
+    color: #0d6efd !important;
+    text-decoration: underline !important;
+    font-weight: bold !important;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* Предотвращение эффекта свечения карточки при наведении на ссылку */
+.mode-block.mode-rating.disabled a.login-link:hover,
+.mobile-card.disabled#mobileCardRating a.login-link:hover {
+    color: #0a58ca !important;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* Стили для ссылки в темной теме */
+html[data-theme="dark"] .mode-block.mode-rating.disabled a.login-link,
+html[data-theme="dark"] .mobile-card.disabled#mobileCardRating a.login-link,
+[data-bs-theme='dark'] .mode-block.mode-rating.disabled a.login-link,
+[data-bs-theme='dark'] .mobile-card.disabled#mobileCardRating a.login-link,
+[data-theme='dark'] .mode-block.mode-rating.disabled a.login-link,
+[data-theme='dark'] .mobile-card.disabled#mobileCardRating a.login-link {
+    background-color: rgba(13, 110, 253, 0.2);
+    color: #0d6efd !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Полное отключение любых эффектов для карточки при наведении на ссылку */
+.mode-block.mode-rating.disabled .login-container:hover + .mode-content,
+.mobile-card.disabled#mobileCardRating .login-container:hover + .mode-content,
+.mode-block.mode-rating.disabled .login-container:hover ~ *,
+.mobile-card.disabled#mobileCardRating .login-container:hover ~ * {
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Отключение любых эффектов трансформации для карточки в темной теме */
+html[data-theme="dark"] .mode-block.mode-rating.disabled,
+html[data-theme="dark"] .mobile-card.disabled#mobileCardRating,
+[data-bs-theme='dark'] .mode-block.mode-rating.disabled,
+[data-bs-theme='dark'] .mobile-card.disabled#mobileCardRating,
+[data-theme='dark'] .mode-block.mode-rating.disabled,
+[data-theme='dark'] .mobile-card.disabled#mobileCardRating {
+    transform: scale(0.95) !important;
+    transition: none !important;
+}
+
+@media (max-width: 576px) {
+    .mobile-card-container {
+        height: 416px;
+    }
+    
+    .mobile-card {
+        padding: 16px 12px;
+    }
+    
+    .mobile-card h4 {
+        font-size: 1.44em !important;
+        margin-bottom: 0.6em !important;
+    }
+    
+    .mobile-card p {
+        font-size: 1.02em !important;
+        line-height: 1.3 !important;
+    }
+    
+    .rating-rules-modal .modal-dialog {
+        margin: 0.5rem;
+    }
+    
+    .rule-block-title {
+        font-size: 1rem;
+    }
+    
+    .rule-item {
+        font-size: 0.9rem;
+    }
+    
+    .rule-emoji {
+        font-size: 1.2rem;
+        width: 1.6rem;
+    }
+    
+    .rule-text {
+        padding-top: 0.1rem;
+    }
+    
+    .rating-rules-modal .modal-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Новые стили для правил */
+.rules-container {
+    display: inline-block;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.rule-block {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(25, 135, 84, 0.4);
+}
+
+.rule-block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.rule-block-title {
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: #198754;
+    font-size: 1.1rem;
+}
+
+.rule-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.7rem;
+    text-align: left;
+}
+
+.rule-item:last-child {
+    margin-bottom: 0;
+}
+
+.rule-emoji {
+    font-size: 1.4rem;
+    width: 2rem;
+    display: inline-block;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.rule-text {
+    display: inline-block;
+    padding-top: 0.2rem;
+}
+
+/* Стили для кнопки входа в систему */
+.login-button {
+    font-weight: 600 !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    background-color: #0d6efd !important;
+    color: white !important;
+    z-index: 30 !important;
+    position: relative !important;
+}
+
+.login-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) !important;
+    background-color: #0b5ed7 !important;
+}
+
+/* Изоляция кнопки от эффектов карточки */
+.login-container {
+    position: absolute !important;
+    bottom: 20px !important;
+    left: 0 !important;
+    right: 0 !important;
+    text-align: center !important;
+    z-index: 30 !important;
+    pointer-events: auto !important;
+}
+
+/* Улучшенные эффекты для активных карточек в светлой теме */
+html[data-theme="light"] .mode-block.mode-free:hover,
+html[data-theme="light"] .mode-block.mode-rating:not(.disabled):hover {
+    box-shadow: 0 15px 40px rgba(13, 110, 253, 0.6) !important;
+    border: 3px solid rgba(13, 110, 253, 0.7) !important;
+    /* Отключаем эффект увеличения, но сохраняем другие эффекты */
+    transform: scale(1) translateZ(0) !important;
+    z-index: 10 !important;
+}
+
+/* Специальные эффекты для соревновательного режима в светлой теме */
+html[data-theme="light"] .mode-block.mode-rating:not(.disabled):hover {
+    box-shadow: 0 15px 40px rgba(184, 134, 11, 0.6) !important; /* Темно-золотое свечение */
+    border: 3px solid rgba(184, 134, 11, 0.7) !important; /* Темно-золотая рамка */
+}
+
+/* Улучшенные эффекты для мобильных карточек в светлой теме */
+html[data-theme="light"] .mobile-card#mobileCardFree:hover,
+html[data-theme="light"] .mobile-card#mobileCardRating:not(.disabled):hover {
+    box-shadow: 0 15px 40px rgba(13, 110, 253, 0.6) !important;
+    border: 3px solid rgba(13, 110, 253, 0.7) !important;
+    /* Отключаем эффект увеличения, но сохраняем другие эффекты */
+    transform: scale(1) translateZ(0) !important;
+    z-index: 10 !important;
+}
+
+/* Улучшенные эффекты для мобильных карточек в темной теме */
+html[data-theme="dark"] .mobile-card#mobileCardFree:hover,
+html[data-theme="dark"] .mobile-card#mobileCardRating:not(.disabled):hover,
+[data-bs-theme='dark'] .mobile-card#mobileCardFree:hover,
+[data-bs-theme='dark'] .mobile-card#mobileCardRating:not(.disabled):hover,
+[data-theme='dark'] .mobile-card#mobileCardFree:hover,
+[data-theme='dark'] .mobile-card#mobileCardRating:not(.disabled):hover {
+    box-shadow: 0 15px 40px rgba(13, 110, 253, 0.6) !important;
+    border: 3px solid rgba(13, 110, 253, 0.7) !important;
+    /* Отключаем эффект увеличения, но сохраняем другие эффекты */
+    transform: scale(1) translateZ(0) !important;
+    z-index: 10 !important;
+}
+
+/* Специальные эффекты для мобильного соревновательного режима в светлой теме */
+html[data-theme="light"] .mobile-card#mobileCardRating:not(.disabled):hover {
+    box-shadow: 0 15px 40px rgba(184, 134, 11, 0.6) !important; /* Темно-золотое свечение */
+    border: 3px solid rgba(184, 134, 11, 0.7) !important; /* Темно-золотая рамка */
+}
+
+/* Специальные эффекты для мобильного соревновательного режима в темной теме */
+html[data-theme="dark"] .mobile-card#mobileCardRating:not(.disabled):hover,
+[data-bs-theme='dark'] .mobile-card#mobileCardRating:not(.disabled):hover,
+[data-theme='dark'] .mobile-card#mobileCardRating:not(.disabled):hover {
+    box-shadow: 0 15px 40px rgba(184, 134, 11, 0.6) !important; /* Темно-золотое свечение */
+    border: 3px solid rgba(184, 134, 11, 0.7) !important; /* Темно-золотая рамка */
+}
+
+/* Фиксируем размер контейнера контента при наведении */
+.mode-block:hover .mode-content,
+.mobile-card:hover .mode-content {
+    transform: none !important;
+    transition: none !important;
+} 

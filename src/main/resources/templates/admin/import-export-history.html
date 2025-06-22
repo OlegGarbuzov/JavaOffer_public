@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<html lang="ru" class="h-100" data-bs-theme="light" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История импорта/экспорта</title>
+    
+    <th:block th:replace="~{fragments/css-includes :: admin-css}"></th:block>
+    
+    <link rel="apple-touch-icon" href="/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/img/favicons/site.webmanifest">
+    <link rel="icon" href="/img/favicons/favicon.ico">
+</head>
+<body class="d-flex flex-column min-vh-100">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div th:insert="~{fragments/header.html}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-header}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-burger-menu}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-scripts}"></div>
+    <main class="flex-grow-1">
+        <div class="px-3">
+            <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                <h2>История импорта и экспорта вопросов</h2>
+                <div class="d-flex gap-2">
+                    <form th:action="@{/admin/questions/export-excel}" method="get">
+                        <button type="submit" class="btn btn-primary btn-sm d-flex align-items-center">
+                            <i class="fa-solid fa-download me-2"></i>Экспорт вопросов в Excel
+                        </button>
+                    </form>
+                    <form th:action="@{/admin/import-export-history/clear}" method="post" onsubmit="return confirm('Вы уверены, что хотите очистить всю историю?');">
+                        <button type="submit" class="btn btn-danger btn-sm d-flex align-items-center">
+                            <i class="fa-solid fa-trash me-2"></i>Очистить историю
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <form th:action="@{/admin/questions/import-excel}" method="post" enctype="multipart/form-data" class="d-flex align-items-center gap-2">
+                    <input type="file" name="file" class="form-control form-control-sm" accept=".xlsx,.xls" required style="max-width: 250px;">
+                    <button type="submit" class="btn btn-success btn-sm d-flex align-items-center">
+                        <i class="fa-solid fa-upload me-2"></i>Импорт вопросов из Excel
+                    </button>
+                </form>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">История импорта и экспорта вопросов</h4>
+                </div>
+                <div class="card-body p-0 p-md-3">
+                    <div class="table-responsive">
+                        <table class="table table-striped align-middle">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Пользователь</th>
+                                <th>Тип операции</th>
+                                <th>Имя файла</th>
+                                <th>Статус</th>
+                                <th>Начато</th>
+                                <th>Завершено</th>
+                                <th>Результат</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="history : ${historyList}">
+                                <td th:text="${history.id}"></td>
+                                <td th:text="${history.username}"></td>
+                                <td th:text="${history.operationType}"></td>
+                                <td th:text="${history.fileName}"></td>
+                                <td>
+                                    <span th:switch="${history.status}">
+                                        <span th:case="'SUCCESS'" class="badge bg-success">Успешно</span>
+                                        <span th:case="'ERROR'" class="badge bg-danger">Ошибка</span>
+                                        <span th:case="'IN_PROGRESS'" class="badge bg-warning text-dark">В процессе</span>
+                                        <span th:case="*" th:text="${history.status}" class="badge bg-secondary"></span>
+                                    </span>
+                                </td>
+                                <td th:text="${#temporals.format(history.startedAt, 'dd.MM.yyyy HH:mm')}"></td>
+                                <td th:text="${history.finishedAt != null ? #temporals.format(history.finishedAt, 'dd.MM.yyyy HH:mm') : ''}"></td>
+                                <td style="max-width: 300px; white-space: pre-line; word-break: break-word;" th:text="${history.result}"></td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(historyList)}">
+                                <td colspan="8" class="text-center py-3">История пуста</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center mt-4" th:insert="~{fragments/footer.html}"></footer>
+</div>
+<script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/theme-switcher.min.js"></script>
+    <script src="/js/admin-burger.min.js"></script>
+    <script src="/js/theme-force-apply.min.js"></script>
+</body>
+</html> 

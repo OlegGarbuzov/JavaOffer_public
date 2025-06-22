@@ -1,0 +1,25 @@
+﻿<th:block th:fragment="rows">
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.topic.name()}"></td>
+        <td class="d-none d-md-table-cell"
+            th:text="${#strings.length(task.question) > 50 ? #strings.substring(task.question, 0, 50) + '...' : task.question}"></td>
+        <td class="d-none d-sm-table-cell" th:text="${task.difficulty.name()}"></td>
+        <td class="d-none d-sm-table-cell" th:text="${task.grade.name()}"></td>
+        <td>
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-sm btn-primary edit-task-btn" th:data-id="${task.id}">
+                    <i class="fa-solid fa-edit d-md-none"></i>
+                    <span class="d-none d-md-inline">Редактировать</span>
+                </button>
+                <form th:action="@{/admin/questions/{id}/delete(id=${task.id})}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-sm btn-danger"
+                            onclick="return confirm('Вы уверены, что хотите удалить этот вопрос?')">
+                        <i class="fa-solid fa-trash d-md-none"></i>
+                        <span class="d-none d-md-inline">Удалить</span>
+                    </button>
+                </form>
+            </div>
+        </td>
+    </tr>
+</th:block> 

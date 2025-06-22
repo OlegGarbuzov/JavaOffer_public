@@ -1,0 +1,135 @@
+# ============================
+# БАЗОВЫЙ КОНФИГУРАЦИОННЫЙ ФАЙЛ
+# ============================
+# Этот файл содержит общие настройки для всех профилей
+# Специфичные для профиля настройки в application-{профиль}.yml
+
+spring:
+  application:
+    name: JavaOffer
+  
+  # Подключение .env файла
+  config:
+    import: optional:file:.env[.properties]
+  
+  # Активный профиль
+  # Доступные профили:
+  # - dev: для разработки (CSS не минифицированы, подробные логи)
+  # - prod: для продакшена (CSS минифицированы, сжатие, логи в файлы)
+  profiles:
+    active: ${ACTIVE_PROFILE}
+  
+  # ============================
+  # НАСТРОЙКИ БАЗЫ ДАННЫХ
+  # ============================
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  
+  # Подключение к базе данных (через переменные окружения)
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  
+  # ============================
+  # НАСТРОЙКИ LIQUIBASE
+  # ============================
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
+    default-schema: public
+    liquibase-schema: public
+  
+  # ============================
+  # НАСТРОЙКИ DOCKER
+  # ============================
+  docker:
+    compose:
+      enabled: false
+
+# ============================
+# НАСТРОЙКИ СЕРВЕРА
+# ============================
+server:
+  port: ${SERVER_PORT}
+
+# ============================
+# НАСТРОЙКИ ЭКЗАМЕНОВ
+# ============================
+exam:
+  # Free mode exam properties
+  free:
+    mode: FREE
+    successAnswersCount: 5
+    failAnswersCount: 3
+    failAnswersCountAbsoluteLimit: 1000
+    need-authorization: false
+  
+  # Rating mode exam properties
+  rating:
+    mode: RATING
+    successAnswersCount: 6
+    failAnswersCount: 2
+    failAnswersCountAbsoluteLimit: 10
+    need-authorization: true
+  
+  # ============================
+  # НАСТРОЙКИ ANTI-CHEAT
+  # ============================
+  # (Переопределяются в профилях)
+  anticheat:
+    maxTabSwitchViolations: 5
+    maxTextCopyViolations: 5
+    maxHeartbeatMissed: 15
+    maxTamperingViolations: 3
+    minHeartbeatInterval: 5000
+    maxHeartbeatInterval: 15000
+    heartbeatTolerance: 4000
+    tokenSecret: 97HG487TGHO8GH8374WGB8OW4BGW4O8GHTW487GHW84GT
+    tokenValiditySeconds: 300
+  
+  # ============================
+  # НАСТРОЙКИ ANTI-OCR
+  # ============================
+  antiocr:
+    enabled: true
+    enabledForQuestionText: true
+    enabledForCodeBlocks: true
+    canvasMethod:
+      enabled: true
+      charSpacingVariation: 1.5
+      charVerticalVariation: 10.0
+      charRotationVariation: 25.0
+      fontSizeVariation: 8.0
+    textColor:
+      lightTheme: "#cccccc"
+      darkTheme: "#5c5c5c"
+
+# ============================
+# НАСТРОЙКИ КЕШИРОВАНИЯ
+# ============================
+# (Переопределяются в профилях)
+cache:
+  quiz:
+    maximumSize: 10000
+    expireAfterWriteMinutes: 10
+
+# ============================
+# НАСТРОЙКИ CSS МИНИФИКАЦИИ
+# ============================
+# (Переопределяются в профилях)
+app:
+  css:
+    minified: false
+
+# ============================
+# НАСТРОЙКИ JWT
+# ============================
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION}
+  refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION} 

@@ -1,0 +1,392 @@
+﻿<!doctype html>
+<html lang="ru" class="h-100" data-theme="light" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.145.0">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>Вопросы</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+
+    <th:block th:replace="~{fragments/css-includes :: admin-questions-css}"></th:block>
+
+    <link rel="apple-touch-icon" href="/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/img/favicons/site.webmanifest">
+    <link rel="icon" href="/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
+</head>
+<body class="d-flex flex-column min-vh-100">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div th:insert="~{fragments/header.html}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-header}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-burger-menu}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-scripts}"></div>
+    <main class="flex-grow-1">
+        <div class="px-3">
+            <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                <h2>Вопросы</h2>
+                <button type="button" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal"
+                        data-bs-target="#createQuestionModal">
+                    <i class="fa-solid fa-plus me-1 d-md-none"></i>
+                    <i class="fa-solid fa-plus-circle me-2 d-none d-md-inline-block"></i>
+                    <span>Создать новый вопрос</span>
+                </button>
+            </div>
+
+
+            <div class="card mb-3 sticky-top" style="top: 1rem; z-index: 1000;">
+                <div class="card-body">
+                    <div class="row g-3 align-items-center flex-nowrap" style="flex-wrap:nowrap;">
+                        <div class="col-auto">
+                            <div class="input-group input-group-sm" style="width:auto;">
+                                <input type="text" class="form-control" id="searchInput"
+                                       placeholder="Поиск по вопросу..."
+                                       style="width:auto; min-width:unset; max-width:unset; display:inline-block;">
+                                <button class="btn btn-outline-secondary" type="button" id="searchButton">
+                                    <i class="fa-solid fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select form-select-sm" id="topicFilter"
+                                    style="width:auto; min-width:unset; max-width:unset; display:inline-block;">
+                                <option value="">Все темы</option>
+                                <option th:each="topic : ${T(com.example.javaoffer.exam.enums.TaskTopic).values()}"
+                                        th:value="${topic.name()}"
+                                        th:text="${topic.name()}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select form-select-sm" id="difficultyFilter"
+                                    style="width:auto; min-width:unset; max-width:unset; display:inline-block;">
+                                <option value="">Все уровни сложности</option>
+                                <option th:each="diff : ${T(com.example.javaoffer.exam.enums.TaskDifficulty).values()}"
+                                        th:value="${diff.name()}"
+                                        th:text="${diff.name()}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select form-select-sm" id="gradeFilter"
+                                    style="width:auto; min-width:unset; max-width:unset; display:inline-block;">
+                                <option value="">Все уровни</option>
+                                <option th:each="grade : ${T(com.example.javaoffer.exam.enums.TaskGrade).values()}"
+                                        th:value="${grade.name()}"
+                                        th:text="${grade.name()}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-outline-secondary btn-sm" id="resetFilters" style="min-width:32px;">
+                                <i class="fa-solid fa-rotate"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Существующие вопросы</h4>
+                </div>
+                <div class="card-body p-0 p-md-3">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Тема</th>
+                                <th class="d-none d-md-table-cell">Вопрос</th>
+                                <th class="d-none d-sm-table-cell">Сложность</th>
+                                <th class="d-none d-sm-table-cell">Уровень</th>
+                                <th>Действия</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tasksTableBody">
+                            <tr th:each="task : ${tasks}">
+                                <td th:text="${task.id}"></td>
+                                <td th:text="${task.topic.name()}"></td>
+                                <td class="d-none d-md-table-cell"
+                                    th:text="${#strings.length(task.question) > 50 ? #strings.substring(task.question, 0, 50) + '...' : task.question}"></td>
+                                <td class="d-none d-sm-table-cell" th:text="${task.difficulty.name()}"></td>
+                                <td class="d-none d-sm-table-cell" th:text="${task.grade.name()}"></td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-sm btn-primary edit-task-btn"
+                                                th:data-id="${task.id}">
+                                            <i class="fa-solid fa-edit"></i>
+                                        </button>
+                                        <form th:action="@{/admin/questions/{id}/delete(id=${task.id})}" method="post"
+                                              style="display: inline;">
+                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Вы уверены, что хотите удалить этот вопрос?')">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center p-3 flex-wrap">
+                        <div class="d-flex align-items-center mb-2 mb-md-0">
+                            <label class="me-2">Заданий на странице:</label>
+                            <select class="form-select form-select-sm" id="pageSize" style="width: auto;">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                        <nav aria-label="Навигация по страницам">
+                            <ul class="pagination pagination-sm mb-0" id="pagination">
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center mt-4" th:insert="~{fragments/footer.html}"></footer>
+</div>
+
+
+<div class="modal fade" id="createQuestionModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Создать новый вопрос</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/admin/questions}" method="post" th:object="${newTask}">
+                    <div class="mb-3">
+                        <label for="question" class="form-label">Вопрос <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="question" name="question" rows="3" required></textarea>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="topic" class="form-label">Тема <span class="text-danger">*</span></label>
+                            <select class="form-select" id="topic" name="topic" required>
+                                <option value="">Выберите тему</option>
+                                <option th:each="topic : ${T(com.example.javaoffer.exam.enums.TaskTopic).values()}"
+                                        th:value="${topic.name()}"
+                                        th:text="${topic.name()}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="difficulty" class="form-label">Сложность <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-select" id="difficulty" name="difficulty" required>
+                                <option value="">Выберите сложность</option>
+                                <option th:each="diff : ${T(com.example.javaoffer.exam.enums.TaskDifficulty).values()}"
+                                        th:value="${diff.name()}"
+                                        th:text="${diff.name()}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="grade" class="form-label">Уровень <span class="text-danger">*</span></label>
+                            <select class="form-select" id="grade" name="grade" required>
+                                <option value="">Выберите уровень</option>
+                                <option th:each="grade : ${T(com.example.javaoffer.exam.enums.TaskGrade).values()}"
+                                        th:value="${grade.name()}"
+                                        th:text="${grade.name()}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ответы</label>
+                        <div id="answers-container">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="correctAnswer" value="0"
+                                                   checked>
+                                            <label class="form-check-label">Правильный ответ</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Текст ответа <span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" name="answers[0].content" rows="2"
+                                                  required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Пояснение</label>
+                                        <textarea class="form-control" name="answers[0].explanation"
+                                                  rows="2"></textarea>
+                                    </div>
+                                    <input type="hidden" name="answers[0].isCorrect" value="true">
+                                </div>
+                            </div>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="correctAnswer" value="1">
+                                            <label class="form-check-label">Правильный ответ</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Текст ответа <span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" name="answers[1].content" rows="2"
+                                                  required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Пояснение</label>
+                                        <textarea class="form-control" name="answers[1].explanation"
+                                                  rows="2"></textarea>
+                                    </div>
+                                    <input type="hidden" name="answers[1].isCorrect" value="false">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-primary" id="addAnswerBtn">
+                                <i class="fa-solid fa-plus"></i> Добавить ответ
+                            </button>
+                            <div>
+                                <button type="button" class="btn btn-info me-2" id="previewBtn" onclick="showPreview()">
+                                    <i class="fa-solid fa-eye"></i> Предпросмотр
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                <button type="submit" class="btn btn-primary">Создать</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editQuestionModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Редактировать вопрос</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editTaskForm">
+                    <input type="hidden" id="editTaskId" name="id">
+                    <div class="mb-3">
+                        <label for="editQuestion" class="form-label">Вопрос <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="editQuestion" name="question" rows="3" required></textarea>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="editTopic" class="form-label">Тема <span class="text-danger">*</span></label>
+                            <select class="form-select" id="editTopic" name="topic" required>
+                                <option value="">Выберите тему</option>
+                                <option th:each="topic : ${T(com.example.javaoffer.exam.enums.TaskTopic).values()}"
+                                        th:value="${topic.name()}"
+                                        th:text="${topic.name()}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="editDifficulty" class="form-label">Сложность <span class="text-danger">*</span></label>
+                            <select class="form-select" id="editDifficulty" name="difficulty" required>
+                                <option value="">Выберите сложность</option>
+                                <option th:each="diff : ${T(com.example.javaoffer.exam.enums.TaskDifficulty).values()}"
+                                        th:value="${diff.name()}"
+                                        th:text="${diff.name()}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="editGrade" class="form-label">Уровень <span class="text-danger">*</span></label>
+                            <select class="form-select" id="editGrade" name="grade" required>
+                                <option value="">Выберите уровень</option>
+                                <option th:each="grade : ${T(com.example.javaoffer.exam.enums.TaskGrade).values()}"
+                                        th:value="${grade.name()}"
+                                        th:text="${grade.name()}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ответы</label>
+                        <div id="editAnswersContainer">
+
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-primary" id="editAddAnswerBtn">
+                                <i class="fa-solid fa-plus"></i> Добавить ответ
+                            </button>
+                            <div>
+                                <button type="button" class="btn btn-info me-2" id="editPreviewBtn"
+                                        onclick="showEditPreview()">
+                                    <i class="fa-solid fa-eye"></i> Предпросмотр
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                <button type="button" id="saveEditBtn" class="btn btn-primary">Сохранить</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="previewModalLabel">Предпросмотр вопроса</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 id="preview-topic" class="mb-0"></h5>
+                            <div>
+                                <span class="badge bg-primary me-2" id="preview-difficulty"></span>
+                                <span class="badge bg-secondary" id="preview-grade"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p id="preview-question"></p>
+                        <hr>
+                        <h6>Ответы:</h6>
+                        <ul class="list-group" id="preview-answers"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/admin/questions.min.js"></script>
+<script src="/js/theme-switcher.min.js"></script>
+<script src="/js/admin-burger.min.js"></script>
+<script src="/js/theme-force-apply.min.js"></script>
+</body>
+</html>

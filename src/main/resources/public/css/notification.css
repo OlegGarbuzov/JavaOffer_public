@@ -1,0 +1,52 @@
+/* Стили для всплывающих уведомлений */
+#error-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #dc3545;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1050;
+    max-width: 400px;
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+#error-notification button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+#error-notification button:hover {
+    opacity: 0.8;
+}
+
+#error-notification div {
+    margin-right: 25px;
+}
+
+#error-notification strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#error-notification span {
+    display: block;
+    font-size: 14px;
+} 

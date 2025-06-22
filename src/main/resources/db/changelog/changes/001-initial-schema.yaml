@@ -1,0 +1,585 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-sequences
+      author: Garbuzov
+      changes:
+        - createSequence:
+            sequenceName: users_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: tasks_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: answer_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: user_answers_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: user_score_history_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: global_rating_score_history_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: feed_back_seq
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: import_export_history_seq
+            startValue: 1
+            incrementBy: 1
+
+  - changeSet:
+      id: 002-create-users-table
+      author: Garbuzov
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: unfinished_exam_id
+                  type: uuid
+                  constraints:
+                    nullable: true
+              - column:
+                  name: account_non_locked
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_users_email
+            tableName: users
+            columns:
+              - column:
+                  name: email
+        - createIndex:
+            indexName: idx_users_username
+            tableName: users
+            columns:
+              - column:
+                  name: username
+
+  - changeSet:
+      id: 003-create-tasks-table
+      author: Garbuzov
+      changes:
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: question
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: topic
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: difficulty
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: grade
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_tasks_topic
+            tableName: tasks
+            columns:
+              - column:
+                  name: topic
+        - createIndex:
+            indexName: idx_tasks_difficulty
+            tableName: tasks
+            columns:
+              - column:
+                  name: difficulty
+        - createIndex:
+            indexName: idx_tasks_grade
+            tableName: tasks
+            columns:
+              - column:
+                  name: grade
+
+  - changeSet:
+      id: 004-create-answers-table
+      author: Garbuzov
+      changes:
+        - createTable:
+            tableName: answers
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: task_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_correct
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: explanation
+                  type: text
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: answers
+            baseColumnNames: task_id
+            constraintName: fk_answers_task
+            referencedTableName: tasks
+            referencedColumnNames: id
+            onDelete: CASCADE
+        - createIndex:
+            indexName: idx_answers_task_id
+            tableName: answers
+            columns:
+              - column:
+                  name: task_id
+        - createIndex:
+            indexName: idx_answers_is_correct
+            tableName: answers
+            columns:
+              - column:
+                  name: is_correct
+
+  - changeSet:
+      id: 005-create-user-score-history-table
+      author: Garbuzov
+      changes:
+        - createTable:
+            tableName: user_score_history
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: create_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: exam_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_base_points
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: bonus_time
+                  type: double precision
+                  constraints:
+                    nullable: false
+              - column:
+                  name: score
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: success_answers_count_absolute
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fail_answers_count_absolute
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: time_taken_to_complete
+                  type: double
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tab_switch_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: text_copy_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: heartbeat_missed_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: dev_tools_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: dom_tampering_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: function_tampering_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: module_tampering_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: page_close_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: external_content_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: anti_ocr_tampering_violations
+                  type: int
+                  defaultValue: 0
+                  constraints:
+                    nullable: true
+              - column:
+                  name: terminated_by_violations
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: true
+              - column:
+                  name: terminated_by_fail_answer_count
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: true
+              - column:
+                  name: termination_reason
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+        - addForeignKeyConstraint:
+            baseTableName: user_score_history
+            baseColumnNames: user_id
+            constraintName: fk_user_score_history_user
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE
+        - createIndex:
+            indexName: idx_user_score_history_user_id
+            tableName: user_score_history
+            columns:
+              - column:
+                  name: user_id
+        - createIndex:
+            indexName: idx_user_score_history_exam_id
+            tableName: user_score_history
+            columns:
+              - column:
+                  name: exam_id
+
+  - changeSet:
+      id: 006-create-user-answers-table
+      author: Garbuzov
+      changes:
+        - createTable:
+            tableName: user_answers
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_score_history_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: task_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: answer_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_correct
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: time_taken_seconds
+                  type: double
+                  constraints:
+                    nullable: true
+        - addForeignKeyConstraint:
+            baseTableName: user_answers
+            baseColumnNames: user_score_history_id
+            constraintName: fk_user_answers_user_score_history
+            referencedTableName: user_score_history
+            referencedColumnNames: id
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: user_answers
+            baseColumnNames: task_id
+            constraintName: fk_user_answers_task
+            referencedTableName: tasks
+            referencedColumnNames: id
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: user_answers
+            baseColumnNames: answer_id
+            constraintName: fk_user_answers_answer
+            referencedTableName: answers
+            referencedColumnNames: id
+            onDelete: CASCADE
+        - createIndex:
+            indexName: idx_user_answers_user_score_history_id
+            tableName: user_answers
+            columns:
+              - column:
+                  name: user_score_history_id
+        - createIndex:
+            indexName: idx_user_answers_task_id
+            tableName: user_answers
+            columns:
+              - column:
+                  name: task_id
+        - createIndex:
+            indexName: idx_user_answers_answer_id
+            tableName: user_answers
+            columns:
+              - column:
+                  name: answer_id
+
+  - changeSet:
+      id: 007-create-feed-back-table
+      author: Garbuzov
+      changes:
+        - createTable:
+            tableName: feed_back
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: text
+                  type: varchar(1000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: remote_add
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: feed_back
+            baseColumnNames: user_id
+            constraintName: fk_feed_back_user
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE
+        - createIndex:
+            indexName: idx_feed_back_user_id
+            tableName: feed_back
+            columns:
+              - column:
+                  name: user_id
+
+  - changeSet:
+      id: 008-create-global-rating-score-history-table
+      author: Garbuzov
+      changes:
+        - createTable:
+            tableName: global_rating_score_history
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_score_history_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: global_rating_score_history
+            baseColumnNames: user_score_history_id
+            constraintName: fk_global_rating_score_history_user_score_history
+            referencedTableName: user_score_history
+            referencedColumnNames: id
+            onDelete: CASCADE
+        - createIndex:
+            indexName: idx_global_rating_score_history_user_score_history_id
+            tableName: global_rating_score_history
+            columns:
+              - column:
+                  name: user_score_history_id
+
+  - changeSet:
+      id: 100-create-import-export-history
+      author: Garbuzov
+      changes:
+        - createTable:
+            tableName: import_export_history
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: operation_type
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: file_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: started_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: finished_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: result
+                  type: text
+                  constraints:
+                    nullable: true
+        - addForeignKeyConstraint:
+            baseTableName: import_export_history
+            baseColumnNames: user_id
+            constraintName: fk_import_export_history_user
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE

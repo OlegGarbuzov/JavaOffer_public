@@ -1,0 +1,187 @@
+/* Блок с разбором ответа */
+.solution-block {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin: 1.5rem 0 0 0;
+  background: var(--bs-body-bg, #f8f9fa);
+  border-left: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 16px 2px #0d6efd55;
+  text-align: left;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  position: relative;
+  gap: 0.5rem;
+  color: var(--bs-body-color, #212529);
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.solution-block.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Новая структура с гифкой слева и объяснением справа */
+.solution-block .row {
+  margin: 0;
+  width: 100%;
+}
+
+.solution-block .col-md-4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solution-block .col-md-8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+/* Стили для гифки */
+.meme-gif {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  width: auto;
+  max-height: 200px;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Стили для эмодзи в правом верхнем углу */
+.solution-emoji {
+  font-size: 2.2rem;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
+  z-index: 5;
+}
+
+.solution-content-wrap {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  padding-top: 0.5rem;
+}
+
+/* Стили для модального окна с полным разбором */
+#fullSolutionModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#fullSolutionModal .modal-content {
+  position: relative;
+  background-color: #fff;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#fullSolutionModal button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+#fullSolutionModal button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 767px) {
+  .solution-block .row {
+    flex-direction: column;
+  }
+  
+  .solution-block .col-md-4,
+  .solution-block .col-sm-12 {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .meme-gif {
+    margin: 0 auto 1rem auto;
+    max-height: 150px;
+  }
+  
+  #solutionBlock .row > div:first-child {
+    margin-bottom: 1rem;
+  }
+  
+  .solution-emoji {
+    top: -2.5rem;
+    right: 0;
+  }
+}
+
+/* Темная тема */
+[data-bs-theme='dark'] .solution-block {
+  background: #292a33;
+  color: #f8f9fa;
+  box-shadow: 0 0 24px 2px #339cffcc;
+}
+
+[data-bs-theme='dark'] .solution-emoji {
+  color: #f8f9fa; /* Светлый цвет для эмодзи в темной теме */
+}
+
+[data-bs-theme='dark'] .solution-content-wrap h5,
+[data-bs-theme='dark'] .solution-content-wrap div,
+[data-bs-theme='dark'] .solution-content-wrap {
+  color: #f8f9fa;
+}
+
+/* Темная тема для модального окна */
+[data-theme="dark"] #fullSolutionModal .modal-content {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+[data-theme="dark"] #fullSolutionModal button {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+} 

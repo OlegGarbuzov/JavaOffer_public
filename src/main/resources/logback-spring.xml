@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- ====== 1. Appender для твоих бизнес-логов ====== -->
+    <appender name="APP_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/app-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>14</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ====== 2. Appender для спринг/хибернейт логов ====== -->
+    <appender name="SYSTEM_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/system.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/system-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>14</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ====== 3. Console appender====== -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ====== app ====== -->
+    <logger name="com.example.javaoffer" level="DEBUG" additivity="false">
+        <appender-ref ref="APP_LOG"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- ====== Spring, Hibernate и т.д. → system.log ====== -->
+    <logger name="org.springframework" level="INFO">
+        <appender-ref ref="SYSTEM_LOG"/>
+    </logger>
+
+    <logger name="org.hibernate" level="INFO">
+        <appender-ref ref="SYSTEM_LOG"/>
+    </logger>
+
+    <logger name="org.apache.catalina" level="INFO">
+        <appender-ref ref="SYSTEM_LOG"/>
+    </logger>
+
+    <!-- ====== Корень: INFO и выше → system.log ====== -->
+    <root level="INFO">
+        <appender-ref ref="SYSTEM_LOG"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

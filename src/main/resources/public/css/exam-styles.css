@@ -1,0 +1,542 @@
+/* Общие стили для режимов экзамена */
+
+/* ==== БАЗОВЫЕ СТИЛИ ДЛЯ БЛОКОВ РЕЖИМОВ ==== */
+.mode-block {
+    position: relative;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+/* ==== СТИЛИ ДЛЯ БЛОКА ВОПРОСА В РАЗНЫХ РЕЖИМАХ ==== */
+/* Стили для рамки блока вопроса в рейтинговом режиме */
+.question-block-rating,
+.exam-question-card.question-block-rating,
+.card.shadow.exam-question-card.question-block-rating {
+    border: 5px solid darkgoldenrod !important;
+    box-shadow: 0 0 20px rgba(184, 134, 11, 0.7) !important;
+    transition: box-shadow 0.3s ease !important;
+}
+
+/* Перекрытие стандартных hover-эффектов для рейтингового режима */
+.question-block-rating:hover,
+.exam-question-card.question-block-rating:hover,
+.card.shadow.exam-question-card.question-block-rating:hover,
+div.question-block-rating:hover,
+div.exam-question-card.question-block-rating:hover,
+div.card.shadow.exam-question-card.question-block-rating:hover,
+.exam-question-card[class*="question-block-rating"]:hover,
+.card.shadow.exam-question-card[class*="question-block-rating"]:hover,
+*[class*="question-block-rating"]:hover {
+    border: 5px solid darkgoldenrod !important;
+    border-color: darkgoldenrod !important;
+    box-shadow: 0 0 25px rgba(184, 134, 11, 0.8) !important;
+}
+
+[data-bs-theme='dark'] .question-block-rating,
+[data-bs-theme='dark'] .exam-question-card.question-block-rating,
+[data-bs-theme='dark'] .card.shadow.exam-question-card.question-block-rating {
+    border: 2.5px solid darkgoldenrod !important;
+    box-shadow: 0 0 20px rgba(184, 134, 11, 0.7) !important;
+}
+
+[data-bs-theme='dark'] .question-block-rating:hover,
+[data-bs-theme='dark'] .exam-question-card.question-block-rating:hover,
+[data-bs-theme='dark'] .card.shadow.exam-question-card.question-block-rating:hover,
+[data-bs-theme='dark'] div.question-block-rating:hover,
+[data-bs-theme='dark'] div.exam-question-card.question-block-rating:hover,
+[data-bs-theme='dark'] div.card.shadow.exam-question-card.question-block-rating:hover,
+[data-bs-theme='dark'] .exam-question-card[class*="question-block-rating"]:hover,
+[data-bs-theme='dark'] .card.shadow.exam-question-card[class*="question-block-rating"]:hover,
+[data-bs-theme='dark'] *[class*="question-block-rating"]:hover {
+    border: 2.5px solid darkgoldenrod !important;
+    border-color: darkgoldenrod !important;
+    box-shadow: 0 0 25px rgba(184, 134, 11, 0.8) !important;
+}
+
+/* Отключаем стандартный ховер для .exam-question-card при наличии класса question-block-rating */
+.exam-question-card.question-block-rating:hover {
+    border-color: darkgoldenrod !important;
+}
+
+/* Отключаем другие возможные hover эффекты для карточки в рейтинговом режиме */
+.card.shadow.exam-question-card.question-block-rating:hover,
+.card.shadow.exam-question-card.question-block-rating:active,
+.card.shadow.exam-question-card.question-block-rating:focus {
+    border: 5px solid darkgoldenrod !important;
+    border-color: darkgoldenrod !important;
+}
+
+/* Стили для центрирования заголовка в card-header */
+.card-header {
+    text-align: center !important;
+}
+
+/* Стили для заголовка с темой вопроса - выравнивание по левому краю */
+.card-header h3 {
+    width: 100% !important;
+    text-align: left !important;
+    font-size: 1.6rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Для страницы выбора режима центрируем заголовок */
+.card-header h3.text-center {
+    text-align: center !important;
+}
+
+/* Стили для текста ответов */
+.answer-btn span {
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+}
+
+/* ==== СТИЛИ ДЛЯ ОТОБРАЖЕНИЯ РЕЖИМА В СТАТИСТИКЕ ==== */
+.stat-item.exam-mode-display {
+    position: relative !important;
+    z-index: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    background-color: var(--bs-tertiary-bg, #f8f9fa) !important;
+    border-radius: 0.5rem !important;
+    padding: 0.25rem 10px 0.25rem 0.5rem !important;
+    min-height: 32px !important;
+    height: 32px !important;
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .1), 0 .125em .5em rgba(0, 0, 0, .15) !important;
+    cursor: default !important;
+    gap: 0.5rem !important;
+    font-size: 0.85rem !important;
+    border: none !important;
+}
+
+.stat-item.exam-mode-display .stat-icon {
+    font-size: 1.1em !important;
+    margin-right: 0.5em !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.stat-item.exam-mode-display .stat-value {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* Free режим */
+.stat-item.exam-mode-display.mode-free,
+.stat-item.exam-mode-display[data-mode="FREE"] {
+    background-color: rgba(0, 0, 255, 0.05) !important;
+    box-shadow: 0 0 8px rgba(0, 0, 255, 0.3) !important;
+}
+
+.stat-item.exam-mode-display.mode-free .stat-value,
+.stat-item.exam-mode-display[data-mode="FREE"] .stat-value {
+    color: blue !important;
+    font-weight: bold !important;
+}
+
+/* Rating режим */
+.stat-item.exam-mode-display.mode-rating,
+.stat-item.exam-mode-display[data-mode="RATING"] {
+    background-color: rgba(184, 134, 11, 0.05) !important;
+    box-shadow: 0 0 8px rgba(184, 134, 11, 0.3) !important;
+}
+
+.stat-item.exam-mode-display.mode-rating .stat-value,
+.stat-item.exam-mode-display[data-mode="RATING"] .stat-value {
+    color: darkgoldenrod !important;
+    font-weight: bold !important;
+}
+
+/* ==== СТИЛИ ДЛЯ БЛОКОВ ВЫБОРА РЕЖИМА ==== */
+/* Free режим */
+.mode-block.mode-free {
+    background: transparent !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/FREE_PIC.jpg") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    color: white !important;
+}
+
+.mode-block.mode-free h4 {
+    color: blue !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.mode-block.mode-free:hover,
+.mode-block.mode-free.active {
+    box-shadow: 0 0 32px 0 #0d6efd80, 0 2px 16px rgba(0, 0, 0, 0.10);
+    border-color: #0d6efd;
+}
+
+/* Rating режим */
+.mode-block.mode-rating {
+    background: transparent !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/RATING_PIC.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    color: white !important;
+}
+
+.mode-block.mode-rating h4 {
+    color: darkgoldenrod !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.mode-block.mode-rating:hover,
+.mode-block.mode-rating.active {
+    box-shadow: 0 0 32px 0 #ff9900a0, 0 2px 16px rgba(0, 0, 0, 0.10);
+    border-color: #ff9900;
+}
+
+/* Общие стили для текста в блоках режимов */
+.mode-block.mode-free p,
+.mode-block.mode-rating p {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* ==== СТИЛИ ДЛЯ ОТКЛЮЧЕННЫХ (DISABLED) БЛОКОВ ==== */
+.mode-block.disabled {
+    opacity: 0.85 !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    background: transparent !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/RATING_PIC.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-color: transparent !important;
+    color: white !important;
+    border: 2px solid #e0e0e0 !important;
+    z-index: 1 !important;
+}
+
+.mode-block.disabled h4 {
+    color: darkgoldenrod !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.mode-block.disabled p {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.mode-block.disabled:hover,
+.mode-block.disabled:active,
+.mode-block.disabled.active {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: #e0e0e0 !important;
+}
+
+.mode-block.disabled .text-center a {
+    color: #fff !important;
+    text-decoration: underline !important;
+    font-weight: bold !important;
+    position: relative !important;
+    z-index: 5 !important;
+    pointer-events: auto !important;
+}
+
+.mode-block.disabled .text-center a:hover {
+    color: #f8f9fa !important;
+}
+
+/* ==== ТЕМНАЯ ТЕМА ==== */
+[data-bs-theme="dark"] .stats-block .stats-row .stat-item.exam-mode-display {
+    background-color: var(--bs-tertiary-bg, #333) !important;
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .1), 0 .125em .5em rgba(0, 0, 0, .15) !important;
+}
+
+[data-bs-theme="dark"] .mode-block.mode-free,
+[data-bs-theme="dark"] .mode-block.mode-rating,
+[data-bs-theme="dark"] .mode-block.disabled {
+    color: white !important;
+    border-color: #444 !important;
+}
+
+/* Темная тема для заголовка темы */
+[data-bs-theme="dark"] .card-header h3 {
+    color: #339cff !important;
+
+}
+
+.stats-row .stat-item.exam-mode-display {
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .1), 0 .125em .5em rgba(0, 0, 0, .15) !important;
+}
+
+/* Стили для результатов экзамена */
+.exam-result-card {
+    text-align: center;
+    max-width: 400px;
+    margin: 2rem auto;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Обертка контента с рамкой */
+.result-content-wrapper {
+    background-color: rgba(50, 50, 50, 0.3);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Светлая тема для блока результатов */
+[data-bs-theme='light'] .result-content-wrapper,
+[data-theme='light'] .result-content-wrapper,
+:root:not([data-bs-theme='dark']) .result-content-wrapper {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Добавляем золотое свечение для режима RATING */
+.exam-result-card:has(.exam-mode-display.mode-rating) .result-content-wrapper {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.exam-result-card .card-header,
+.exam-result-card .card-body,
+.exam-result-card .card-footer {
+    background-color: transparent !important;
+    border: none !important;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.exam-result-card .card-header span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.exam-result-card .card-header span span {
+    font-size: 2rem;
+}
+
+.exam-result-card .card-header h3 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.exam-result-card .stats-block {
+    border-bottom: none;
+    background: none;
+    padding: 0;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.exam-result-card .stats-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+}
+
+.exam-result-card .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+}
+
+.exam-result-card .stat-item .stat-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+/* Группировка текста и иконки слева */
+.exam-result-card .stat-item span:not(.stat-value) {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+/* Значения прижаты к правой части */
+.exam-result-card .stat-item .stat-value {
+    margin-left: auto;
+    text-align: right;
+    font-weight: 500;
+}
+
+/* Цвета иконок */
+.exam-result-card .stat-item .stat-icon:contains('✅') {
+    color: #28a745;
+}
+
+.exam-result-card .stat-item .stat-icon:contains('❌') {
+    color: #dc3545;
+}
+
+/* Стили для статистики в блоке результатов */
+.exam-result-card .stat-item .stat-icon,
+.exam-result-card .stat-item .stat-value {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 0.25rem;
+}
+
+/* Стили для счетчика очков */
+.exam-result-card .score-container {
+    margin-top: 2.2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.exam-result-card .score-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 215, 0, 0.1);
+    border-radius: 12px;
+    min-width: 120px;
+    height: 120px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    width: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Улучшенная видимость для светлой темы */
+[data-bs-theme='light'] .exam-result-card .score-display,
+[data-theme='light'] .exam-result-card .score-display,
+:root:not([data-bs-theme='dark']) .exam-result-card .score-display {
+    background-color: rgba(184, 134, 11, 0.15);
+    border: 2px solid rgba(184, 134, 11, 0.3);
+    box-shadow: 0 0 25px rgba(184, 134, 11, 0.4);
+}
+
+[data-bs-theme='light'] .exam-result-card .score-star,
+[data-theme='light'] .exam-result-card .score-star,
+:root:not([data-bs-theme='dark']) .exam-result-card .score-star {
+    color: darkgoldenrod;
+    text-shadow: 0 0 10px rgba(184, 134, 11, 0.5);
+}
+
+[data-bs-theme='light'] .exam-result-card .score-value,
+[data-theme='light'] .exam-result-card .score-value,
+:root:not([data-bs-theme='dark']) .exam-result-card .score-value {
+    color: #8B6914;
+    font-weight: bold;
+}
+
+.exam-result-card .score-star {
+    color: #FFD700;
+    margin-right: 0.7rem;
+    font-size: 2.2rem;
+}
+
+.exam-result-card .score-value {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .exam-result-card .score-display,
+[data-theme='dark'] .exam-result-card .score-display {
+    background-color: rgba(255, 215, 0, 0.15);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+[data-bs-theme='dark'] .exam-result-card .score-star,
+[data-theme='dark'] .exam-result-card .score-star {
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+/* Стили для контейнера гифки */
+.exam-result-card .result-gif-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 1rem 0;
+}
+
+.exam-result-card .result-gif {
+    max-width: 180px;
+    max-height: 180px;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    display: block;
+    z-index: 2;
+}
+
+/* Центрирование кнопки выбора режима */
+.exam-result-card .btn {
+    margin: 1rem auto;
+    display: block;
+    font-size: 1rem;
+    padding: 0.375rem 1.2rem;
+    font-weight: 500;
+}
+
+/* Стили для уведомлений */
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+} 

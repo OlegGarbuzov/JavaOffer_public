@@ -1,0 +1,4575 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.answer-btn .answer-spinner {
+    width: auto !important;
+    display: flex !important;
+    align-items: center;
+    margin-left: auto;
+    padding-left: 0;
+    text-align: right !important;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6528e0;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+}
+
+.btn-bd-primary:active, .btn-bd-primary:focus {
+    box-shadow: 0 4px 24px 0 rgba(13, 110, 253, 0.28), 0 1.5px 8px 0 rgba(0, 0, 0, 0.18);
+}
+
+.bd-mode-toggle {
+    z-index: 1500;
+    display: none !important;
+}
+
+.bd-mode-toggle .bi {
+    width: 1em;
+    height: 1em;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+    display: block !important;
+}
+
+.mode-select-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mode-block {
+    flex: 1 1 0;
+    min-width: 240px;
+    max-width: 320px;
+    min-height: 420px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(.4, 2, .6, 1), box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+}
+
+.mode-block .mode-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.mode-block h4 {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.mode-block p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.mode-block:hover, .mode-block.active {
+    transform: scale(1.07);
+    z-index: 2;
+}
+
+.mode-block.mode-free:hover, .mode-block.mode-free.active {
+    box-shadow: 0 0 32px 0 #0d6efd80, 0 2px 16px rgba(0, 0, 0, 0.10);
+    border-color: #0d6efd;
+}
+
+.mode-block.mode-rating:hover, .mode-block.mode-rating.active {
+    box-shadow: 0 0 32px 0 #ff9900a0, 0 2px 16px rgba(0, 0, 0, 0.10);
+    border-color: #ff9900;
+}
+
+.mode-block.active {
+    border-width: 3px;
+}
+
+@media (max-width: 900px) {
+    .mode-select-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .mode-select-container {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 1rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 1rem;
+        margin-bottom: 0.5rem;
+        width: 100vw;
+        max-width: 100vw;
+        box-sizing: border-box;
+    }
+
+    .mode-block {
+        min-width: 90vw;
+        max-width: 95vw;
+        min-height: 340px;
+        margin: 0 0.5rem;
+        scroll-snap-align: center;
+    }
+
+    .card.shadow {
+        max-width: 100vw !important;
+    }
+
+    main.px-3.w-100.m-auto[style] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: 100vw !important;
+    }
+}
+
+[data-bs-theme="dark"] .mode-block {
+    background: #23272b !important;
+    color: #fff !important;
+    border-color: #444 !important;
+}
+
+[data-bs-theme="dark"] .mode-block h4 {
+    color: #fff !important;
+}
+
+[data-bs-theme="dark"] .mode-block p {
+    color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .mode-block.mode-free:hover, [data-bs-theme="dark"] .mode-block.mode-free.active {
+    box-shadow: 0 0 32px 0 #0d6efd80, 0 2px 16px rgba(0, 0, 0, 0.30);
+    border-color: #0d6efd !important;
+}
+
+[data-bs-theme="dark"] .mode-block.mode-rating:hover, [data-bs-theme="dark"] .mode-block.mode-rating.active {
+    box-shadow: 0 0 32px 0 #ff9900a0, 0 2px 16px rgba(0, 0, 0, 0.30);
+    border-color: #ff9900 !important;
+}
+
+[data-bs-theme="dark"] .mode-block.mode-free p,
+[data-bs-theme="dark"] .mode-block.mode-rating p {
+    color: white !important;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+.btn-start {
+    background: var(--bs-primary, #0d6efd) !important;
+    color: #fff !important;
+    border: none;
+    font-weight: 800;
+    font-size: 1.18rem;
+    box-shadow: 0 2px 8px 0 rgba(13, 110, 253, 0.13), 0 1.5px 4px 0 rgba(0, 0, 0, 0.08);
+    transition: transform 0.14s cubic-bezier(.4, 2, .6, 1), box-shadow 0.14s, background 0.14s;
+}
+
+.btn-start:hover, .btn-start:focus {
+    background: var(--bs-primary, #0d6efd) !important;
+    color: #fff;
+    transform: scale(1.03);
+    box-shadow: 0 0 7px 2px #0d6efd44, 0 2px 8px 0 rgba(13, 110, 253, 0.10);
+}
+
+.exam-question-text pre,
+pre {
+    max-height: 260px;
+    overflow-y: auto;
+    margin: 1em 0;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+}
+
+.exam-question-text pre code,
+pre code {
+    display: block;
+    background: #626262;
+    color: #fdfdfd;
+    padding: 0.7em 1em;
+    border-radius: 0.5em;
+    font-size: 0.95em;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    overflow-x: auto;
+    margin: 0;
+    box-shadow: 0 4px 24px 0 rgba(44, 44, 44, 0.18), 0 1.5px 6px 0 rgba(44, 44, 44, 0.10);
+    font-weight: 400;
+    text-align: left;
+}
+
+[data-bs-theme='light'] .exam-question-text pre code,
+[data-bs-theme='light'] pre code {
+    background: #f8f9fa;
+    color: #006d9a;
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        border: 0;
+        width: 100%;
+        margin-bottom: 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .btn {
+        white-space: nowrap;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+    }
+
+    .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+
+    .modal-content {
+        border-radius: 0.5rem;
+    }
+
+    .modal-header, .modal-footer {
+        padding: 0.75rem;
+    }
+
+    .modal-body {
+        padding: 1rem 0.75rem;
+    }
+
+    .form-control, .form-select {
+        font-size: 0.95rem;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.35rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    .p-3 {
+        padding: 0.75rem !important;
+    }
+
+    .m-3 {
+        margin: 0.75rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        font-size: 0.875rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    h4 {
+        font-size: 1.15rem;
+    }
+
+    .p-3 {
+        padding: 0.5rem !important;
+    }
+
+    .m-3 {
+        margin: 0.5rem !important;
+    }
+
+    .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .d-flex.flex-row {
+        flex-direction: column !important;
+    }
+
+    .d-flex.flex-row > * {
+        width: 100% !important;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.answer-btn-group {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.answer-btn {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    margin: 0.25rem 0;
+    max-width: 600px;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bs-tertiary-bg, #f8f9fa);
+    color: var(--bs-body-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    position: relative;
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .1), 0 .125em .5em rgba(0, 0, 0, .15);
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+}
+
+.answer-btn.selected, .answer-btn:active, .answer-btn.active {
+    background: #712cf9;
+    color: #fff;
+    border-color: #712cf9;
+}
+
+.answer-btn input[type="radio"] {
+    display: none;
+}
+
+.answer-btn.correct {
+    background: #28a745 !important;
+    color: #fff !important;
+    border-color: #28a745 !important;
+}
+
+.answer-btn.incorrect {
+    background: #dc3545 !important;
+    color: #fff !important;
+    border-color: #dc3545 !important;
+}
+
+.exam-flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+    .exam-flex-row {
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 100%;
+    }
+}
+
+.exam-question-card {
+    flex: 1 1 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    background: var(--bs-card-bg, #fff);
+    border-radius: 2rem;
+    box-shadow: 0 2px 16px rgba(113, 44, 249, 0.07);
+    padding: 0;
+    margin: 0;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    color: var(--bs-card-color, #212529);
+    transition: border-color 0.25s;
+}
+
+.exam-question-card .card-header {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 2rem;
+    padding: 0.01rem 1rem 0.4rem 1rem;
+    background: var(--bs-card-bg, #fff);
+    display: flex;
+    align-items: flex-start;
+    min-height: 0;
+    height: auto;
+}
+
+.card-header h3 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    transition: color 0.5s, text-shadow 0.5s;
+    color: #0d6efd;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33;
+    opacity: 0;
+    animation: fadeInTitle 0.7s cubic-bezier(.4, 1, .4, 1) 0.2s forwards;
+    text-align: left;
+    display: block;
+}
+
+/* Переопределение стиля hover для рейтингового режима */
+body .exam-question-card.question-block-rating,
+html body .exam-question-card.question-block-rating,
+html body .card.shadow.exam-question-card.question-block-rating,
+.card.shadow.exam-question-card.question-block-rating {
+    border: 1px solid darkgoldenrod !important;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15) !important;
+    transition: transform 0.35s cubic-bezier(.4, 2, .6, 1), box-shadow 0.35s, border-color 0.35s !important;
+}
+
+body .exam-question-card.question-block-rating:hover,
+html body .exam-question-card.question-block-rating:hover,
+html body .card.shadow.exam-question-card.question-block-rating:hover,
+.card.shadow.exam-question-card.question-block-rating:hover {
+    border: 1px solid darkgoldenrod !important;
+    border-color: darkgoldenrod !important;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.18), 0 1.5px 8px 0 rgba(0, 0, 0, 0.10) !important;
+    transform: translateY(-1px);
+}
+
+[data-bs-theme='dark'] body .exam-question-card.question-block-rating,
+[data-bs-theme='dark'] html body .exam-question-card.question-block-rating,
+[data-bs-theme='dark'] html body .card.shadow.exam-question-card.question-block-rating,
+[data-bs-theme='dark'] .card.shadow.exam-question-card.question-block-rating {
+    border: 1px solid darkgoldenrod !important;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15) !important;
+    transition: transform 0.35s cubic-bezier(.4, 2, .6, 1), box-shadow 0.35s, border-color 0.35s !important;
+}
+
+[data-bs-theme='dark'] body .exam-question-card.question-block-rating:hover,
+[data-bs-theme='dark'] html body .exam-question-card.question-block-rating:hover,
+[data-bs-theme='dark'] html body .card.shadow.exam-question-card.question-block-rating:hover,
+[data-bs-theme='dark'] .card.shadow.exam-question-card.question-block-rating:hover {
+    border: 1px solid darkgoldenrod !important;
+    border-color: darkgoldenrod !important;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.18), 0 1.5px 8px 0 rgba(0, 0, 0, 0.10) !important;
+    transform: translateY(-1px);
+}
+
+.solution-block {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 1.5rem 0 0 0;
+    background: var(--bs-body-bg, #f8f9fa);
+    border-left: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 16px 2px #0d6efd55;
+    text-align: left;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    position: relative;
+    gap: 0.5rem;
+    color: var(--bs-body-color, #212529);
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.solution-block.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.solution-block .row {
+    margin: 0;
+    width: 100%;
+}
+
+.solution-block .col-md-4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.solution-block .col-md-8 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.meme-gif {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    width: auto;
+    max-height: 200px;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.solution-row-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.2rem;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.solution-emoji {
+    font-size: 2.2rem;
+    margin-top: 0.1em;
+    margin-right: 0.2em;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.solution-content-wrap {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .solution-block .row {
+        flex-direction: column;
+    }
+
+    .solution-block .col-md-4,
+    .solution-block .col-sm-12 {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .meme-gif {
+        margin: 0 auto 1rem auto;
+        max-height: 150px;
+    }
+
+    #solutionBlock .row > div:first-child {
+        margin-bottom: 1rem;
+    }
+
+    .solution-row-flex {
+        margin-top: 0;
+    }
+}
+
+[data-bs-theme='dark'] .solution-block {
+    background: #292a33;
+    color: #f8f9fa;
+    box-shadow: 0 0 24px 2px #339cffcc;
+}
+
+[data-bs-theme='dark'] .solution-content-wrap h5,
+[data-bs-theme='dark'] .solution-content-wrap div,
+[data-bs-theme='dark'] .solution-content-wrap {
+    color: #f8f9fa;
+}
+
+.next-btn-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+main.exam-main {
+    margin: 2rem auto !important;
+    max-width: 900px;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    main.exam-main {
+        margin: 1.5rem auto !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    .answer-btn {
+        max-width: 100%;
+    }
+}
+
+.btn-primary.w-auto {
+    box-shadow: 0 4px 24px 0 rgba(44, 44, 44, 0.22);
+}
+
+[data-bs-theme='dark'] .exam-question-card {
+    background: #23272b;
+    color: #f8f9fa;
+}
+
+[data-bs-theme='dark'] .solution-block {
+    background: #292a33;
+    color: #f8f9fa;
+    box-shadow: 0 0 24px 2px #339cffcc;
+}
+
+[data-bs-theme='dark'] .solution-content-wrap h5,
+[data-bs-theme='dark'] .solution-content-wrap div,
+[data-bs-theme='dark'] .solution-content-wrap {
+    color: #f8f9fa;
+}
+
+[data-bs-theme='dark'] .answer-btn {
+    background: var(--bs-tertiary-bg) !important;
+    color: var(--bs-body-color) !important;
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .2), 0 .125em .5em rgba(0, 0, 0, .25);
+}
+
+[data-bs-theme='dark'] .answer-btn.selected, [data-bs-theme='dark'] .answer-btn:active, [data-bs-theme='dark'] .answer-btn.active {
+    background: #712cf9 !important;
+    color: #fff !important;
+    border-color: #712cf9 !important;
+}
+
+[data-bs-theme='dark'] .answer-btn.correct {
+    background: #28a745 !important;
+    color: #fff !important;
+    border-color: #28a745 !important;
+}
+
+[data-bs-theme='dark'] .answer-btn.incorrect {
+    background: #dc3545 !important;
+    color: #fff !important;
+    border-color: #dc3545 !important;
+}
+
+.exam-question-text {
+    font-size: 1.3rem;
+    font-weight: normal;
+    margin-bottom: 0.5em;
+    margin-top: 0.2em;
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 600px) {
+    .exam-question-text {
+        font-size: 1.05rem;
+    }
+}
+
+[data-bs-theme='dark'] .exam-question-text {
+    font-size: 1.3rem;
+}
+
+.answer-btn span {
+    text-align: left;
+    width: 100%;
+    display: block;
+    padding-left: 0.7em;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.cover-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.exam-main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+.bd-mode-toggle {
+    display: none !important;
+}
+
+.answer-btn:hover:not(.selected):not(.active):not(.correct):not(.incorrect) {
+    box-shadow: 0 .7em 1.7em rgba(0, 0, 0, .15), 0 .225em .7em rgba(0, 0, 0, .2);
+    background: var(--bs-tertiary-bg) !important;
+    color: var(--bs-body-color) !important;
+    transition: box-shadow 0.25s;
+}
+
+[data-bs-theme='dark'] .answer-btn:hover:not(.selected):not(.active):not(.correct):not(.incorrect) {
+    box-shadow: 0 .7em 1.7em rgba(0, 0, 0, .25), 0 .225em .7em rgba(0, 0, 0, .3);
+    background: var(--bs-tertiary-bg) !important;
+    color: var(--bs-body-color) !important;
+}
+
+.answer-btn:active:not(.selected):not(.active):not(.correct):not(.incorrect) {
+    background: #fff !important;
+    color: #212529 !important;
+    border-color: #0d6efd !important;
+    box-shadow: 0 2px 16px 0 rgba(13, 110, 253, 0.13);
+    transition: background 0.18s, color 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+
+[data-bs-theme='dark'] .answer-btn:active:not(.selected):not(.active):not(.correct):not(.incorrect) {
+    background: #23272b !important;
+    color: #f8f9fa !important;
+    border-color: #339cff !important;
+    box-shadow: 0 2px 16px 0 rgba(51, 156, 255, 0.18);
+}
+
+@media (min-width: 769px) {
+    .mode-select-container {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: center;
+        align-items: stretch;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        width: auto !important;
+        overflow: visible !important;
+        padding: 2rem 0.5rem !important;
+    }
+
+    .mode-select-inner {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        width: auto !important;
+        overflow: visible !important;
+    }
+
+    .mode-block {
+        flex: 1 1 0;
+        min-width: 240px;
+        max-width: 320px;
+        min-height: 420px;
+        height: auto;
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        border-radius: 1.5rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s cubic-bezier(.4, 2, .6, 1), box-shadow 0.2s, border-color 0.2s;
+        position: relative;
+    }
+
+    .mode-block .mode-img {
+        font-size: 4rem !important;
+        height: 80px !important;
+        margin-bottom: 1.2rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .mode-block:hover, .mode-block.active {
+        transform: scale(1.07);
+        z-index: 2;
+    }
+
+    .mode-block.mode-free:hover, .mode-block.mode-free.active {
+        box-shadow: 0 0 32px 0 #0d6efd80, 0 2px 16px rgba(0, 0, 0, 0.10);
+        border-color: #0d6efd;
+    }
+
+    .mode-block.mode-rating:hover, .mode-block.mode-rating.active {
+        box-shadow: 0 0 32px 0 #ff9900a0, 0 2px 16px rgba(0, 0, 0, 0.10);
+        border-color: #ff9900;
+    }
+
+    .mode-padding-left, .mode-padding-right, .next-mode-indicator, .swipe-hint {
+        display: none !important;
+    }
+
+    .card.shadow {
+        max-width: 700px !important;
+        overflow: visible !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .mode-select-container {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 1rem 0 !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        height: 340px !important;
+        min-height: 340px !important;
+    }
+
+    .mode-select-container::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .mode-select-inner {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        height: 340px !important;
+        min-height: 340px !important;
+        align-items: stretch !important;
+    }
+
+    .mode-padding-left {
+        flex: 0 0 4% !important;
+        min-width: 4% !important;
+        max-width: 4% !important;
+        height: 1px !important;
+    }
+
+    .mode-padding-right {
+        flex: 0 0 4% !important;
+        min-width: 4% !important;
+        max-width: 4% !important;
+        height: 1px !important;
+    }
+
+    .mode-block {
+        flex: 0 0 92% !important;
+        min-width: 92% !important;
+        max-width: 92% !important;
+        width: 92% !important;
+        margin: 0 4% !important;
+        scroll-snap-align: center !important;
+        min-height: 320px !important;
+        height: 320px !important;
+        position: relative !important;
+        transform: none !important;
+        transition: border-color 0.2s, box-shadow 0.2s !important;
+        box-sizing: border-box !important;
+        border-radius: 1.2rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        overflow: hidden !important;
+        justify-content: flex-start !important;
+        border-width: 2px !important;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    .mode-block .mode-img {
+        margin-top: 1rem !important;
+        margin-bottom: 0.5rem !important;
+        font-size: 3rem !important;
+        height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .mode-block h4 {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+        height: 28px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-weight: 700 !important;
+        font-size: 1.2rem !important;
+    }
+
+    .mode-block p {
+        flex: 1 0 auto !important;
+        overflow-y: auto !important;
+        padding-right: 5px !important;
+        max-height: 150px !important;
+        margin: 0 !important;
+        scrollbar-width: thin !important;
+        font-size: 0.95rem !important;
+    }
+
+    .mode-block p::-webkit-scrollbar {
+        width: 4px !important;
+    }
+
+    .mode-block p::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2) !important;
+        border-radius: 4px !important;
+    }
+
+    [data-bs-theme='dark'] .mode-block p::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .mode-block.active {
+        transform: none !important;
+        z-index: 1 !important;
+        border-width: 2px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .mode-block:hover {
+        transform: none !important;
+    }
+
+    .indicator-line {
+        display: none !important;
+    }
+
+    .next-mode-indicator {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin: 0.5rem 0 1rem 0 !important;
+        position: relative !important;
+        z-index: 2 !important;
+        height: 20px !important;
+    }
+
+    .indicator-dot {
+        width: 8px !important;
+        height: 8px !important;
+        background-color: #cccccc !important;
+        border-radius: 50% !important;
+        transition: all 0.2s ease !important;
+        cursor: pointer !important;
+    }
+
+    .indicator-dot.active {
+        width: 10px !important;
+        height: 10px !important;
+        background-color: #0d6efd !important;
+    }
+
+    [data-bs-theme='dark'] .indicator-dot {
+        background-color: #555555 !important;
+    }
+
+    [data-bs-theme='dark'] .indicator-dot.active {
+        background-color: #339cff !important;
+    }
+
+    .swipe-hint {
+        font-size: 0.85rem !important;
+        opacity: 0.75 !important;
+        padding: 0.2rem 0 !important;
+        transition: opacity 1s ease !important;
+        margin-bottom: 0.2rem !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .swipe-hint i.fa-arrows-left-right {
+        animation: swipeHint 1.5s ease-in-out infinite;
+        display: inline-block;
+    }
+
+    @keyframes swipeHint {
+        0% {
+            transform: translateX(-3px);
+        }
+        50% {
+            transform: translateX(3px);
+        }
+        100% {
+            transform: translateX(-3px);
+        }
+    }
+
+    [data-bs-theme='dark'] .swipe-hint {
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .btn-start {
+        margin-top: 0.5rem;
+        width: 90% !important;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0.7rem 1rem;
+        font-size: 1.1rem;
+    }
+}
+
+.mode-block.mode-rating .mode-img {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding-right: 0 !important;
+    padding-left: 8px !important;
+    transform: translateX(4px) !important;
+}
+
+.mode-block.mode-free .mode-img {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding-right: 0 !important;
+    padding-left: 8px !important;
+    transform: translateX(4px) !important;
+}
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.error-container .emoji {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.error-container .error-code {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.error-container .error-text {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.error-container .btn-home {
+    margin-top: 1rem;
+}
+
+#examForm {
+    width: 100%;
+    max-width: 100%;
+}
+
+.exam-question-card {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+@media (max-width: 768px) {
+    .exam-question-card {
+        max-width: 100%;
+        border-radius: 0.75rem;
+    }
+
+    #examForm {
+        padding: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    main.exam-main {
+        margin: 1rem auto !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
+
+    .exam-question-card {
+        border-radius: 0.5rem;
+    }
+
+    .card-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .next-btn-center {
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+}
+
+.stats-block {
+    font-size: 4rem;
+    color: #000000;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.stats-block {
+    padding: 0.25rem 0.4rem !important;
+    background: var(--bs-card-bg, #fff);
+    border-bottom: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.05rem !important;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.05rem !important;
+    font-size: 0.85rem;
+    color: var(--bs-body-color);
+    padding: 0.15rem 0.25rem !important;
+    border-radius: 0.4rem;
+    background: var(--bs-tertiary-bg, #f8f9fa);
+    transition: transform 0.2s ease;
+    cursor: help;
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .1), 0 .125em .5em rgba(0, 0, 0, .15);
+    margin: 0 !important;
+}
+
+.stat-item:hover {
+    transform: translateY(-1px);
+}
+
+.stat-icon {
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.stat-value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+[data-bs-theme='dark'] .stats-block {
+    background: var(--bs-dark-bg-subtle);
+    border-color: var(--bs-border-color);
+}
+
+[data-bs-theme='dark'] .stat-item {
+    background: var(--bs-dark);
+    color: var(--bs-light);
+}
+
+@media (max-width: 576px) {
+    .stats-block {
+        padding: 0.15rem 0.25rem !important;
+    }
+
+    .stats-row {
+        gap: 0.05rem !important;
+    }
+
+    .stat-item {
+        font-size: 0.75rem;
+        padding: 0.1rem 0.2rem !important;
+        gap: 0.05rem !important;
+    }
+}
+
+.difficulty-badge {
+    margin-left: 1rem;
+    background: #fcfcfd;
+    color: #00050c;
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .1), 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.difficulty-badge .stat-value {
+    color: inherit;
+}
+
+@media (max-width: 576px) {
+    .card-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start !important;
+    }
+
+    .difficulty-badge {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+
+    .card-header h3 {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .solution-block .row {
+        flex-direction: column;
+    }
+
+    .solution-block .col-md-4,
+    .solution-block .col-sm-12 {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .meme-gif {
+        margin: 0 auto 1rem auto;
+        max-height: 150px;
+    }
+
+    #solutionBlock .row > div:first-child {
+        margin-bottom: 1rem;
+    }
+
+    .solution-row-flex {
+        margin-top: 0;
+    }
+}
+
+#suggestCorrectionModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1050;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+#suggestCorrectionModal .modal-dialog {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#suggestCorrectionModal .modal-content {
+    background: var(--bs-card-bg, #fff);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    position: relative;
+}
+
+#suggestCorrectionModal .modal-header {
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+    padding-bottom: 0.5rem;
+}
+
+#suggestCorrectionModal .modal-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#suggestCorrectionModal .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-left: auto;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.15s;
+}
+
+#suggestCorrectionModal .btn-close:hover {
+    color: #333;
+}
+
+#suggestCorrectionModal .modal-body {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#suggestCorrectionModal .form-control {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid #e0e0e0;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+#suggestCorrectionModal .modal-footer {
+    border-top: none;
+    padding-top: 0.5rem;
+}
+
+.stat-suggest-btn:active {
+    transform: scale(0.96);
+    background: #e9ecef;
+}
+
+@media (max-width: 576px) {
+    #suggestCorrectionModal .modal-dialog {
+        max-width: 98vw;
+    }
+}
+
+.mode-block.disabled {
+    opacity: 0.85;
+    pointer-events: auto !important;
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/RATING_PIC.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    color: white !important;
+}
+
+.mode-block.disabled h4 {
+    color: darkgoldenrod !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.mode-block.disabled p {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.mode-block.disabled:hover,
+.mode-block.disabled:active,
+.mode-block.disabled.active {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: #e0e0e0 !important;
+}
+
+.mode-block.disabled .text-center a {
+    color: #fff !important;
+    text-decoration: underline !important;
+    font-weight: bold !important;
+    position: relative !important;
+    z-index: 5 !important;
+    pointer-events: auto !important;
+}
+
+.mode-block.disabled .text-center a:hover {
+    color: #f8f9fa !important;
+}
+
+[data-bs-theme='dark'] .mode-block.disabled {
+    border-color: #444 !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/RATING_PIC.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.mode-block.disabled a {
+    pointer-events: auto !important;
+}
+
+.text-blue-bold {
+    color: blue !important;
+    font-weight: bold !important;
+}
+
+.text-darkgoldenrod-bold {
+    color: darkgoldenrod !important;
+    font-weight: bold !important;
+}
+
+.exam-mode-free {
+    border: 2px solid blue !important;
+    box-shadow: 0 0 8px rgba(0, 0, 255, 0.3) !important;
+}
+
+.exam-mode-rating {
+    border: 2px solid darkgoldenrod !important;
+    box-shadow: 0 0 8px rgba(184, 134, 11, 0.3) !important;
+}
+
+.text-blue-bold {
+    color: blue !important;
+    font-weight: bold !important;
+}
+
+.text-darkgoldenrod-bold {
+    color: darkgoldenrod !important;
+    font-weight: bold !important;
+}
+
+.stat-item.exam-mode-display {
+    position: relative !important;
+    left: unset !important;
+    top: unset !important;
+    bottom: unset !important;
+    transform: none !important;
+    width: auto !important;
+    min-width: 90px !important;
+    margin: 0 !important;
+    z-index: 1 !important;
+    background: transparent !important;
+    border-radius: 0.5rem !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+}
+
+.stat-item.exam-mode-display .stat-value {
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    display: flex !important;
+}
+
+.stats-row .stat-item.exam-mode-display {
+    position: relative !important;
+    z-index: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.stats-row .stat-item.exam-mode-display.mode-free {
+    background-color: rgba(0, 0, 255, 0.05) !important;
+    border: 2px solid blue !important;
+    box-shadow: 0 0 8px rgba(0, 0, 255, 0.3) !important;
+}
+
+.stats-row .stat-item.exam-mode-display.mode-rating {
+    background-color: rgba(184, 134, 11, 0.05) !important;
+    border: 2px solid darkgoldenrod !important;
+    box-shadow: 0 0 8px rgba(184, 134, 11, 0.3) !important;
+}
+
+.stats-row .stat-item.exam-mode-display .stat-value.text-blue {
+    color: blue !important;
+    font-weight: bold !important;
+}
+
+.stats-row .stat-item.exam-mode-display .stat-value.text-gold {
+    color: darkgoldenrod !important;
+    font-weight: bold !important;
+}
+
+.mode-block {
+    position: relative;
+    overflow: hidden;
+}
+
+.mode-block.mode-free {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/FREE_PIC.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    color: white !important;
+}
+
+.mode-block.mode-rating {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/RATING_PIC.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    color: white !important;
+}
+
+.mode-block.mode-free h4,
+.mode-block.mode-rating h4,
+.mode-block.mode-free p,
+.mode-block.mode-rating p {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--bs-body-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    background: var(--bs-tertiary-bg, #f8f9fa);
+    transition: transform 0.2s ease;
+    cursor: help;
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .1), 0 .125em .5em rgba(0, 0, 0, .15);
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.stats-row .stat-item.exam-mode-display {
+    cursor: default !important;
+}
+
+.stat-item.exam-mode-display .stat-value {
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    display: flex !important;
+}
+
+/* Стили для элементов стоимости и сложности в заголовке карточки */
+.card-header .stat-item,
+.difficulty-level-container .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--bs-body-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem !important;
+    background: var(--bs-tertiary-bg, #f8f9fa);
+    transition: transform 0.2s ease;
+    cursor: help;
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .1), 0 .125em .5em rgba(0, 0, 0, .15);
+    margin-left: 0.5rem;
+}
+
+.card-header .stat-item:hover,
+.difficulty-level-container .stat-item:hover {
+    transform: translateY(-1px);
+}
+
+.card-header .stat-icon,
+.difficulty-level-container .stat-icon {
+    font-size: 0.9rem;
+    line-height: 1;
+    margin-right: 0.25rem;
+}
+
+.card-header .stat-value,
+.difficulty-level-container .stat-value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .card-header .stat-item,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header .stat-item,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    background: var(--bs-dark);
+    color: var(--bs-light);
+    border-radius: 0.5rem !important;
+}
+
+/* Переопределение стилей для темной темы из других мест */
+[data-bs-theme='dark'] .card-header .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header .difficulty-level-container .stat-item {
+    border-radius: 0.5rem !important;
+    background: var(--bs-dark) !important;
+    color: var(--bs-light) !important;
+    box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .2), 0 .125em .5em rgba(0, 0, 0, .25) !important;
+}
+
+/* Стили для иконок */
+.difficulty-level-container .stat-item[title="Стоимость вопроса"] .stat-icon {
+    color: gold;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.difficulty-level-container .stat-item[title="Сложность"] .stat-icon {
+    color: #dc3545;
+    text-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+/* Мобильные стили */
+@media (max-width: 576px) {
+    .card-header .stat-item,
+    .difficulty-level-container .stat-item {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .card-header .stat-icon,
+    .difficulty-level-container .stat-icon {
+        font-size: 0.8rem;
+    }
+}
+
+/* Стили для темы вопроса с анимацией */
+.topic-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33 !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для уведомлений */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+/* Стили для уведомлений в темной теме */
+[data-theme="dark"] .alert-success {
+    color: #d1e7dd;
+    background-color: #0f5132;
+    border-color: #0f5132;
+}
+
+[data-theme="dark"] .alert-danger {
+    color: #f8d7da;
+    background-color: #842029;
+    border-color: #842029;
+}
+
+[data-theme="dark"] .alert-warning {
+    color: #fff3cd;
+    background-color: #664d03;
+    border-color: #664d03;
+}
+
+[data-theme="dark"] .alert-info {
+    color: #cff4fc;
+    background-color: #055160;
+    border-color: #055160;
+}
+
+/* Стили для текста кнопки "Сохранить и завершить" */
+.mobile-text {
+    display: none;
+}
+
+.desktop-text {
+    display: inline;
+}
+
+@media (max-width: 576px) {
+    .mobile-text {
+        display: inline;
+    }
+    
+    .desktop-text {
+        display: none;
+    }
+    
+    /* Уточнение стилей кнопок */
+    .action-buttons-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .suggest-correction-wrapper, 
+    .save-and-finish-wrapper {
+        width: auto;
+        margin: 0;
+    }
+    
+    /* Кнопка "Предложить исправление" - только иконка */
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn .stat-value {
+        display: none !important;
+    }
+    
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        padding: 0.25rem !important;
+    }
+    
+    /* Кнопка "Сохранить и завершить" с текстом "Завершить" */
+    .save-and-finish-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        justify-content: center !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Средние экраны (планшеты) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .action-buttons-container {
+        flex-wrap: wrap;
+    }
+    
+    .save-and-finish-wrapper {
+        margin-top: 0.5rem;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .save-and-finish-wrapper .stat-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .card {
+    background-color: #212529;
+    color: #dee2e6;
+    border-color: #444;
+}
+
+/* Исправление стилей таблиц в темной теме */
+html[data-bs-theme='dark'] .table {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table > :not(caption) > * > * {
+    border-bottom-color: #444 !important;
+}
+
+/* Дополнительные стили для темной темы */
+html[data-bs-theme='dark'] .card .card-body {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table-responsive {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table th {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .badge.bg-warning.text-dark {
+    color: #212529 !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Специальные стили для таблицы ответов пользователя */
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive {
+    background-color: #212529 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table {
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table thead th,
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table tbody td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Стили для модального окна античита (динамически создаваемого через JS) в светлой теме */
+body > div[style*="position: fixed"][style*="z-index: 9999"] > div {
+  background-color: #fff !important;
+  color: #222 !important;
+  border: 2px solid #dc3545 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2) !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] h3 {
+  color: #dc3545 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p {
+  color: #222 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p:last-child {
+  color: #6c757d !important;
+  font-style: italic !important;
+}
+
+/* Адаптивные стили для блока с действиями */
+.action-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.suggest-correction-wrapper {
+    flex: 0 1 auto;
+}
+
+.save-and-finish-wrapper {
+    margin-left: auto;
+}
+
+/* Стили для заголовка и блока сложности */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для темы вопроса */
+.topic-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33 !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для контейнеров в заголовке */
+.question-info-container, .difficulty-level-container {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.question-info-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.difficulty-level-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+/* Стили для темной темы заголовка */
+[data-bs-theme='dark'] .card-header,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    background-color: #2c3034 !important; 
+    border-color: #444 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme='dark'] .topic-title,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .topic-title,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    color: #5b9aff !important;
+    text-shadow: 0 2px 16px #5b9aff55, 0 1.5px 6px #5b9aff33 !important;
+}
+
+[data-bs-theme='dark'] .question-info-container,
+[data-bs-theme='dark'] .difficulty-level-container,
+html[data-bs-theme='dark'] .question-info-container,
+html[data-bs-theme='dark'] .difficulty-level-container {
+    background-color: transparent !important;
+}
+
+/* Стили для мобильной версии заголовка */
+@media (max-width: 576px) {
+    .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .topic-title {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin-right: 0.5rem !important;
+    }
+}
+
+/* Стили для уведомлений */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+/* Стили для уведомлений в темной теме */
+[data-theme="dark"] .alert-success {
+    color: #d1e7dd;
+    background-color: #0f5132;
+    border-color: #0f5132;
+}
+
+[data-theme="dark"] .alert-danger {
+    color: #f8d7da;
+    background-color: #842029;
+    border-color: #842029;
+}
+
+[data-theme="dark"] .alert-warning {
+    color: #fff3cd;
+    background-color: #664d03;
+    border-color: #664d03;
+}
+
+[data-theme="dark"] .alert-info {
+    color: #cff4fc;
+    background-color: #055160;
+    border-color: #055160;
+}
+
+/* Стили для текста кнопки "Сохранить и завершить" */
+.mobile-text {
+    display: none;
+}
+
+.desktop-text {
+    display: inline;
+}
+
+@media (max-width: 576px) {
+    .mobile-text {
+        display: inline;
+    }
+    
+    .desktop-text {
+        display: none;
+    }
+    
+    /* Уточнение стилей кнопок */
+    .action-buttons-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .suggest-correction-wrapper, 
+    .save-and-finish-wrapper {
+        width: auto;
+        margin: 0;
+    }
+    
+    /* Кнопка "Предложить исправление" - только иконка */
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn .stat-value {
+        display: none !important;
+    }
+    
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        padding: 0.25rem !important;
+    }
+    
+    /* Кнопка "Сохранить и завершить" с текстом "Завершить" */
+    .save-and-finish-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        justify-content: center !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Средние экраны (планшеты) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .action-buttons-container {
+        flex-wrap: wrap;
+    }
+    
+    .save-and-finish-wrapper {
+        margin-top: 0.5rem;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .save-and-finish-wrapper .stat-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .card {
+    background-color: #212529;
+    color: #dee2e6;
+    border-color: #444;
+}
+
+/* Исправление стилей таблиц в темной теме */
+html[data-bs-theme='dark'] .table {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table > :not(caption) > * > * {
+    border-bottom-color: #444 !important;
+}
+
+/* Дополнительные стили для темной темы */
+html[data-bs-theme='dark'] .card .card-body {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table-responsive {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table th {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .badge.bg-warning.text-dark {
+    color: #212529 !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Специальные стили для таблицы ответов пользователя */
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive {
+    background-color: #212529 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table {
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table thead th,
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table tbody td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Стили для модального окна античита (динамически создаваемого через JS) в светлой теме */
+body > div[style*="position: fixed"][style*="z-index: 9999"] > div {
+  background-color: #fff !important;
+  color: #222 !important;
+  border: 2px solid #dc3545 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2) !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] h3 {
+  color: #dc3545 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p {
+  color: #222 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p:last-child {
+  color: #6c757d !important;
+  font-style: italic !important;
+}
+
+/* Адаптивные стили для блока с действиями */
+.action-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.suggest-correction-wrapper {
+    flex: 0 1 auto;
+}
+
+.save-and-finish-wrapper {
+    margin-left: auto;
+}
+
+/* Стили для заголовка и блока сложности */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для темы вопроса */
+.topic-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33 !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для контейнеров в заголовке */
+.question-info-container, .difficulty-level-container {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.question-info-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.difficulty-level-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+/* Стили для темной темы заголовка */
+[data-bs-theme='dark'] .card-header,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    background-color: #2c3034 !important; 
+    border-color: #444 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme='dark'] .topic-title,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .topic-title,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    color: #5b9aff !important;
+    text-shadow: 0 2px 16px #5b9aff55, 0 1.5px 6px #5b9aff33 !important;
+}
+
+[data-bs-theme='dark'] .question-info-container,
+[data-bs-theme='dark'] .difficulty-level-container,
+html[data-bs-theme='dark'] .question-info-container,
+html[data-bs-theme='dark'] .difficulty-level-container {
+    background-color: transparent !important;
+}
+
+/* Стили для мобильной версии заголовка */
+@media (max-width: 576px) {
+    .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .topic-title {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin-right: 0.5rem !important;
+    }
+}
+
+/* Стили для уведомлений */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+/* Стили для уведомлений в темной теме */
+[data-theme="dark"] .alert-success {
+    color: #d1e7dd;
+    background-color: #0f5132;
+    border-color: #0f5132;
+}
+
+[data-theme="dark"] .alert-danger {
+    color: #f8d7da;
+    background-color: #842029;
+    border-color: #842029;
+}
+
+[data-theme="dark"] .alert-warning {
+    color: #fff3cd;
+    background-color: #664d03;
+    border-color: #664d03;
+}
+
+[data-theme="dark"] .alert-info {
+    color: #cff4fc;
+    background-color: #055160;
+    border-color: #055160;
+}
+
+/* Стили для текста кнопки "Сохранить и завершить" */
+.mobile-text {
+    display: none;
+}
+
+.desktop-text {
+    display: inline;
+}
+
+@media (max-width: 576px) {
+    .mobile-text {
+        display: inline;
+    }
+    
+    .desktop-text {
+        display: none;
+    }
+    
+    /* Уточнение стилей кнопок */
+    .action-buttons-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .suggest-correction-wrapper, 
+    .save-and-finish-wrapper {
+        width: auto;
+        margin: 0;
+    }
+    
+    /* Кнопка "Предложить исправление" - только иконка */
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn .stat-value {
+        display: none !important;
+    }
+    
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        padding: 0.25rem !important;
+    }
+    
+    /* Кнопка "Сохранить и завершить" с текстом "Завершить" */
+    .save-and-finish-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        justify-content: center !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Средние экраны (планшеты) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .action-buttons-container {
+        flex-wrap: wrap;
+    }
+    
+    .save-and-finish-wrapper {
+        margin-top: 0.5rem;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .save-and-finish-wrapper .stat-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .card {
+    background-color: #212529;
+    color: #dee2e6;
+    border-color: #444;
+}
+
+/* Исправление стилей таблиц в темной теме */
+html[data-bs-theme='dark'] .table {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table > :not(caption) > * > * {
+    border-bottom-color: #444 !important;
+}
+
+/* Дополнительные стили для темной темы */
+html[data-bs-theme='dark'] .card .card-body {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table-responsive {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table th {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .badge.bg-warning.text-dark {
+    color: #212529 !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Специальные стили для таблицы ответов пользователя */
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive {
+    background-color: #212529 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table {
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table thead th,
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table tbody td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Стили для модального окна античита (динамически создаваемого через JS) в светлой теме */
+body > div[style*="position: fixed"][style*="z-index: 9999"] > div {
+  background-color: #fff !important;
+  color: #222 !important;
+  border: 2px solid #dc3545 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2) !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] h3 {
+  color: #dc3545 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p {
+  color: #222 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p:last-child {
+  color: #6c757d !important;
+  font-style: italic !important;
+}
+
+/* Адаптивные стили для блока с действиями */
+.action-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.suggest-correction-wrapper {
+    flex: 0 1 auto;
+}
+
+.save-and-finish-wrapper {
+    margin-left: auto;
+}
+
+/* Стили для заголовка и блока сложности */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для темы вопроса */
+.topic-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33 !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для контейнеров в заголовке */
+.question-info-container, .difficulty-level-container {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.question-info-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.difficulty-level-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+/* Стили для темной темы заголовка */
+[data-bs-theme='dark'] .card-header,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    background-color: #2c3034 !important; 
+    border-color: #444 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme='dark'] .topic-title,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .topic-title,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    color: #5b9aff !important;
+    text-shadow: 0 2px 16px #5b9aff55, 0 1.5px 6px #5b9aff33 !important;
+}
+
+[data-bs-theme='dark'] .question-info-container,
+[data-bs-theme='dark'] .difficulty-level-container,
+html[data-bs-theme='dark'] .question-info-container,
+html[data-bs-theme='dark'] .difficulty-level-container {
+    background-color: transparent !important;
+}
+
+/* Стили для мобильной версии заголовка */
+@media (max-width: 576px) {
+    .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .topic-title {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin-right: 0.5rem !important;
+    }
+}
+
+/* Стили для уведомлений */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+/* Стили для уведомлений в темной теме */
+[data-theme="dark"] .alert-success {
+    color: #d1e7dd;
+    background-color: #0f5132;
+    border-color: #0f5132;
+}
+
+[data-theme="dark"] .alert-danger {
+    color: #f8d7da;
+    background-color: #842029;
+    border-color: #842029;
+}
+
+[data-theme="dark"] .alert-warning {
+    color: #fff3cd;
+    background-color: #664d03;
+    border-color: #664d03;
+}
+
+[data-theme="dark"] .alert-info {
+    color: #cff4fc;
+    background-color: #055160;
+    border-color: #055160;
+}
+
+/* Стили для текста кнопки "Сохранить и завершить" */
+.mobile-text {
+    display: none;
+}
+
+.desktop-text {
+    display: inline;
+}
+
+@media (max-width: 576px) {
+    .mobile-text {
+        display: inline;
+    }
+    
+    .desktop-text {
+        display: none;
+    }
+    
+    /* Уточнение стилей кнопок */
+    .action-buttons-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .suggest-correction-wrapper, 
+    .save-and-finish-wrapper {
+        width: auto;
+        margin: 0;
+    }
+    
+    /* Кнопка "Предложить исправление" - только иконка */
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn .stat-value {
+        display: none !important;
+    }
+    
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        padding: 0.25rem !important;
+    }
+    
+    /* Кнопка "Сохранить и завершить" с текстом "Завершить" */
+    .save-and-finish-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        justify-content: center !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Средние экраны (планшеты) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .action-buttons-container {
+        flex-wrap: wrap;
+    }
+    
+    .save-and-finish-wrapper {
+        margin-top: 0.5rem;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .save-and-finish-wrapper .stat-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .card {
+    background-color: #212529;
+    color: #dee2e6;
+    border-color: #444;
+}
+
+/* Исправление стилей таблиц в темной теме */
+html[data-bs-theme='dark'] .table {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table > :not(caption) > * > * {
+    border-bottom-color: #444 !important;
+}
+
+/* Дополнительные стили для темной темы */
+html[data-bs-theme='dark'] .card .card-body {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table-responsive {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table th {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .badge.bg-warning.text-dark {
+    color: #212529 !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Специальные стили для таблицы ответов пользователя */
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive {
+    background-color: #212529 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table {
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table thead th,
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table tbody td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Стили для модального окна античита (динамически создаваемого через JS) в светлой теме */
+body > div[style*="position: fixed"][style*="z-index: 9999"] > div {
+  background-color: #fff !important;
+  color: #222 !important;
+  border: 2px solid #dc3545 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2) !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] h3 {
+  color: #dc3545 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p {
+  color: #222 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p:last-child {
+  color: #6c757d !important;
+  font-style: italic !important;
+}
+
+/* Адаптивные стили для блока с действиями */
+.action-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.suggest-correction-wrapper {
+    flex: 0 1 auto;
+}
+
+.save-and-finish-wrapper {
+    margin-left: auto;
+}
+
+/* Стили для заголовка и блока сложности */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для темы вопроса */
+.topic-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33 !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для контейнеров в заголовке */
+.question-info-container, .difficulty-level-container {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.question-info-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.difficulty-level-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+/* Стили для темной темы заголовка */
+[data-bs-theme='dark'] .card-header,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    background-color: #2c3034 !important; 
+    border-color: #444 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme='dark'] .topic-title,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .topic-title,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    color: #5b9aff !important;
+    text-shadow: 0 2px 16px #5b9aff55, 0 1.5px 6px #5b9aff33 !important;
+}
+
+[data-bs-theme='dark'] .question-info-container,
+[data-bs-theme='dark'] .difficulty-level-container,
+html[data-bs-theme='dark'] .question-info-container,
+html[data-bs-theme='dark'] .difficulty-level-container {
+    background-color: transparent !important;
+}
+
+/* Стили для мобильной версии заголовка */
+@media (max-width: 576px) {
+    .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .topic-title {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin-right: 0.5rem !important;
+    }
+}
+
+/* Стили для уведомлений */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+/* Стили для уведомлений в темной теме */
+[data-theme="dark"] .alert-success {
+    color: #d1e7dd;
+    background-color: #0f5132;
+    border-color: #0f5132;
+}
+
+[data-theme="dark"] .alert-danger {
+    color: #f8d7da;
+    background-color: #842029;
+    border-color: #842029;
+}
+
+[data-theme="dark"] .alert-warning {
+    color: #fff3cd;
+    background-color: #664d03;
+    border-color: #664d03;
+}
+
+[data-theme="dark"] .alert-info {
+    color: #cff4fc;
+    background-color: #055160;
+    border-color: #055160;
+}
+
+/* Стили для текста кнопки "Сохранить и завершить" */
+.mobile-text {
+    display: none;
+}
+
+.desktop-text {
+    display: inline;
+}
+
+@media (max-width: 576px) {
+    .mobile-text {
+        display: inline;
+    }
+    
+    .desktop-text {
+        display: none;
+    }
+    
+    /* Уточнение стилей кнопок */
+    .action-buttons-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .suggest-correction-wrapper, 
+    .save-and-finish-wrapper {
+        width: auto;
+        margin: 0;
+    }
+    
+    /* Кнопка "Предложить исправление" - только иконка */
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn .stat-value {
+        display: none !important;
+    }
+    
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        padding: 0.25rem !important;
+    }
+    
+    /* Кнопка "Сохранить и завершить" с текстом "Завершить" */
+    .save-and-finish-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        justify-content: center !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Средние экраны (планшеты) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .action-buttons-container {
+        flex-wrap: wrap;
+    }
+    
+    .save-and-finish-wrapper {
+        margin-top: 0.5rem;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .save-and-finish-wrapper .stat-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .card {
+    background-color: #212529;
+    color: #dee2e6;
+    border-color: #444;
+}
+
+/* Исправление стилей таблиц в темной теме */
+html[data-bs-theme='dark'] .table {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table > :not(caption) > * > * {
+    border-bottom-color: #444 !important;
+}
+
+/* Дополнительные стили для темной темы */
+html[data-bs-theme='dark'] .card .card-body {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table-responsive {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table th {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .badge.bg-warning.text-dark {
+    color: #212529 !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Специальные стили для таблицы ответов пользователя */
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive {
+    background-color: #212529 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table {
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table thead th,
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table tbody td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Стили для модального окна античита (динамически создаваемого через JS) в светлой теме */
+body > div[style*="position: fixed"][style*="z-index: 9999"] > div {
+  background-color: #fff !important;
+  color: #222 !important;
+  border: 2px solid #dc3545 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2) !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] h3 {
+  color: #dc3545 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p {
+  color: #222 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p:last-child {
+  color: #6c757d !important;
+  font-style: italic !important;
+}
+
+/* Адаптивные стили для блока с действиями */
+.action-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.suggest-correction-wrapper {
+    flex: 0 1 auto;
+}
+
+.save-and-finish-wrapper {
+    margin-left: auto;
+}
+
+/* Стили для заголовка и блока сложности */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для темы вопроса */
+.topic-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33 !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для контейнеров в заголовке */
+.question-info-container, .difficulty-level-container {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.question-info-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.difficulty-level-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+/* Стили для темной темы заголовка */
+[data-bs-theme='dark'] .card-header,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    background-color: #2c3034 !important; 
+    border-color: #444 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme='dark'] .topic-title,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .topic-title,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    color: #5b9aff !important;
+    text-shadow: 0 2px 16px #5b9aff55, 0 1.5px 6px #5b9aff33 !important;
+}
+
+[data-bs-theme='dark'] .question-info-container,
+[data-bs-theme='dark'] .difficulty-level-container,
+html[data-bs-theme='dark'] .question-info-container,
+html[data-bs-theme='dark'] .difficulty-level-container {
+    background-color: transparent !important;
+}
+
+/* Стили для мобильной версии заголовка */
+@media (max-width: 576px) {
+    .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .topic-title {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin-right: 0.5rem !important;
+    }
+}
+
+/* Стили для уведомлений */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+/* Стили для уведомлений в темной теме */
+[data-theme="dark"] .alert-success {
+    color: #d1e7dd;
+    background-color: #0f5132;
+    border-color: #0f5132;
+}
+
+[data-theme="dark"] .alert-danger {
+    color: #f8d7da;
+    background-color: #842029;
+    border-color: #842029;
+}
+
+[data-theme="dark"] .alert-warning {
+    color: #fff3cd;
+    background-color: #664d03;
+    border-color: #664d03;
+}
+
+[data-theme="dark"] .alert-info {
+    color: #cff4fc;
+    background-color: #055160;
+    border-color: #055160;
+}
+
+/* Стили для текста кнопки "Сохранить и завершить" */
+.mobile-text {
+    display: none;
+}
+
+.desktop-text {
+    display: inline;
+}
+
+@media (max-width: 576px) {
+    .mobile-text {
+        display: inline;
+    }
+    
+    .desktop-text {
+        display: none;
+    }
+    
+    /* Уточнение стилей кнопок */
+    .action-buttons-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .suggest-correction-wrapper, 
+    .save-and-finish-wrapper {
+        width: auto;
+        margin: 0;
+    }
+    
+    /* Кнопка "Предложить исправление" - только иконка */
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn .stat-value {
+        display: none !important;
+    }
+    
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        padding: 0.25rem !important;
+    }
+    
+    /* Кнопка "Сохранить и завершить" с текстом "Завершить" */
+    .save-and-finish-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        justify-content: center !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Средние экраны (планшеты) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .action-buttons-container {
+        flex-wrap: wrap;
+    }
+    
+    .save-and-finish-wrapper {
+        margin-top: 0.5rem;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .save-and-finish-wrapper .stat-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .card {
+    background-color: #212529;
+    color: #dee2e6;
+    border-color: #444;
+}
+
+/* Исправление стилей таблиц в темной теме */
+html[data-bs-theme='dark'] .table {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table > :not(caption) > * > * {
+    border-bottom-color: #444 !important;
+}
+
+/* Дополнительные стили для темной темы */
+html[data-bs-theme='dark'] .card .card-body {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table-responsive {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table th {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .badge.bg-warning.text-dark {
+    color: #212529 !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Специальные стили для таблицы ответов пользователя */
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive {
+    background-color: #212529 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table {
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table thead th,
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table tbody td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Стили для модального окна античита (динамически создаваемого через JS) в светлой теме */
+body > div[style*="position: fixed"][style*="z-index: 9999"] > div {
+  background-color: #fff !important;
+  color: #222 !important;
+  border: 2px solid #dc3545 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2) !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] h3 {
+  color: #dc3545 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p {
+  color: #222 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p:last-child {
+  color: #6c757d !important;
+  font-style: italic !important;
+}
+
+/* Адаптивные стили для блока с действиями */
+.action-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.suggest-correction-wrapper {
+    flex: 0 1 auto;
+}
+
+.save-and-finish-wrapper {
+    margin-left: auto;
+}
+
+/* Стили для заголовка и блока сложности */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для темы вопроса */
+.topic-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33 !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для контейнеров в заголовке */
+.question-info-container, .difficulty-level-container {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.question-info-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.difficulty-level-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+/* Стили для темной темы заголовка */
+[data-bs-theme='dark'] .card-header,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    background-color: #2c3034 !important; 
+    border-color: #444 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme='dark'] .topic-title,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .topic-title,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    color: #5b9aff !important;
+    text-shadow: 0 2px 16px #5b9aff55, 0 1.5px 6px #5b9aff33 !important;
+}
+
+[data-bs-theme='dark'] .question-info-container,
+[data-bs-theme='dark'] .difficulty-level-container,
+html[data-bs-theme='dark'] .question-info-container,
+html[data-bs-theme='dark'] .difficulty-level-container {
+    background-color: transparent !important;
+}
+
+/* Стили для мобильной версии заголовка */
+@media (max-width: 576px) {
+    .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .topic-title {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin-right: 0.5rem !important;
+    }
+}
+
+/* Стили для уведомлений */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+/* Стили для уведомлений в темной теме */
+[data-theme="dark"] .alert-success {
+    color: #d1e7dd;
+    background-color: #0f5132;
+    border-color: #0f5132;
+}
+
+[data-theme="dark"] .alert-danger {
+    color: #f8d7da;
+    background-color: #842029;
+    border-color: #842029;
+}
+
+[data-theme="dark"] .alert-warning {
+    color: #fff3cd;
+    background-color: #664d03;
+    border-color: #664d03;
+}
+
+[data-theme="dark"] .alert-info {
+    color: #cff4fc;
+    background-color: #055160;
+    border-color: #055160;
+}
+
+/* Стили для текста кнопки "Сохранить и завершить" */
+.mobile-text {
+    display: none;
+}
+
+.desktop-text {
+    display: inline;
+}
+
+@media (max-width: 576px) {
+    .mobile-text {
+        display: inline;
+    }
+    
+    .desktop-text {
+        display: none;
+    }
+    
+    /* Уточнение стилей кнопок */
+    .action-buttons-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .suggest-correction-wrapper, 
+    .save-and-finish-wrapper {
+        width: auto;
+        margin: 0;
+    }
+    
+    /* Кнопка "Предложить исправление" - только иконка */
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn .stat-value {
+        display: none !important;
+    }
+    
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        padding: 0.25rem !important;
+    }
+    
+    /* Кнопка "Сохранить и завершить" с текстом "Завершить" */
+    .save-and-finish-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        justify-content: center !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Средние экраны (планшеты) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .action-buttons-container {
+        flex-wrap: wrap;
+    }
+    
+    .save-and-finish-wrapper {
+        margin-top: 0.5rem;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .save-and-finish-wrapper .stat-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .card {
+    background-color: #212529;
+    color: #dee2e6;
+    border-color: #444;
+}
+
+/* Исправление стилей таблиц в темной теме */
+html[data-bs-theme='dark'] .table {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table > :not(caption) > * > * {
+    border-bottom-color: #444 !important;
+}
+
+/* Дополнительные стили для темной темы */
+html[data-bs-theme='dark'] .card .card-body {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table-responsive {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table th {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .badge.bg-warning.text-dark {
+    color: #212529 !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Специальные стили для таблицы ответов пользователя */
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive {
+    background-color: #212529 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table {
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table thead th,
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table tbody td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Стили для модального окна античита (динамически создаваемого через JS) в светлой теме */
+body > div[style*="position: fixed"][style*="z-index: 9999"] > div {
+  background-color: #fff !important;
+  color: #222 !important;
+  border: 2px solid #dc3545 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2) !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] h3 {
+  color: #dc3545 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p {
+  color: #222 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p:last-child {
+  color: #6c757d !important;
+  font-style: italic !important;
+}
+
+/* Адаптивные стили для блока с действиями */
+.action-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.suggest-correction-wrapper {
+    flex: 0 1 auto;
+}
+
+.save-and-finish-wrapper {
+    margin-left: auto;
+}
+
+/* Стили для заголовка и блока сложности */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для темы вопроса */
+.topic-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33 !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для контейнеров в заголовке */
+.question-info-container, .difficulty-level-container {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.question-info-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.difficulty-level-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+/* Стили для темной темы заголовка */
+[data-bs-theme='dark'] .card-header,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    background-color: #2c3034 !important; 
+    border-color: #444 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme='dark'] .topic-title,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .topic-title,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    color: #5b9aff !important;
+    text-shadow: 0 2px 16px #5b9aff55, 0 1.5px 6px #5b9aff33 !important;
+}
+
+[data-bs-theme='dark'] .question-info-container,
+[data-bs-theme='dark'] .difficulty-level-container,
+html[data-bs-theme='dark'] .question-info-container,
+html[data-bs-theme='dark'] .difficulty-level-container {
+    background-color: transparent !important;
+}
+
+/* Стили для мобильной версии заголовка */
+@media (max-width: 576px) {
+    .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .topic-title {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin-right: 0.5rem !important;
+    }
+}
+
+/* Стили для уведомлений */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+/* Стили для уведомлений в темной теме */
+[data-theme="dark"] .alert-success {
+    color: #d1e7dd;
+    background-color: #0f5132;
+    border-color: #0f5132;
+}
+
+[data-theme="dark"] .alert-danger {
+    color: #f8d7da;
+    background-color: #842029;
+    border-color: #842029;
+}
+
+[data-theme="dark"] .alert-warning {
+    color: #fff3cd;
+    background-color: #664d03;
+    border-color: #664d03;
+}
+
+[data-theme="dark"] .alert-info {
+    color: #cff4fc;
+    background-color: #055160;
+    border-color: #055160;
+}
+
+/* Стили для текста кнопки "Сохранить и завершить" */
+.mobile-text {
+    display: none;
+}
+
+.desktop-text {
+    display: inline;
+}
+
+@media (max-width: 576px) {
+    .mobile-text {
+        display: inline;
+    }
+    
+    .desktop-text {
+        display: none;
+    }
+    
+    /* Уточнение стилей кнопок */
+    .action-buttons-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .suggest-correction-wrapper, 
+    .save-and-finish-wrapper {
+        width: auto;
+        margin: 0;
+    }
+    
+    /* Кнопка "Предложить исправление" - только иконка */
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn .stat-value {
+        display: none !important;
+    }
+    
+    .suggest-correction-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        padding: 0.25rem !important;
+    }
+    
+    /* Кнопка "Сохранить и завершить" с текстом "Завершить" */
+    .save-and-finish-wrapper .stat-item.stat-suggest-btn {
+        width: auto !important;
+        justify-content: center !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Средние экраны (планшеты) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .action-buttons-container {
+        flex-wrap: wrap;
+    }
+    
+    .save-and-finish-wrapper {
+        margin-top: 0.5rem;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .save-and-finish-wrapper .stat-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Стили для темной темы */
+[data-bs-theme='dark'] .card {
+    background-color: #212529;
+    color: #dee2e6;
+    border-color: #444;
+}
+
+/* Исправление стилей таблиц в темной теме */
+html[data-bs-theme='dark'] .table {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table > :not(caption) > * > * {
+    border-bottom-color: #444 !important;
+}
+
+/* Дополнительные стили для темной темы */
+html[data-bs-theme='dark'] .card .card-body {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table-responsive {
+    background-color: #212529 !important;
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .table th {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .table td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .badge.bg-warning.text-dark {
+    color: #212529 !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Специальные стили для таблицы ответов пользователя */
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive {
+    background-color: #212529 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table {
+    color: #dee2e6 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table thead th,
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table tbody td {
+    color: #dee2e6 !important;
+    border-color: #444 !important;
+}
+
+html[data-bs-theme='dark'] .card-header + .card-body .table-responsive .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme='dark'] .card table {
+    color: #dee2e6;
+}
+
+/* Стили для модального окна античита (динамически создаваемого через JS) в светлой теме */
+body > div[style*="position: fixed"][style*="z-index: 9999"] > div {
+  background-color: #fff !important;
+  color: #222 !important;
+  border: 2px solid #dc3545 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2) !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] h3 {
+  color: #dc3545 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p {
+  color: #222 !important;
+}
+body > div[style*="position: fixed"][style*="z-index: 9999"] p:last-child {
+  color: #6c757d !important;
+  font-style: italic !important;
+}
+
+/* Адаптивные стили для блока с действиями */
+.action-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.suggest-correction-wrapper {
+    flex: 0 1 auto;
+}
+
+.save-and-finish-wrapper {
+    margin-left: auto;
+}
+
+/* Стили для заголовка и блока сложности */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили для темы вопроса */
+.topic-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.03em !important;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    color: #0d6efd !important;
+    text-shadow: 0 2px 16px #0d6efd55, 0 1.5px 6px #0d6efd33 !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для контейнеров в заголовке */
+.question-info-container, .difficulty-level-container {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.question-info-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.difficulty-level-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+/* Стили для темной темы заголовка */
+[data-bs-theme='dark'] .card-header,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .card-header,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    background-color: #2c3034 !important; 
+    border-color: #444 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+[data-bs-theme='dark'] .topic-title,
+[data-bs-theme='dark'] .difficulty-level-container .stat-item,
+html[data-bs-theme='dark'] .topic-title,
+html[data-bs-theme='dark'] .difficulty-level-container .stat-item {
+    color: #5b9aff !important;
+    text-shadow: 0 2px 16px #5b9aff55, 0 1.5px 6px #5b9aff33 !important;
+}
+
+[data-bs-theme='dark'] .question-info-container,
+[data-bs-theme='dark'] .difficulty-level-container,
+html[data-bs-theme='dark'] .question-info-container,
+html[data-bs-theme='dark'] .difficulty-level-container {
+    background-color: transparent !important;
+}
+
+/* Стили для мобильной версии заголовка */
+@media (max-width: 576px) {
+    .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .topic-title {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin-right: 0.5rem !important;
+    }
+}
+
+/* Стили для уведомлений */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+
+/* Стили для уведомлений в темной теме */
+[data-theme="dark"] .alert-success {
+    color: #d1e7dd;
+    background-color: #0f5132;
+    border-color: #0f5132;
+}
+
+[data-theme="dark"] .alert-danger {
+    color: #f8d7da;
+    background-color: #842029;
+    border-color: #842029;
+}

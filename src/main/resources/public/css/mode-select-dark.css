@@ -1,0 +1,89 @@
+/* Стили для темной темы страницы выбора режима */
+
+/* Затемнение карточки соревновательного режима для неавторизованного пользователя */
+html[data-theme="dark"] .mode-block.mode-rating.disabled::after,
+[data-bs-theme='dark'] .mode-block.mode-rating.disabled::after,
+[data-theme='dark'] .mode-block.mode-rating.disabled::after {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* То же самое для мобильной версии */
+html[data-theme="dark"] .mobile-card.disabled#mobileCardRating::after,
+[data-bs-theme='dark'] .mobile-card.disabled#mobileCardRating::after,
+[data-theme='dark'] .mobile-card.disabled#mobileCardRating::after {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Стили кнопки "Необходимо войти в систему" в темной теме */
+html[data-theme="dark"] .mode-block.mode-rating.disabled .login-button,
+[data-bs-theme='dark'] .mode-block.mode-rating.disabled .login-button,
+[data-theme='dark'] .mode-block.mode-rating.disabled .login-button,
+html[data-theme="dark"] .mobile-card.disabled#mobileCardRating .login-button,
+[data-bs-theme='dark'] .mobile-card.disabled#mobileCardRating .login-button,
+[data-theme='dark'] .mobile-card.disabled#mobileCardRating .login-button {
+    font-weight: 700 !important; /* Более жирный шрифт для лучшей видимости */
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    background-color: #0d6efd !important; /* Яркий синий цвет */
+    color: #ffffff !important; /* Чистый белый цвет */
+    z-index: 30 !important;
+    position: relative !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important; /* Усиленная тень текста */
+    opacity: 1 !important; /* Гарантируем полную непрозрачность */
+    filter: none !important; /* Отключаем любые фильтры, которые могут делать кнопку блеклой */
+    -webkit-filter: none !important;
+    /* Дополнительные стили для гарантии яркости */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    mix-blend-mode: normal !important;
+    isolation: isolate !important;
+}
+
+/* Эффект наведения для кнопки в темной теме */
+html[data-theme="dark"] .mode-block.mode-rating.disabled .login-button:hover,
+[data-bs-theme='dark'] .mode-block.mode-rating.disabled .login-button:hover,
+[data-theme='dark'] .mode-block.mode-rating.disabled .login-button:hover,
+html[data-theme="dark"] .mobile-card.disabled#mobileCardRating .login-button:hover,
+[data-bs-theme='dark'] .mobile-card.disabled#mobileCardRating .login-button:hover,
+[data-theme='dark'] .mobile-card.disabled#mobileCardRating .login-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4) !important;
+    background-color: #0b5ed7 !important; /* Более темный оттенок синего при наведении */
+    color: #ffffff !important; /* Сохраняем белый цвет текста при наведении */
+    opacity: 1 !important; /* Гарантируем полную непрозрачность при наведении */
+    filter: none !important; /* Отключаем любые фильтры при наведении */
+    -webkit-filter: none !important;
+    /* Дополнительные стили для гарантии яркости при наведении */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    mix-blend-mode: normal !important;
+}
+
+/* Переопределение любых других стилей, которые могут влиять на кнопку */
+html[data-theme="dark"] .btn-primary,
+[data-bs-theme='dark'] .btn-primary,
+[data-theme='dark'] .btn-primary {
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn-primary:hover,
+[data-bs-theme='dark'] .btn-primary:hover,
+[data-theme='dark'] .btn-primary:hover {
+    background-color: #0b5ed7 !important;
+    border-color: #0a58ca !important;
+    color: #ffffff !important;
+}
+
+/* Принудительное применение стилей для кнопки независимо от других правил */
+html[data-theme="dark"] .mode-block.mode-rating.disabled .login-container .login-button,
+[data-bs-theme='dark'] .mode-block.mode-rating.disabled .login-container .login-button,
+[data-theme='dark'] .mode-block.mode-rating.disabled .login-container .login-button {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+} 

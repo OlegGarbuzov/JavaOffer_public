@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Allow: /modeSelect
+Allow: /global-rating
+Allow: /contact
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /logout
+Disallow: /testing
+Disallow: /post-login
+Disallow: /error/
+
+# Путь к карте сайта
+Sitemap: https://javaoffer.ru/sitemap.xml 

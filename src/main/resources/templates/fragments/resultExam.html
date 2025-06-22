@@ -1,0 +1,69 @@
+﻿<div th:fragment="resultExamBlock" class="exam-result-card">
+    <div class="result-content-wrapper">
+        <div class="card-header">
+          <span>
+            <span>🎉</span>
+            <h3 class="mb-0">Результаты</h3>
+          </span>
+        </div>
+        <div class="card-body">
+            <div class="stats-block">
+                <div class="stats-row">
+                    <div class="stat-item exam-mode-display"
+                         th:classappend="${result.examMode.name() == 'RATING' ? 'mode-rating' : 'mode-free'}"
+                         title="Режим">
+                        <span class="stat-icon">🎓</span>
+                        <span class="stat-value" th:text="${result.examMode}"></span>
+                    </div>
+                    <div class="stat-item" title="Общее количество заданных вопросов">
+                        <span class="stat-icon">❔</span>
+                        <span>Вопросов:</span>
+                        <span class="stat-value"
+                              th:text="${result.successAnswersCountAbsolute + result.failAnswersCountAbsolute}"></span>
+                    </div>
+                    <div class="stat-item" title="Количество верных ответов">
+                        <span class="stat-icon">✅</span>
+                        <span>Верных ответов:</span>
+                        <span class="stat-value" th:text="${result.successAnswersCountAbsolute}"></span>
+                    </div>
+                    <div class="stat-item" title="Количество неверных ответов">
+                        <span class="stat-icon">❌</span>
+                        <span>Неверных ответов:</span>
+                        <span class="stat-value" th:text="${result.failAnswersCountAbsolute}"></span>
+                    </div>
+                    <div th:if="${result.timeTakenToComplete != null and result.timeTakenToComplete > 0}" class="stat-item"
+                      title="Время, затраченное на прохождение">
+                     <span class="stat-icon">⏳</span>
+                     <span>Затрачено времени:</span>
+                     <span class="stat-value"
+                           th:text="${#numbers.formatInteger((result.timeTakenToComplete/3600), 1)} + ':' + ${#numbers.formatInteger((result.timeTakenToComplete%3600)/60, 2)} + ':' + ${#numbers.formatInteger(result.timeTakenToComplete%60, 2)}"></span>
+                    </div>
+                    <div th:if="${result.totalBasePoints != null and result.totalBasePoints > 0}" class="stat-item"
+                         title="Базовое количество баллов, набранных за ответы">
+                        <span class="stat-icon">⭐</span>
+                        <span>Баллов за ответы:</span>
+                        <span class="stat-value" th:text="${result.totalBasePoints}"></span>
+                    </div>
+                    <div th:if="${result.bonusByTime != null and result.bonusByTime > 0}" class="stat-item"
+                         title="Бонусные баллы за скорость прохождения. (Всего вопросов / длительность теста * 10)">
+                        <span class="stat-icon">⏱️</span>
+                        <span>Бонус за время:</span>
+                        <span class="stat-value" th:text="${result.bonusByTime}"></span>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${result.examMode.name() == 'RATING'}" class="score-container">
+                <div class="score-display">
+                    <span class="score-star">⭐</span>
+                    <span class="score-value" th:text="${result.score}"></span>
+                </div>
+            </div>
+            <div class="result-gif-container">
+                <img src="/gifs/goodGifs/ce88f8c794a36cdfc35edf5ad75a6357f0fb5b4c1de21d7054c5bc297b1ba50f.gif" alt="good gif" class="result-gif"/>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="/modeSelect" class="btn btn-primary">К выбору режима</a>
+        </div>
+    </div>
+</div>

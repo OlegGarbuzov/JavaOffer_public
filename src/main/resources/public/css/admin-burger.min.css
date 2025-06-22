@@ -1,0 +1,103 @@
+.admin-header{background-color:#fff!important;background-image:linear-gradient(to right,rgba(255,255,255,.98),rgba(240,249,255,.96),rgba(236,246,254,.98))!important;backdrop-filter:blur(15px)!important;-webkit-backdrop-filter:blur(15px)!important;box-shadow:0 8px 30px rgba(0,0,0,.08),0 0 0 1px rgba(191,219,254,.3),0 2px 5px rgba(0,0,0,.05)!important;border:1px solid rgba(186,230,253,.4)!important}
+.admin-header::after,.admin-header::before,header.admin-header::after,header.admin-header::before{content:none!important;display:none!important;background:0 0!important;opacity:0!important;visibility:hidden!important;animation:none!important;transition:none!important;transform:none!important;position:absolute!important;width:0!important;height:0!important;top:0!important;left:0!important;right:0!important;bottom:0!important;z-index:-9999!important}
+.admin-header:hover,header.admin-header:hover{box-shadow:0 4px 24px 0 rgba(30,41,59,.12)!important;background:rgba(255,255,255,.95)!important;border-color:#e0e7ef!important;transform:none!important;transition:none!important;animation:none!important}
+.admin-header:hover::after,.admin-header:hover::before,header.admin-header:hover::after,header.admin-header:hover::before{content:none!important;display:none!important;background:0 0!important;opacity:0!important;visibility:hidden!important;animation:none!important;transition:none!important;transform:none!important}
+.admin-header :hover{transform:none!important;animation:none!important;transition:none!important;box-shadow:none!important}
+.admin-header ::after,.admin-header ::before{display:none!important;content:none!important;background:0 0!important;animation:none!important;transition:none!important}
+.admin-navbar{width:100%;max-width:100%;position:relative}
+.admin-navbar-row{display:flex;align-items:center;justify-content:flex-end;width:100%;flex-wrap:nowrap;max-width:100%;gap:.5rem}
+.admin-navbar-brand{display:flex;align-items:center;text-decoration:none;color:#124cc9;font-weight:700;font-size:1.2rem;flex-shrink:0;margin-right:.5rem;max-width:40%;overflow:hidden;text-overflow:ellipsis}
+.admin-navbar-logo{display:flex;align-items:center;margin-right:5px}
+.admin-brand-name{color:#124cc9;font-weight:700;font-size:1.2rem;letter-spacing:.5px}
+#adminBurgerButton{width:44px;height:44px;display:none;align-items:center;justify-content:center;background:#fff;border:1px solid #e0e7ef;border-radius:8px;cursor:pointer;margin-left:10px;padding:0;flex-shrink:0;transition:.2s;z-index:1025}
+#adminBurgerButton:hover{background-color:rgba(240,249,255,.95);border-color:rgba(147,197,253,.5);box-shadow:0 3px 8px rgba(0,0,0,.06)}
+.admin-navbar-toggler-icon{display:block;width:28px;height:28px;background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(37, 99, 235, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");background-size:28px 28px;background-repeat:no-repeat;background-position:center}
+#adminMainNavbar{display:flex;justify-content:flex-end;flex-grow:1;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;max-width:calc(100% - 150px);margin-left:.5rem}
+#adminMainNavbar::-webkit-scrollbar{display:none}
+.admin-navbar-nav{display:flex;flex-direction:row;list-style:none;margin:0;padding:0;gap:5px;flex-wrap:nowrap;max-width:100%;justify-content:flex-end}
+.admin-navbar-nav .nav-item{margin:0;white-space:nowrap;max-width:100%;text-overflow:ellipsis}
+.admin-navbar-nav .nav-link{display:flex;align-items:center;padding:.4rem .6rem;color:#475569;text-decoration:none;border-radius:6px;font-size:.9rem;font-weight:500;background:0 0;gap:4px;will-change:transform;transform:translateZ(0);backface-visibility:hidden}
+.admin-navbar-nav .nav-link i{font-size:.9rem;margin-right:2px;opacity:.8}
+.admin-navbar-nav .nav-link::after,.admin-navbar-nav .nav-link::before{display:none!important}
+.admin-navbar-nav .nav-link.active,.admin-navbar-nav .nav-link:hover{background-color:rgba(59,130,246,.08)!important}
+.admin-navbar-nav .nav-link.active{background-color:rgba(59,130,246,.08)!important;box-shadow:none!important;border-left:none!important}
+.admin-navbar-nav .nav-link.active::before{display:none!important}
+.admin-navbar-nav .nav-link:hover{background-color:rgba(59,130,246,.08)!important;box-shadow:none!important}
+.admin-navbar-nav .nav-link.active::after{content:'';position:absolute;bottom:2px;height:3px;border-radius:2px;display:block!important;visibility:visible!important}
+#adminBurgerNavbar{position:absolute;top:100%;right:0;width:250px;background-color:#fff;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,.1);padding:1rem;z-index:1050;display:none;border:1px solid rgba(186,230,253,.4);margin-top:10px;overflow:hidden}
+#adminBurgerNavbar.isActive{display:block}
+#adminBurgerNavbar .admin-navbar-nav{display:flex;flex-direction:column;align-items:center;width:100%;padding:0;margin:0;gap:16px}
+#adminBurgerNavbar .nav-item{width:100%;display:flex;justify-content:center;margin:8px 0}
+#adminBurgerNavbar .nav-link{width:100%;padding:16px 0;display:flex;align-items:center;justify-content:center;border-radius:12px;transition:background-color .2s;text-align:center;font-size:1.1rem}
+@media (min-width:993px){
+#adminBurgerButton,#adminBurgerNavbar{display:none!important}
+#adminMainNavbar{display:flex!important;max-width:calc(100% - 140px);overflow:hidden}
+.admin-navbar-nav .nav-link.active{background:0 0;box-shadow:none}
+.admin-navbar-nav{overflow:hidden;padding-right:10px}
+.admin-navbar-nav .nav-link{padding:.4rem .6rem}
+}
+@media (max-width:992px){
+#adminBurgerButton{display:flex!important}
+#adminMainNavbar{display:none!important;max-width:calc(100% - 120px)}
+.admin-header{padding:.5rem .75rem!important;margin-top:8px!important;margin-bottom:8px!important;border-radius:16px!important;width:100%!important}
+.admin-navbar-row{justify-content:space-between}
+#adminBurgerNavbar{top:85px;min-width:280px}
+#adminBurgerNavbar .admin-navbar-nav{width:100%;padding:0;margin:0}
+#adminBurgerNavbar .nav-item{width:100%;margin:8px 0}
+#adminBurgerNavbar .nav-link{width:100%;padding:12px 16px;display:flex;align-items:center}
+.admin-navbar-brand{margin-right:.5rem}
+}
+@media (max-width:480px){
+.admin-brand-name{font-size:1rem;max-width:calc(100% - 30px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#adminBurgerButton{width:40px;height:40px;min-width:40px}
+.admin-navbar-toggler-icon{width:24px;height:24px;background-size:24px 24px}
+#adminBurgerNavbar{min-width:250px;max-width:85vw;padding:15px}
+.admin-header{padding:.4rem .6rem}
+.admin-navbar-brand{max-width:60%}
+#adminMainNavbar{max-width:calc(100% - 110px)}
+}
+@media (max-width:360px){
+.admin-navbar-brand svg{width:24px;height:24px}
+.admin-brand-name{font-size:.9rem}
+#adminBurgerButton{width:36px;height:36px;margin-left:5px}
+.admin-navbar-toggler-icon{width:20px;height:20px;background-size:20px 20px}
+}
+.admin-header{display:block!important;visibility:visible!important;opacity:1!important;height:auto!important;min-height:auto!important;position:relative!important;z-index:1030!important;max-height:none!important;overflow:visible!important;padding:.5rem 1rem!important;border-radius:15px!important;margin-bottom:1rem!important}
+.admin-header.sticky{position:sticky!important;top:10px!important;position:sticky;z-index:1020;margin-bottom:1rem!important}
+.content-heavy .admin-header{padding:.5rem 1rem!important;border-radius:15px!important}
+.container>div:not(.content-heavy) .admin-header{padding:.75rem 1.5rem!important;border-radius:20px!important}
+body.content-heavy .container{max-width:100%;padding:0 1rem}
+body.content-heavy .admin-header{max-width:1320px;margin-left:auto;margin-right:auto;width:100%}
+body.content-heavy .admin-navbar-nav .nav-link{padding:.4rem .8rem!important;font-size:.95rem!important}
+body.content-heavy .admin-brand-name{font-size:1.1rem!important}
+body.content-heavy .admin-navbar-row{gap:.5rem!important}
+body.content-heavy #adminMainNavbar{max-width:calc(100% - 160px)!important}
+.container>div:not(.admin-header){z-index:1020!important}
+#JAVA.OFFER{max-width:100%;overflow:hidden}
+.admin-navbar-nav-container{position:relative;width:100%;overflow:hidden}
+.admin-navbar-nav .nav-link.active,.admin-navbar-nav .nav-link:hover{background:rgba(219,234,254,.5);transform:none!important;transition:none;animation:none!important;max-width:100%}
+.admin-navbar-nav .nav-item{position:relative;overflow:hidden;transform:translateZ(0);backface-visibility:hidden}
+@keyframes subtleScale{
+0%{transform:translateY(0)}
+100%{transform:translateY(-2px)}
+}
+#adminBurgerNavbar,#adminMainNavbar,.admin-header,.admin-header *,.admin-navbar-brand,.admin-navbar-nav .nav-item,.admin-navbar-nav .nav-link{transition:none!important;animation:none!important;transform:none!important}
+.admin-navbar-nav .nav-link.active{background:rgba(219,234,254,.5)!important;color:#2563eb!important;font-weight:600}
+.admin-navbar-nav .nav-link:hover{background:rgba(219,234,254,.3)!important;color:#2563eb!important}
+.admin-navbar-nav .nav-link::after{content:''!important;display:block!important;position:absolute!important;left:50%!important;right:50%!important;bottom:2px!important;height:3px!important;background:rgba(59,130,246,0)!important;transition:.3s!important;border-radius:2px!important;opacity:0!important;visibility:visible!important;z-index:1!important}
+.admin-navbar-nav .nav-link:hover::after{left:10%!important;right:10%!important;opacity:1!important;background:rgba(59,130,246,.5)!important;box-shadow:0 0 5px 1px rgba(59,130,246,.3)!important}
+.admin-navbar-nav .nav-link.active::after{left:10%!important;right:10%!important;opacity:1!important;background:#3b82f6!important;box-shadow:0 0 8px 1px rgba(59,130,246,.5)!important}
+@media (min-width:993px){
+#adminBurgerButton,#adminBurgerNavbar{display:none!important}
+#adminMainNavbar{display:flex!important;max-width:calc(100% - 140px);overflow:hidden}
+.admin-navbar-nav .nav-link.active{background:rgba(37,99,235,.1)!important;box-shadow:0 2px 6px rgba(37,99,235,.08)!important;transform:translateY(-1px)}
+.admin-navbar-nav .nav-link:hover{transform:translateY(-1px)}
+}
+#adminMainNavbar,.admin-header *,.admin-navbar-brand,.admin-navbar-nav .nav-item,.admin-navbar-nav .nav-link{transition:.3s!important}
+.admin-navbar-nav .nav-link.active,.admin-navbar-nav .nav-link:hover{overflow:hidden;transform:translateY(-1px)!important}
+#adminBurgerNavbar,.admin-header{transition:none!important;animation:none!important;transform:none!important}
+.container .admin-header{width:100%!important;max-width:100%!important}
+@media (max-width:768px){
+.admin-navbar-nav .nav-link{font-size:.85rem;padding:.35rem .5rem}
+.admin-navbar-nav .nav-link i{font-size:.85rem}
+}

@@ -1,0 +1,170 @@
+﻿<div th:fragment="questionBlock" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="card shadow exam-question-card"
+         th:classappend="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'} ? 'question-block-rating' : ''"
+         th:styleappend="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'} ? 'border-color: darkgoldenrod !important;' : ''"
+         onmouseover="if (this.classList.contains('question-block-rating')) { this.style.borderColor = 'darkgoldenrod'; }"
+         style="border-style: solid;">
+        <script th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}"
+                src="../js/ui/ui-header-sc.min.js"></script>
+        <script th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}"
+                src="../js/ui/ui-header-im.min.js"></script>
+        <script th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}"
+                src="../js/ui/ui-header-sm.min.js" defer></script>
+        <div class="stats-block">
+            <div class="stats-row" sec:authorize="hasAnyRole('ROLE_ADMIN')" style="margin-bottom: 0.5rem;">
+                <div class="stat-item" title="ID экзамена">
+                    <span class="stat-icon">🎯</span>
+                    <span class="stat-value" th:text="${examId != null ? examId : ''}"></span>
+                </div>
+            </div>
+            <div class="stats-row d-flex align-items-center">
+                <div class="stat-item exam-mode-display"
+                     th:classappend="${result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'FREE'} ? 'mode-free' : (${result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'} ? 'mode-rating' : '')"
+                     th:data-mode="${result.stats != null and result.stats.examMode != null ? result.stats.examMode.name() : ''}">
+                    <span class="stat-icon">🎓</span>
+                    <span class="stat-value"
+                          th:text="${result.stats != null and result.stats.examMode != null ? result.stats.examMode.name() : ''}"></span>
+                </div>
+                <div class="stat-item" title="Набранные баллы"
+                     th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}">
+                    <span class="stat-icon" style="color: gold;">⭐</span>
+                    <span class="stat-value"
+                          th:text="${result.stats != null ? result.stats.currentBasePoint : ''}"></span>
+                </div>
+                <div class="stat-item" title="Верные ответы">
+                    <span class="stat-icon">✅</span>
+                    <span class="stat-value"
+                          th:text="${result.stats != null ? result.stats.successAnswersCountAbsolute : ''}"></span>
+                </div>
+                <div class="stat-item" title="Неверные ответы">
+                    <span class="stat-icon">❌</span>
+                    <span class="stat-value"
+                          th:text="${result.stats != null ? result.stats.failAnswersCountAbsolute : ''}"></span>
+                </div>
+            </div>
+            <div class="action-buttons-container d-flex flex-wrap align-items-center"
+                 style="gap: 0.5rem; margin-top: 0.5rem;">
+                <div sec:authorize="isAuthenticated()" class="suggest-correction-wrapper">
+                    <div class="stat-item stat-suggest-btn" id="suggestCorrectionBtn" title="Предложить исправление"
+                         tabindex="0"
+                         style="cursor: pointer; justify-content: flex-start; width: max-content; align-self: flex-start;">
+                        <span class="stat-icon">✏️</span>
+                        <span class="stat-value">
+                            <span class="desktop-text">Предложить исправление</span>
+                            <span class="mobile-text">Завершить</span>
+                        </span>
+                    </div>
+                </div>
+                <div sec:authorize="!isAuthenticated()" class="suggest-correction-wrapper">
+                    <div class="stat-item stat-suggest-btn disabled" title="Войдите, что бы предложить исправление"
+                         tabindex="0"
+                         style="cursor: not-allowed; justify-content: flex-start; width: max-content; align-self: flex-start; opacity: 0.6; pointer-events: auto;">
+                        <span class="stat-icon">✏️</span>
+                        <span class="stat-value">
+                            <span class="desktop-text">Предложить исправление</span>
+                            <span class="mobile-text">Завершить</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="save-and-finish-wrapper ms-auto">
+                    <div class="stat-item stat-suggest-btn" id="abortExamBtn" title="Сохранить и завершить" tabindex="0"
+                         style="cursor: pointer; justify-content: flex-start; width: max-content; align-self: flex-start; background: #fff; color: #000; font-weight: bold; border: 1px solid green; box-shadow: 0 .5em 1.5em rgba(0, 0, 0, .1), 0 .125em .5em rgba(0, 0, 0, .15);"
+                         onclick="abortExam()">
+                        <span class="stat-icon">✅</span>
+                        <span class="stat-value">
+                            <span class="desktop-text">Сохранить и завершить</span>
+                            <span class="mobile-text">Завершить</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="question-info-container d-flex align-items-center">
+                <h3 class="topic-custom mb-0"
+                    th:text="${result.taskDto != null && result.taskDto.topic != null ? result.taskDto.topic.name() : 'Пу-пу-пу...А где вопрос? А его нет...'}"
+                    ></h3>
+                <div class="difficulty-level-container d-flex align-items-center">
+                    <div class="stat-item" title="Стоимость вопроса" style="margin-right:0; margin-left:0.425rem;"
+                         th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}">
+                        <span class="stat-icon" style="color: gold; font-size: 1rem;">💰</span>
+                        <span class="stat-value"
+                              th:text="${result.taskDto != null && result.taskDto.difficulty != null && result.stats != null && result.stats.currentDifficulty != null ? 10 * result.stats.currentDifficulty.level : ''}"></span>
+                    </div>
+                    <div class="stat-item difficulty-badge" title="Сложность" style="margin-left:0.425rem;">
+                        <span class="stat-icon">☠</span>
+                        <span class="stat-value"><span
+                                th:text="${result.stats != null && result.stats.currentDifficulty != null ? result.stats.currentDifficulty.level : ''}"></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="exam-flex-row">
+                <form id="examForm" onsubmit="return false;" style="width:100%;max-width:100%;"
+                      th:data-next-request-id="${result.stats != null ? result.stats.requestId : ''}"
+                      th:data-exam-terminated="${result.examTerminatedByViolation || result.examTerminatedByFailAnswerCount ? 'true' : 'false'}"
+                      th:data-exam-terminated-by-fail-answer-count="${result.examTerminatedByFailAnswerCount ? 'true' : 'false'}">
+                    <input type="hidden" id="examId" th:value="${examId}"/>
+                    <input type="hidden" id="examMode"
+                           th:value="${result.stats != null && result.stats.examMode != null ? result.stats.examMode.name() : ''}"/>
+                    <input type="hidden" id="taskId" th:value="${result.taskDto != null ? result.taskDto.id : ''}"/>
+                    <div th:if="${result.abortResults != null}">
+                        <input type="hidden" id="abort-results-exam-mode" th:value="${result.abortResults.examMode}"/>
+                        <input type="hidden" id="abort-results-success-count"
+                               th:value="${result.abortResults.successAnswersCountAbsolute}"/>
+                        <input type="hidden" id="abort-results-fail-count"
+                               th:value="${result.abortResults.failAnswersCountAbsolute}"/>
+                        <input type="hidden" id="abort-results-time"
+                               th:value="${result.abortResults.timeTakenToComplete}"/>
+                        <input type="hidden" id="abort-results-score" th:value="${result.abortResults.score}"/>
+                    </div>
+                    <div class="mb-3">
+                        <div class="exam-question-text"
+                             th:utext="${result.taskDto != null && result.taskDto.question != null ? result.taskDto.question : ''}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <div th:if="${result.taskDto == null || result.taskDto.answers == null || #lists.isEmpty(result.taskDto.answers)}">
+                            <div class="alert alert-warning">Варианты ответа отсутствуют</div>
+                        </div>
+                        <div th:if="${result.taskDto != null && result.taskDto.answers != null && !#lists.isEmpty(result.taskDto.answers)}">
+                            <div class="answer-btn-group">
+                                <label th:each="answer, iterStat : ${result.taskDto.answers}"
+                                       th:for="'answer-' + ${iterStat.index}"
+                                       class="answer-btn"
+                                       th:data-correct="${answer.isCorrect}"
+                                       th:data-explanation="${answer.explanation}">
+                                    <input class="form-check-input" type="radio" name="selectedAnswerId"
+                                           th:id="'answer-' + ${iterStat.index}"
+                                           th:value="${answer.id}" required>
+                                    <span th:text="${answer.content}"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="solutionBlock" class="solution-block" style="display:none;">
+                        <div class="row w-100">
+                            <div class="col-md-4 col-sm-12 text-center">
+                                <img id="memeGif" class="meme-gif" style="display:none;" alt="meme gif"/>
+                            </div>
+                            <div class="col-md-8 col-sm-12 position-relative">
+                                <span class="solution-emoji" id="solutionEmoji" aria-hidden="true"
+                                      style="position:absolute; top:0; right:0.5rem; font-size:2.2rem; user-select:none; z-index:5;">💡</span>
+                                <div class="solution-content-wrap" style="padding-top:0.5rem;">
+                                    <h5 id="solutionTitle">Ответ</h5>
+                                    <div id="solutionContent"></div>
+                                    <div id="solutionExplanation" style="margin-top: 1rem;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="next-btn-center">
+                        <button id="nextBtn" type="button" class="btn btn-primary w-auto mt-3" style="display:none;"
+                                onclick="nextQuestion(this)">Следующий вопрос
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 

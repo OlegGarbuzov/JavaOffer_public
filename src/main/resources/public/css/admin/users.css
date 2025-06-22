@@ -1,0 +1,54 @@
+/* users.css */
+
+#usersTable th, #usersTable td {
+  vertical-align: middle;
+}
+
+#usersTable .btn-link {
+  color: #0d6efd;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#usersTable .btn-link:hover {
+  color: #0a58ca;
+}
+
+#usersTable .edit-user-btn {
+  min-width: 110px;
+}
+
+#userScoreHistoriesContent table {
+  font-size: 0.95em;
+}
+
+#userScoreHistoriesContent th, #userScoreHistoriesContent td {
+  text-align: center;
+}
+
+.modal .form-label {
+  font-weight: 500;
+}
+
+#editUserForm .form-control, #createUserForm .form-control {
+  font-size: 1em;
+}
+
+#editUserForm .btn, #createUserForm .btn {
+  min-width: 100px;
+}
+
+.card-header h4 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  #usersTable th, #usersTable td {
+    font-size: 0.95em;
+    padding: 0.4rem;
+  }
+  .card-header h4 {
+    font-size: 1em;
+  }
+} 

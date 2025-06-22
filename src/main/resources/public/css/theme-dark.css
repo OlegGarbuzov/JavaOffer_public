@@ -1,0 +1,955 @@
+/* Основные цвета темной темы */
+:root[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --primary-color: #3a86ff;
+  --secondary-color: #8a8a8a;
+  --card-background: #1e1e1e;
+  --border-color: #333;
+  --header-background: #1a1a1a;
+  --success-color: #2e7d32;
+  --error-color: #c62828;
+  --link-color: #90caf9;
+  --hover-color: #64b5f6;
+  --code-background: #2d2d2d;
+  --code-text: #f8f8f2;
+  --code-comment: #6a9955;
+  --code-keyword: #569cd6;
+  --code-string: #ce9178;
+  --code-number: #b5cea8;
+  --code-operator: #d4d4d4;
+  --code-function: #dcdcaa;
+  --welcome-block-bg: #1e1e1e;
+  --welcome-block-border: #333;
+  --top5-block-bg: #1e1e1e;
+  --top5-block-border: #333;
+  --table-bg: #1e1e1e;
+  --admin-header-bg: #1a1a1a;
+  --admin-border-color: #333;
+  --form-bg: #1e1e1e;
+  --input-bg: #2d2d2d;
+  --input-text: #e0e0e0;
+  --input-placeholder: #8a8a8a;
+  --answer-btn-bg: #2d2d2d;
+  --answer-btn-border: #444;
+  --answer-btn-hover-bg: #333333;
+  --answer-btn-text: #e0e0e0;
+  --answer-btn-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  --stat-item-bg: #2d2d2d;
+  --stat-item-text: #e0e0e0;
+  --solution-text: #e0e0e0;
+  --modal-close-bg: #333;
+  --modal-close-color: #e0e0e0;
+  --topic-title-color: #60a5fa;
+  --exam-mode-bg: #2d2d2d;
+  --exam-mode-text: #60a5fa;
+  --exam-mode-border: #3a86ff;
+  --termination-bg: #1a1a1a;
+  --termination-border: #c41e3a;
+  --termination-title: #ff4d4d;
+  --termination-text: #ffffff;
+  --termination-info: #aaaaaa;
+  --termination-shadow: rgba(196, 30, 58, 0.3);
+}
+
+/* Применение стилей для темной темы */
+[data-theme="dark"] body {
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Карточки и контейнеры */
+[data-theme="dark"] .card,
+[data-theme="dark"] .mode-block,
+[data-theme="dark"] .top5-block,
+[data-theme="dark"] .stats-block {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Хедер и навигация */
+[data-theme="dark"] .header-container {
+  background-color: var(--header-background) !important;
+}
+
+[data-theme="dark"] header {
+  background-color: var(--header-background) !important;
+  background-image: none !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .nav-link {
+  color: var(--text-color) !important;
+}
+
+/* Стили для наведения на пункты меню в темной теме */
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Подчеркивание для пунктов меню в темной теме */
+[data-theme="dark"] .navbar-nav .nav-link.active::after {
+  background: var(--primary-color) !important;
+  box-shadow: 0 0 8px 1px rgba(58, 134, 255, 0.5) !important;
+}
+
+[data-theme="dark"] .navbar-nav .nav-link:not(.active):hover::after {
+  background: var(--hover-color) !important;
+  box-shadow: 0 0 5px 1px rgba(58, 134, 255, 0.3) !important;
+}
+
+/* Кнопки */
+[data-theme="dark"] .btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background-color: var(--hover-color) !important;
+  border-color: var(--hover-color) !important;
+}
+
+/* Таблицы */
+[data-theme="dark"] .table {
+  color: var(--text-color) !important;
+  background-color: var(--table-bg) !important;
+}
+
+[data-theme="dark"] .table thead th {
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .table td {
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+  background-color: var(--table-bg) !important;
+}
+
+/* Формы */
+[data-theme="dark"] .form-control {
+  background-color: var(--input-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--input-text) !important;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: var(--input-placeholder) !important;
+}
+
+[data-theme="dark"] .form-control:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25) !important;
+}
+
+/* Код и примеры кода */
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+  background-color: var(--code-background) !important;
+  color: var(--code-text) !important;
+}
+
+[data-theme="dark"] .exam-question-text pre {
+  background-color: var(--code-background) !important;
+  border-color: #444 !important;
+}
+
+[data-theme="dark"] .exam-question-text pre code {
+  color: var(--code-text) !important;
+}
+
+/* Подсветка синтаксиса для Java */
+[data-theme="dark"] .exam-question-text pre code .keyword {
+  color: var(--code-keyword) !important;
+}
+
+[data-theme="dark"] .exam-question-text pre code .string {
+  color: var(--code-string) !important;
+}
+
+[data-theme="dark"] .exam-question-text pre code .comment {
+  color: var(--code-comment) !important;
+}
+
+[data-theme="dark"] .exam-question-text pre code .number {
+  color: var(--code-number) !important;
+}
+
+[data-theme="dark"] .exam-question-text pre code .operator {
+  color: var(--code-operator) !important;
+}
+
+[data-theme="dark"] .exam-question-text pre code .function {
+  color: var(--code-function) !important;
+}
+
+/* Модальные окна */
+[data-theme="dark"] .modal-content {
+  background-color: var(--card-background) !important;
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .modal-header,
+[data-theme="dark"] .modal-footer {
+  border-color: var(--border-color) !important;
+}
+
+/* Бургер-меню */
+[data-theme="dark"] #burgerNavbar {
+  background-color: rgba(30, 30, 30, 0.95) !important;
+}
+
+/* Специфичные компоненты */
+[data-theme="dark"] .mode-block.mode-free:hover, 
+[data-theme="dark"] .mode-block.mode-free.active {
+  box-shadow: 0 0 32px 0 rgba(13, 110, 253, 0.5) !important;
+}
+
+[data-theme="dark"] .mode-block.mode-rating:hover, 
+[data-theme="dark"] .mode-block.mode-rating.active {
+  box-shadow: 0 0 32px 0 rgba(255, 153, 0, 0.5) !important;
+}
+
+/* Вопросы и ответы */
+[data-theme="dark"] .exam-question-card {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .stats-row {
+  color: var(--text-color) !important;
+}
+
+/* Тема вопроса с анимацией для светлой темы */
+.topic-title {
+  animation: slideDown 0.5s ease-out;
+  color: #0d6efd;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* Тема вопроса с анимацией для темной темы */
+[data-theme="dark"] .topic-title {
+  animation: slideDown 0.5s ease-out;
+  color: var(--topic-title-color) !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* Убираем фон у любых элементов внутри заголовка темы */
+.topic-title *,
+[data-theme="dark"] .topic-title *,
+.difficulty-badge,
+[data-theme="dark"] .difficulty-badge,
+.topic-title span,
+[data-theme="dark"] .topic-title span {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Стили для ExamMode в темной теме */
+[data-theme="dark"] .stat-item.exam-mode-display {
+  background-color: var(--stat-item-bg) !important;
+  border: 1px solid var(--exam-mode-border) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Уменьшаем отступы между элементами статистики */
+.stats-row {
+  gap: 0.5rem !important;
+}
+
+.stat-item {
+  margin-right: 0.5rem !important;
+}
+
+[data-theme="dark"] .stat-item.exam-mode-display .stat-value {
+  color: var(--exam-mode-text) !important;
+  font-weight: bold !important;
+}
+
+[data-theme="dark"] .stat-item.exam-mode-display .stat-icon {
+  color: var(--exam-mode-text) !important;
+}
+
+[data-theme="dark"] .difficulty-badge {
+  background-color: #333 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .stat-item {
+  background-color: var(--stat-item-bg) !important;
+  border: 1px solid rgba(80, 80, 80, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  color: var(--stat-item-text) !important;
+}
+
+[data-theme="dark"] .answer-btn {
+  background-color: var(--answer-btn-bg) !important;
+  border-color: var(--answer-btn-border) !important;
+  color: var(--answer-btn-text) !important;
+  box-shadow: var(--answer-btn-shadow) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+}
+
+[data-theme="dark"] .answer-btn:hover {
+  background-color: var(--answer-btn-hover-bg) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(58, 134, 255, 0.2) !important;
+}
+
+[data-theme="dark"] .answer-btn.selected {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  box-shadow: 0 4px 16px rgba(58, 134, 255, 0.4) !important;
+}
+
+[data-theme="dark"] .answer-btn.correct {
+  background-color: var(--success-color) !important;
+  color: white !important;
+  box-shadow: 0 4px 16px rgba(46, 125, 50, 0.4) !important;
+}
+
+[data-theme="dark"] .answer-btn.incorrect {
+  background-color: var(--error-color) !important;
+  color: white !important;
+  box-shadow: 0 4px 16px rgba(198, 40, 40, 0.4) !important;
+}
+
+[data-theme="dark"] .solution-block {
+  background-color: rgba(45, 45, 45, 0.9) !important;
+  border: 1px solid rgba(80, 80, 80, 0.5) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  color: var(--solution-text) !important;
+}
+
+[data-theme="dark"] .solution-block h5,
+[data-theme="dark"] .solution-block div,
+[data-theme="dark"] .solution-content-wrap h5,
+[data-theme="dark"] .solution-content-wrap div {
+  color: var(--solution-text) !important;
+}
+
+[data-theme="dark"] .solution-emoji {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .btn-start {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  box-shadow: 0 4px 16px rgba(58, 134, 255, 0.3) !important;
+}
+
+[data-theme="dark"] .btn-start:hover {
+  background-color: var(--hover-color) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(58, 134, 255, 0.4) !important;
+}
+
+/* Дополнительные стили для темной темы */
+[data-theme="dark"] .welcome-block {
+  background-color: var(--welcome-block-bg) !important;
+  border-color: var(--welcome-block-border) !important;
+  color: var(--text-color) !important;
+  box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .welcome-block h1 {
+  color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .welcome-block p.lead {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .avatar {
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .brand-name {
+  color: var(--primary-color) !important;
+  background: linear-gradient(135deg, #3a86ff, #60a5fa) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+[data-theme="dark"] .top5-block {
+  background-color: var(--top5-block-bg) !important;
+  border: 1px solid var(--top5-block-border) !important;
+}
+
+[data-theme="dark"] .top5-table {
+  background-color: var(--table-bg) !important;
+}
+
+[data-theme="dark"] .top5-table th {
+  color: #ffd700 !important;
+}
+
+[data-theme="dark"] .top5-block {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .top5-block .card-title {
+  color: #ffd700 !important;
+}
+
+[data-theme="dark"] .top5-row-1,
+[data-theme="dark"] .top5-row-2,
+[data-theme="dark"] .top5-row-3 {
+  color: inherit !important;
+}
+
+/* Исправленные стили для топ-3 мест в темной теме */
+[data-theme="dark"] tr td[style*="color: #ffd700"] {
+  color: #ffd700 !important; /* Золото */
+}
+
+[data-theme="dark"] tr td[style*="color: #6e84a3"] {
+  color: #6e84a3 !important; /* Серебро */
+}
+
+[data-theme="dark"] tr td[style*="color: #b26a00"] {
+  color: #b26a00 !important; /* Бронза */
+}
+
+[data-theme="dark"] .top5-table thead {
+  background-color: #343a40 !important; /* Темно-серый фон для заголовка таблицы */
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .navbar {
+  background-color: var(--header-background) !important;
+}
+
+[data-theme="dark"] .custom-navbar {
+  background-color: transparent !important;
+}
+
+/* Стили для нового переключателя темы */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin: 0 10px;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 30px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  background-color: white;
+  bottom: 4px;
+  content: "";
+  height: 22px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 22px;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.slider .sun-icon,
+.slider .moon-icon {
+  position: absolute;
+  top: 6px;
+  font-size: 18px;
+  transition: opacity 0.3s ease;
+}
+
+.slider .sun-icon {
+  left: 6px;
+  color: #f39c12;
+  opacity: 1;
+}
+
+.slider .moon-icon {
+  right: 6px;
+  color: #f1c40f;
+  opacity: 0;
+}
+
+input:checked + .slider .sun-icon {
+  opacity: 0;
+}
+
+input:checked + .slider .moon-icon {
+  opacity: 1;
+}
+
+/* Анимация переключения темы */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* SVG логотип */
+[data-theme="dark"] svg polyline {
+  stroke: #3a86ff !important;
+}
+
+[data-theme="dark"] svg rect {
+  fill: #2a2a2a !important;
+  stroke: #3a86ff !important;
+  stroke-width: 1px;
+}
+
+/* Дополнительные стили для лучшей поддержки темной темы */
+[data-theme="dark"] .cover-container {
+  background-color: var(--background-color) !important;
+}
+
+[data-theme="dark"] .exam-main {
+  background-color: var(--background-color) !important;
+}
+
+[data-theme="dark"] .btn-header-style {
+  background: linear-gradient(135deg, #3a86ff, #2563eb) !important;
+  color: white !important;
+}
+
+[data-theme="dark"] .solution-content-wrap h5 {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .card-header {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .card-body {
+  background-color: var(--card-background) !important;
+}
+
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6 {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .exam-question-text {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .alert-warning {
+  background-color: #332d00 !important;
+  color: #ffdd57 !important;
+  border-color: #665a00 !important;
+}
+
+[data-theme="dark"] .alert-danger {
+  background-color: #330000 !important;
+  color: #ff5757 !important;
+  border-color: #660000 !important;
+}
+
+[data-theme="dark"] .text-muted {
+  color: #aaaaaa !important;
+}
+
+[data-theme="dark"] .text-primary {
+  color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] a {
+  color: var(--link-color) !important;
+}
+
+[data-theme="dark"] a:hover {
+  color: var(--hover-color) !important;
+}
+
+[data-theme="dark"] .mobile-indicator {
+  background-color: #555 !important;
+}
+
+[data-theme="dark"] .mobile-indicator.active {
+  background-color: var(--primary-color) !important;
+}
+
+/* Принудительное применение темной темы через классы */
+.theme-force-dark {
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.theme-force-dark.card,
+.theme-force-dark.mode-block,
+.theme-force-dark.stats-block {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+}
+
+.theme-force-dark.header-container {
+  background-color: var(--header-background) !important;
+}
+
+.theme-force-dark.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.theme-force-dark.form-control {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+.theme-force-dark.solution-block {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Админ панель в темной теме */
+[data-theme="dark"] .admin-header {
+  background-color: var(--admin-header-bg) !important;
+  border-color: var(--admin-border-color) !important;
+}
+
+/* Исправляем admin-header при наведении */
+[data-theme="dark"] .admin-header:hover {
+  background-color: #222 !important;
+  border-color: var(--admin-border-color) !important;
+}
+
+[data-theme="dark"] .admin-navbar-brand {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .admin-brand-name {
+  color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .admin-navbar .nav-link {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .admin-navbar .nav-link:hover,
+[data-theme="dark"] .admin-navbar .nav-link.active {
+  color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .admin-navbar .nav-link::after {
+  background: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .admin-burger-menu {
+  background-color: var(--admin-header-bg) !important;
+  border-color: var(--admin-border-color) !important;
+}
+
+/* Формы в админ-панели */
+[data-theme="dark"] .input-group-text {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .form-select {
+  background-color: var(--input-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Страница контактов */
+[data-theme="dark"] .bg-light {
+  background-color: var(--card-background) !important;
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .contact-form-block {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-color) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 8px;
+}
+
+[data-theme="dark"] .contact-description {
+  color: var(--text-color) !important;
+}
+
+/* Топ-10 блок на главной странице */
+[data-theme="dark"] .top10-block .card-title {
+  color: #ffd700 !important;
+}
+
+/* Таблица в глобальном рейтинге */
+[data-theme="dark"] .top10-row-1,
+[data-theme="dark"] .top10-row-2,
+[data-theme="dark"] .top10-row-3 {
+  color: inherit !important;
+}
+
+[data-theme="dark"] .page-link {
+  background-color: var(--card-background) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .page-item.active .page-link {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+[data-theme="dark"] .page-item.disabled .page-link {
+  background-color: #333 !important;
+  border-color: var(--border-color) !important;
+  color: #777 !important;
+} 
+
+/* Стили для модального окна с полным решением */
+[data-theme="dark"] #fullSolutionModal .modal-content {
+  background-color: var(--card-background) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] #fullSolutionModal button {
+  background-color: var(--modal-close-bg) !important;
+  color: var(--modal-close-color) !important;
+  border-color: var(--border-color) !important;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0;
+}
+
+/* Стили для результатов экзамена */
+[data-theme="dark"] .exam-result-card {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+/* Стили для обертки контента в темной теме */
+[data-theme="dark"] .result-content-wrapper {
+  background-color: rgba(30, 30, 30, 0.7) !important;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Золотое свечение для режима RATING в темной теме */
+[data-theme="dark"] .exam-result-card:has(.exam-mode-display.mode-rating) .result-content-wrapper {
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4), 0 0.5rem 2rem rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .exam-result-card .card-header {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+[data-theme="dark"] .exam-result-card .card-header h3 {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .exam-result-card .card-body {
+  background-color: transparent !important;
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .exam-result-card .stat-item {
+  color: var(--stat-item-text) !important;
+}
+
+[data-theme="dark"] .exam-result-card .stat-item span {
+  color: var(--stat-item-text) !important;
+}
+
+[data-theme="dark"] .exam-result-card .score-display {
+  background-color: rgba(255, 215, 0, 0.15) !important;
+  border: 2px solid rgba(255, 215, 0, 0.3) !important;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .exam-result-card .score-star {
+  color: #FFD700 !important;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7) !important;
+}
+
+/* Rating режим */
+[data-theme="dark"] .stat-item.exam-mode-display.mode-rating,
+[data-theme="dark"] .stat-item.exam-mode-display[data-mode="RATING"] {
+  background-color: rgba(184, 134, 11, 0.1) !important;
+  border: 1px solid rgba(218, 165, 32, 0.5) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .stat-item.exam-mode-display.mode-rating .stat-value,
+[data-theme="dark"] .stat-item.exam-mode-display[data-mode="RATING"] .stat-value {
+  color: #daa520 !important;
+  font-weight: bold !important;
+}
+
+[data-theme="dark"] .stat-item.exam-mode-display.mode-rating .stat-icon,
+[data-theme="dark"] .stat-item.exam-mode-display[data-mode="RATING"] .stat-icon {
+  color: #daa520 !important;
+}
+
+/* Кнопка к выбору режима в блоке результатов */
+[data-theme="dark"] .exam-result-card .btn-primary {
+  color: #ffffff !important;
+}
+
+/* FREE режим */
+[data-theme="dark"] .stat-item.exam-mode-display.mode-free,
+[data-theme="dark"] .stat-item.exam-mode-display[data-mode="FREE"] {
+  background-color: var(--stat-item-bg) !important;
+  border: 1px solid #60a5fa !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .card-body .form-label,
+[data-theme="dark"] .card-body .form-check-label {
+  color: var(--text-color) !important;
+}
+
+/* Кнопка удаления ответа в темной теме */
+[data-theme="dark"] .btn-outline-danger,
+[data-theme="dark"] .btn-danger {
+  color: #f8d7da !important;
+  background-color: #842029 !important;
+  border-color: #842029 !important;
+}
+
+[data-theme="dark"] footer p {
+  color: var(--text-color) !important;
+}
+
+/* Стили для сообщения о прерывании экзамена в темной теме */
+[data-theme="dark"] .termination-message {
+  background-color: var(--termination-bg) !important;
+  border: 2px solid var(--termination-border) !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+  margin: 20px auto !important;
+  max-width: 600px !important;
+  box-shadow: 0 4px 15px var(--termination-shadow) !important;
+  text-align: center !important;
+}
+
+[data-theme="dark"] .termination-title {
+  color: var(--termination-title) !important;
+  margin-bottom: 15px !important;
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+  text-align: center !important;
+}
+
+[data-theme="dark"] .termination-message-text {
+  color: var(--termination-text) !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 20px !important;
+  text-align: center !important;
+}
+
+[data-theme="dark"] .termination-redirect-info {
+  color: var(--termination-info) !important;
+  font-size: 0.9rem !important;
+  font-style: italic !important;
+  text-align: center !important;
+}
+
+/* Стандартные селекторы для сообщения о прерывании экзамена */
+[data-theme="dark"] h3:first-child {
+  color: var(--termination-title) !important;
+}
+
+[data-theme="dark"] p:nth-child(2) {
+  color: var(--termination-text) !important;
+}
+
+[data-theme="dark"] p:last-child {
+  color: var(--termination-info) !important;
+}
+
+/* Стили для модального окна античита (динамически создаваемого через JS) в темной теме */
+[data-theme="dark"] body > div[style*="position: fixed"][style*="z-index: 9999"] {
+  background: none !important;
+}
+[data-theme="dark"] body > div[style*="position: fixed"][style*="z-index: 9999"] > div {
+  background-color: #1a1a1a !important;
+  color: #fff !important;
+  border: 2px solid #c41e3a !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3) !important;
+}
+[data-theme="dark"] body > div[style*="position: fixed"][style*="z-index: 9999"] h3 {
+  color: #ff4d4d !important;
+}
+[data-theme="dark"] body > div[style*="position: fixed"][style*="z-index: 9999"] p {
+  color: #fff !important;
+}
+[data-theme="dark"] body > div[style*="position: fixed"][style*="z-index: 9999"] p:last-child {
+  color: #aaaaaa !important;
+  font-style: italic !important;
+}
+

@@ -1,0 +1,223 @@
+﻿<!doctype html>
+<html lang="ru" class="h-100" data-bs-theme="light" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Детали экзамена</title>
+
+    <th:block th:replace="~{fragments/css-includes :: admin-css}"></th:block>
+
+    <link rel="apple-touch-icon" href="/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/img/favicons/site.webmanifest">
+    <link rel="icon" href="/img/favicons/favicon.ico">
+</head>
+<body class="d-flex flex-column min-vh-100">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div th:insert="~{fragments/header.html}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-header}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-burger-menu}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-scripts}"></div>
+    <main class="flex-grow-1">
+        <div class="px-3">
+            <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                <h2>Детали истории экзамена</h2>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <a th:href="@{/admin/exam-history}" class="btn btn-sm btn-outline-secondary">
+                            <i class="fa-solid fa-arrow-left me-1"></i>Вернуться к списку
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Основная информация</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tr>
+                                    <th>ID:</th>
+                                    <td th:text="${examHistory.id}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Пользователь:</th>
+                                    <td th:text="${examHistory.user != null ? examHistory.user.username : 'Неизвестно'}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Дата и время:</th>
+                                    <td th:text="${#temporals.format(examHistory.createAt, 'dd.MM.yyyy HH:mm:ss')}"></td>
+                                </tr>
+                                <tr>
+                                    <th>ID экзамена:</th>
+                                    <td th:text="${examHistory.examID}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Итоговые очки:</th>
+                                    <td th:text="${examHistory.score}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Базовые очки:</th>
+                                    <td th:text="${examHistory.totalBasePoints}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Бонус за время:</th>
+                                    <td th:text="${examHistory.bonusByTime}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Время прохождения:</th>
+                                    <td th:text="${examHistory.timeTakenToComplete + ' сек.'}"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Статистика и нарушения</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tr>
+                                    <th>Правильных ответов:</th>
+                                    <td th:text="${examHistory.successAnswersCountAbsolute}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Неправильных ответов:</th>
+                                    <td th:text="${examHistory.failAnswersCountAbsolute}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Выходы с вкладки:</th>
+                                    <td>
+                                        <span th:text="${examHistory.tabSwitchViolations}"></span>
+                                        <span th:if="${examHistory.tabSwitchViolations > 0}" class="badge bg-warning text-dark">!</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Копирование текста:</th>
+                                    <td>
+                                        <span th:text="${examHistory.textCopyViolations}"></span>
+                                        <span th:if="${examHistory.textCopyViolations > 0}" class="badge bg-warning text-dark">!</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Пропуски проверок связи:</th>
+                                    <td>
+                                        <span th:text="${examHistory.heartbeatMissedViolations}"></span>
+                                        <span th:if="${examHistory.heartbeatMissedViolations > 0}" class="badge bg-warning text-dark">!</span>
+                                    </td>
+                                </tr>
+                                <tr th:if="${examHistory.devToolsViolations > 0}">
+                                    <th>Использование DevTools:</th>
+                                    <td>
+                                        <span th:text="${examHistory.devToolsViolations}"></span>
+                                        <span class="badge bg-danger text-white">!</span>
+                                    </td>
+                                </tr>
+                                <tr th:if="${examHistory.domTamperingViolations > 0}">
+                                    <th>Вмешательство в DOM:</th>
+                                    <td>
+                                        <span th:text="${examHistory.domTamperingViolations}"></span>
+                                        <span class="badge bg-danger text-white">!</span>
+                                    </td>
+                                </tr>
+                                <tr th:if="${examHistory.functionTamperingViolations > 0}">
+                                    <th>Подмена функций:</th>
+                                    <td>
+                                        <span th:text="${examHistory.functionTamperingViolations}"></span>
+                                        <span class="badge bg-danger text-white">!</span>
+                                    </td>
+                                </tr>
+                                <tr th:if="${examHistory.moduleTamperingViolations > 0}">
+                                    <th>Модификация модулей:</th>
+                                    <td>
+                                        <span th:text="${examHistory.moduleTamperingViolations}"></span>
+                                        <span class="badge bg-danger text-white">!</span>
+                                    </td>
+                                </tr>
+                                <tr th:if="${examHistory.pageCloseViolations > 0}">
+                                    <th>Закрытие страницы:</th>
+                                    <td>
+                                        <span th:text="${examHistory.pageCloseViolations}"></span>
+                                        <span class="badge bg-danger text-white">!</span>
+                                    </td>
+                                </tr>
+                                <tr th:if="${examHistory.externalContentViolations > 0}">
+                                    <th>Внешний контент:</th>
+                                    <td>
+                                        <span th:text="${examHistory.externalContentViolations}"></span>
+                                        <span class="badge bg-danger text-white">!</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Прерван из-за нарушений:</th>
+                                    <td>
+                                        <span th:if="${examHistory.terminatedByViolations}" class="badge bg-danger">Да</span>
+                                        <span th:unless="${examHistory.terminatedByViolations}">Нет</span>
+                                    </td>
+                                </tr>
+                                <tr th:if="${examHistory.terminatedByViolations}">
+                                    <th>Причина прерывания:</th>
+                                    <td th:text="${examHistory.terminationReason}"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Ответы пользователя</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Вопрос</th>
+                                <th>Ответ пользователя</th>
+                                <th>Результат</th>
+                                <th>Время (сек)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="answer, iterStat : ${examHistory.userAnswers}">
+                                <td th:text="${iterStat.count}"></td>
+                                <td>
+                                    <span th:text="${answer.taskDTO.question}"></span>
+                                    <span class="badge bg-secondary" th:text="${answer.taskDTO.difficulty}"></span>
+                                </td>
+                                <td th:text="${answer.answerDTO.content}"></td>
+                                <td>
+                                    <span th:if="${answer.isCorrect}" class="badge bg-success">Верно</span>
+                                    <span th:unless="${answer.isCorrect}" class="badge bg-danger">Неверно</span>
+                                </td>
+                                <td th:text="${answer.timeTakenSeconds}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center" th:insert="~{fragments/footer.html}"></footer>
+</div>
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/admin-burger.min.js"></script>
+<script src="/js/theme-switcher.min.js"></script>
+<script src="/js/theme-force-apply.min.js"></script>
+</body>
+</html> 

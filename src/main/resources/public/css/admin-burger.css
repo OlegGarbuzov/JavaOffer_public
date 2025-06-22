@@ -1,0 +1,734 @@
+/* Основные стили для админ-заголовка */
+.admin-header {
+    background-color: #ffffff !important;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.98), rgba(240, 249, 255, 0.96), rgba(236, 246, 254, 0.98)) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(191, 219, 254, 0.3), 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 20px !important;
+    padding: 0.5rem 1rem !important;
+    border: 1px solid rgba(186, 230, 253, 0.4) !important;
+    position: relative !important;
+    z-index: 1030 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: none !important;
+    overflow: visible !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* Переопределяем псевдоэлементы для блокировки анимации фона */
+.admin-header::before,
+.admin-header::after,
+header.admin-header::before,
+header.admin-header::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: -9999 !important;
+}
+
+/* Полностью переопределяем hover-состояние */
+.admin-header:hover,
+header.admin-header:hover {
+    box-shadow: 0 4px 24px 0 rgba(30, 41, 59, 0.12) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: #e0e7ef !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+/* Блокируем любую анимацию на псевдоэлементах при наведении */
+.admin-header:hover::before,
+.admin-header:hover::after,
+header.admin-header:hover::before,
+header.admin-header:hover::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Отключаем hover-эффекты на всех элементах внутри admin-header */
+.admin-header *:hover {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+}
+
+/* Дополнительно удаляем все возможные подсветки и анимации */
+.admin-header *::before,
+.admin-header *::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Навигация и бренд */
+.admin-navbar {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+.admin-navbar-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    gap: 0.5rem;
+}
+
+.admin-navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #124cc9;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    max-width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-navbar-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.admin-brand-name {
+    color: #124cc9;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+/* Кнопка бургер-меню */
+#adminBurgerButton {
+    width: 44px;
+    height: 44px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid #e0e7ef;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 0;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    z-index: 1025;
+}
+
+#adminBurgerButton:hover {
+    background-color: rgba(240, 249, 255, 0.95);
+    border-color: rgba(147, 197, 253, 0.5);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+.admin-navbar-toggler-icon {
+    display: block;
+    width: 28px;
+    height: 28px;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(37, 99, 235, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-size: 28px 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Основная навигация */
+#adminMainNavbar {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    max-width: calc(100% - 150px);
+    margin-left: 0.5rem;
+}
+
+#adminMainNavbar::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-navbar-nav {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 5px;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    justify-content: flex-end;
+}
+
+.admin-navbar-nav .nav-item {
+    margin: 0;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-navbar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0.6rem;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent;
+    gap: 4px;
+}
+
+.admin-navbar-nav .nav-link i {
+    font-size: 0.9rem;
+    margin-right: 2px;
+    opacity: 0.8;
+}
+
+.admin-navbar-nav .nav-link::before,
+.admin-navbar-nav .nav-link::after {
+    display: none !important;
+}
+
+.admin-navbar-nav .nav-link:hover,
+.admin-navbar-nav .nav-link.active {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+}
+
+/* Стили для активного состояния пунктов меню */
+.admin-navbar-nav .nav-link.active {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    border-left: none !important;
+}
+
+.admin-navbar-nav .nav-link.active::before {
+    display: none !important;
+}
+
+/* Отдельные стили для hover-состояния */
+.admin-navbar-nav .nav-link:hover {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+}
+
+/* Добавляем подчеркивание для активного пункта меню */
+.admin-navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 2px;
+    height: 3px;
+    background: #3b82f6 !important;
+    border-radius: 2px;
+    box-shadow: 0 0 8px 1px rgba(59, 130, 246, 0.5) !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Бургер-меню для мобильных */
+#adminBurgerNavbar {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 250px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 1050;
+    display: none;
+    border: 1px solid rgba(186, 230, 253, 0.4);
+    margin-top: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#adminBurgerNavbar.isActive {
+    display: block;
+}
+
+#adminBurgerNavbar .admin-navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    gap: 16px;
+}
+
+#adminBurgerNavbar .nav-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+}
+
+#adminBurgerNavbar .nav-link {
+    width: 100%;
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Медиа-запросы для разных размеров экрана */
+/* Большие экраны */
+@media (min-width: 993px) {
+    #adminBurgerButton {
+        display: none !important;
+    }
+    
+    #adminMainNavbar {
+        display: flex !important;
+        max-width: calc(100% - 140px);
+        overflow: hidden;
+    }
+    
+    #adminBurgerNavbar {
+        display: none !important;
+    }
+    
+    .admin-navbar-nav .nav-link.active {
+        background: transparent;
+        box-shadow: none;
+    }
+    
+    .admin-navbar-nav {
+        overflow: hidden;
+        padding-right: 10px;
+    }
+    
+    .admin-navbar-nav .nav-link {
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+/* Средние и маленькие экраны */
+@media (max-width: 992px) {
+    #adminBurgerButton {
+        display: flex !important;
+    }
+    
+    #adminMainNavbar {
+        display: none !important;
+    }
+    
+    .admin-header {
+        padding: 0.5rem 0.75rem !important;
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
+        border-radius: 16px !important;
+        width: 100% !important;
+    }
+    
+    .admin-navbar-row {
+        justify-content: space-between;
+    }
+    
+    #adminBurgerNavbar {
+        top: 85px;
+        min-width: 280px;
+    }
+    
+    #adminBurgerNavbar .admin-navbar-nav {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #adminBurgerNavbar .nav-item {
+        width: 100%;
+        margin: 8px 0;
+    }
+    
+    #adminBurgerNavbar .nav-link {
+        width: 100%;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .admin-navbar-brand {
+        margin-right: 0.5rem;
+    }
+    
+    #adminMainNavbar {
+        max-width: calc(100% - 120px);
+    }
+}
+
+/* Специальные настройки для очень маленьких экранов */
+@media (max-width: 480px) {
+    .admin-brand-name {
+        font-size: 1rem;
+        max-width: calc(100% - 30px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    #adminBurgerButton {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
+    
+    .admin-navbar-toggler-icon {
+        width: 24px;
+        height: 24px;
+        background-size: 24px 24px;
+    }
+    
+    #adminBurgerNavbar {
+        min-width: 250px;
+        max-width: 85vw;
+        padding: 15px;
+    }
+    
+    .admin-header {
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .admin-navbar-brand {
+        max-width: 60%;
+    }
+    
+    #adminMainNavbar {
+        max-width: calc(100% - 110px);
+    }
+}
+
+/* Специальные настройки для экстремально маленьких экранов */
+@media (max-width: 360px) {
+    .admin-navbar-brand svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .admin-brand-name {
+        font-size: 0.9rem;
+    }
+    
+    #adminBurgerButton {
+        width: 36px;
+        height: 36px;
+        margin-left: 5px;
+    }
+    
+    .admin-navbar-toggler-icon {
+        width: 20px;
+        height: 20px;
+        background-size: 20px 20px;
+    }
+}
+
+/* Принудительный показ админ-заголовка на всех размерах экрана и в любых условиях */
+.admin-header {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    z-index: 1030 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Фиксированный заголовок при прокрутке для лучшего UX */
+.admin-header.sticky {
+    position: sticky !important;
+    top: 10px !important;
+}
+
+/* Переопределяем стили для content-heavy страниц */
+.content-heavy .admin-header {
+    padding: 0.5rem 1rem !important;
+    border-radius: 15px !important;
+}
+
+/* Обычные размеры хедера для остальных страниц */
+.container > div:not(.content-heavy) .admin-header {
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 20px !important;
+}
+
+/* Унифицированные размеры для всех admin-header */
+.admin-header {
+    padding: 0.5rem 1rem !important;
+    border-radius: 15px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Стили для sticky варианта хедера - применяются ко всем страницам одинаково */
+.admin-header.sticky {
+    position: sticky;
+    top: 10px;
+    z-index: 1020;
+    margin-bottom: 1rem !important;
+}
+
+/* Дополнительно адаптируем стили для админских страниц */
+body.content-heavy .container {
+    max-width: 100%;
+    padding: 0 1rem;
+}
+
+/* Ограничиваем ширину хедера на страницах с большим контентом */
+body.content-heavy .admin-header {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* Специальные стили для страниц с большим контентом - вопросы и импорт/экспорт */
+body.content-heavy .admin-navbar-nav .nav-link {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.95rem !important;
+}
+
+body.content-heavy .admin-brand-name {
+    font-size: 1.1rem !important;
+}
+
+body.content-heavy .admin-navbar-row {
+    gap: 0.5rem !important;
+}
+
+body.content-heavy #adminMainNavbar {
+    max-width: calc(100% - 160px) !important;
+}
+
+/* Предотвращение скрытия под другим контентом */
+.container > div:not(.admin-header) {
+    z-index: 1020 !important;
+}
+
+/* Фиксирование проблемы с отображением главного заголовка */
+#JAVA.OFFER {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Добавляем контейнер для ограничения позиционированных элементов */
+.admin-navbar-nav-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Улучшенные стили для анимации, чтобы они не выходили за границы */
+.admin-navbar-nav .nav-link.active,
+.admin-navbar-nav .nav-link:hover {
+    background: rgba(219, 234, 254, 0.5);
+    color: #2563eb;
+    transform: none !important;
+    box-shadow: none;
+    transition: none;
+    animation: none !important;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Ограничиваем анимацию, чтобы она не выходила за пределы контейнера */
+.admin-navbar-nav .nav-item {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Предотвращаем переполнение при трансформациях */
+.admin-navbar-nav .nav-link {
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Для элементов с hover и active состояниями */
+@keyframes subtleScale {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-2px); }
+}
+
+.admin-navbar-nav .nav-link:hover,
+.admin-navbar-nav .nav-link.active {
+    animation: subtleScale 0.2s forwards;
+    overflow: hidden;
+}
+
+/* Отключаем все анимации и переходы */
+.admin-header,
+.admin-header *,
+.admin-navbar-nav .nav-link,
+.admin-navbar-nav .nav-item,
+.admin-navbar-brand,
+#adminBurgerNavbar,
+#adminMainNavbar {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+
+/* Заменяем анимированные эффекты на статические */
+.admin-navbar-nav .nav-link.active {
+    background: rgba(219, 234, 254, 0.5) !important;
+    color: #2563eb !important;
+    font-weight: 600;
+    border-left: 3px solid #3b82f6;
+}
+
+.admin-navbar-nav .nav-link:hover {
+    background: rgba(219, 234, 254, 0.3) !important;
+    color: #2563eb !important;
+}
+
+/* Стили для подчеркивания пунктов меню при наведении */
+.admin-navbar-nav .nav-link::after {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    left: 50% !important;
+    right: 50% !important;
+    bottom: 2px !important;
+    height: 3px !important;
+    background: rgba(59, 130, 246, 0) !important;
+    transition: all 0.3s ease !important;
+    border-radius: 2px !important;
+    opacity: 0 !important;
+    visibility: visible !important;
+    z-index: 1 !important;
+}
+
+.admin-navbar-nav .nav-link:hover::after {
+    left: 10% !important;
+    right: 10% !important;
+    opacity: 1 !important;
+    background: rgba(59, 130, 246, 0.5) !important;
+    box-shadow: 0 0 5px 1px rgba(59, 130, 246, 0.3) !important;
+}
+
+.admin-navbar-nav .nav-link.active::after {
+    left: 10% !important;
+    right: 10% !important;
+    opacity: 1 !important;
+    background: #3b82f6 !important;
+    box-shadow: 0 0 8px 1px rgba(59, 130, 246, 0.5) !important;
+}
+
+/* Особые стили для десктопной версии */
+@media (min-width: 993px) {
+    #adminBurgerButton {
+        display: none !important;
+    }
+    
+    #adminMainNavbar {
+        display: flex !important;
+        max-width: calc(100% - 140px);
+        overflow: hidden;
+    }
+    
+    #adminBurgerNavbar {
+        display: none !important;
+    }
+    
+    .admin-navbar-nav .nav-link.active {
+        background: rgba(37, 99, 235, 0.1) !important;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08) !important;
+        transform: translateY(-1px);
+    }
+    
+    .admin-navbar-nav .nav-link:hover {
+        transform: translateY(-1px);
+    }
+}
+
+/* Нейтрализуем ранее добавленные правила для отключения всех анимаций */
+.admin-header *,
+.admin-navbar-nav .nav-link,
+.admin-navbar-nav .nav-item,
+.admin-navbar-brand,
+#adminMainNavbar {
+    transition: all 0.3s ease !important;
+}
+
+.admin-navbar-nav .nav-link:hover,
+.admin-navbar-nav .nav-link.active {
+    transform: translateY(-1px) !important;
+}
+
+/* Но сохраняем блокировку анимаций для самого хедера */
+.admin-header,
+#adminBurgerNavbar {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+
+/* Для корректного отображения в контейнере */
+.container .admin-header {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+@media (max-width: 768px) {
+    .admin-navbar-nav .nav-link {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.5rem;
+    }
+    
+    .admin-navbar-nav .nav-link i {
+        font-size: 0.85rem;
+    }
+} 

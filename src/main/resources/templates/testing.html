@@ -1,0 +1,251 @@
+﻿<!doctype html>
+<html lang="ru" class="h-100" data-theme="light" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.145.0">
+    <title>Java Offer</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+    <th:block th:replace="~{fragments/css-includes :: exam-css}"></th:block>
+
+    <link rel="apple-touch-icon" href="../img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="../img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="../img/favicons/site.webmanifest">
+    <link rel="icon" href="../img/favicons/favicon.ico">
+
+    <meta name="theme-color" content="#712cf9">
+    <script src="../js/theme-force-apply.min.js"></script>
+
+    <script src="../js/bootstrap.bundle.min.js" defer></script>
+    <script src="../js/gifList.min.js" defer></script>
+    <script src="../js/exam.min.js" defer></script>
+    <script src="../js/testing.min.js" defer></script>
+    <script src="../js/theme-switcher.min.js" defer></script>
+    <script th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}"
+            src="../js/ui/ui-header-sc.min.js"></script>
+    <script th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}"
+            src="../js/ui/ui-header-im.min.js"></script>
+    <script th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}"
+            src="../js/ui/ui-header-sm.min.js" defer></script>
+    <script src="../js/radio-buttons-init.min.js" defer></script>
+    <script src="../js/ui/ui-header-ot-c.min.js"></script>
+    <script src="../js/ui/ui-header-ot.min.js" defer></script>
+</head>
+<body class="d-flex h-100 text-center">
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+    </symbol>
+</svg>
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div th:insert="~{fragments/header.html}"></div>
+    <main class="exam-main px-3">
+        <div id="question-block" class="w-100">
+            <div class="card shadow exam-question-card"
+                 th:classappend="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'} ? 'question-block-rating' : ''"
+                 th:styleappend="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'} ? 'border-color: darkgoldenrod !important;' : ''">
+                <div class="stats-block">
+                    <div class="stats-row" sec:authorize="hasAnyRole('ROLE_ADMIN')" style="margin-bottom: 0.5rem;">
+                        <div class="stat-item" title="ID экзамена">
+                            <span class="stat-icon">🎯</span>
+                            <span class="stat-value" th:text="${examId != null ? examId : ''}"></span>
+                        </div>
+                    </div>
+                    <div class="stats-row d-flex align-items-center">
+                        <div class="stat-item exam-mode-display"
+                             th:classappend="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'FREE'} ? 'mode-free' : (${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'} ? 'mode-rating' : '')"
+                             th:data-mode="${result != null and result.stats != null && result.stats.examMode != null ? result.stats.examMode : ''}">
+                            <span class="stat-icon">🎓</span>
+                            <span class="stat-value"
+                                  th:text="${result != null and result.stats != null and result.stats.examMode != null ? result.stats.examMode : ''}"></span>
+                        </div>
+                        <div class="stat-item" title="Набранные баллы"
+                             th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}">
+                            <span class="stat-icon" style="color: gold;">⭐</span>
+                            <span class="stat-value"
+                                  th:text="${result.stats != null ? result.stats.currentBasePoint : ''}"></span>
+                        </div>
+                        <div class="stat-item" title="Верные ответы">
+                            <span class="stat-icon">✅</span>
+                            <span class="stat-value"
+                                  th:text="${result.stats != null ? result.stats.successAnswersCountAbsolute : ''}"></span>
+                        </div>
+                        <div class="stat-item" title="Неверные ответы">
+                            <span class="stat-icon">❌</span>
+                            <span class="stat-value"
+                                  th:text="${result.stats != null ? result.stats.failAnswersCountAbsolute : ''}"></span>
+                        </div>
+                    </div>
+                    <div class="action-buttons-container d-flex flex-wrap align-items-center">
+                        <div sec:authorize="isAuthenticated()" class="suggest-correction-wrapper">
+                            <div class="stat-item stat-suggest-btn" id="suggestCorrectionBtn"
+                                 title="Предложить исправление"
+                                 tabindex="0">
+                                <span class="stat-icon">✏️</span>
+                                <span class="stat-value">
+                                    <span class="desktop-text">Предложить исправление</span>
+                                    <span class="mobile-text">Завершить</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div sec:authorize="!isAuthenticated()" class="suggest-correction-wrapper">
+                            <div class="stat-item stat-suggest-btn disabled"
+                                 title="Войдите, что бы предложить исправление"
+                                 tabindex="0">
+                                <span class="stat-icon">✏️</span>
+                                <span class="stat-value">
+                                    <span class="desktop-text">Предложить исправление</span>
+                                    <span class="mobile-text">Завершить</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="save-and-finish-wrapper ms-auto">
+                            <div class="stat-item stat-suggest-btn save-and-finish-btn" id="abortExamBtn"
+                                 title="Сохранить и завершить" tabindex="0"
+                                 onclick="abortExam()">
+                                <span class="stat-icon">✅</span>
+                                <span class="stat-value">
+                                    <span class="desktop-text">Сохранить и завершить</span>
+                                    <span class="mobile-text">Завершить</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="question-info-container d-flex align-items-center">
+                                                        <h3 class="topic-custom mb-0"
+                            th:text="${result.taskDto != null && result.taskDto.topic != null ? result.taskDto.topic.name() : 'Пу-пу-пу...А где вопрос?'}"></h3>
+                        <div class="difficulty-level-container d-flex align-items-center">
+                            <div class="stat-item" title="Стоимость вопроса"
+                                 th:if="${result != null and result.stats != null and result.stats.examMode != null and result.stats.examMode.name() == 'RATING'}">
+                                <span class="stat-icon">💰</span>
+                                <span class="stat-value"
+                                      th:text="${result.taskDto != null && result.taskDto.difficulty != null ? 10 * result.stats.currentDifficulty.level : ''}"></span>
+                            </div>
+                            <div class="stat-item difficulty-badge" title="Сложность">
+                                <span class="stat-icon">☠</span>
+                                <span class="stat-value"
+                                      th:text="${result.stats != null ? result.stats.currentDifficulty.level : ''}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="exam-flex-row">
+                        <form id="examForm" onsubmit="return false;"
+                              th:data-next-request-id="${result.stats != null ? result.stats.requestId : ''}"
+                              th:data-exam-terminated="${result.examTerminatedByViolation || result.examTerminatedByFailAnswerCount ? 'true' : 'false'}"
+                              th:data-exam-terminated-by-fail-answer-count="${result.examTerminatedByFailAnswerCount ? 'true' : 'false'}">
+                            <input type="hidden" id="examId" th:value="${examId}"/>
+                            <input type="hidden" id="examMode"
+                                   th:value="${result != null and result.stats != null ? (result.stats.examMode != null ? result.stats.examMode.name() : '') : ''}"/>
+                            <input type="hidden" id="taskId"
+                                   th:value="${result.taskDto != null ? result.taskDto.id : ''}"/>
+                            <div th:if="${result.abortResults != null}">
+                                <input type="hidden" id="abort-results-exam-mode"
+                                       th:value="${result.abortResults.examMode}"/>
+                                <input type="hidden" id="abort-results-success-count"
+                                       th:value="${result.abortResults.successAnswersCountAbsolute}"/>
+                                <input type="hidden" id="abort-results-fail-count"
+                                       th:value="${result.abortResults.failAnswersCountAbsolute}"/>
+                                <input type="hidden" id="abort-results-time"
+                                       th:value="${result.abortResults.timeTakenToComplete}"/>
+                                <input type="hidden" id="abort-results-score" th:value="${result.abortResults.score}"/>
+                            </div>
+                            <div class="mb-3">
+                                <div class="exam-question-text"
+                                     th:utext="${result.taskDto != null ? result.taskDto.getQuestion() : ''}"></div>
+                            </div>
+                            <div class="mb-3">
+                                <div th:if="${result.taskDto == null || result.taskDto.answers == null || #lists.isEmpty(result.taskDto.answers)}">
+                                    <div class="alert alert-warning">Варианты ответа отсутствуют</div>
+                                </div>
+                                <div th:if="${result.taskDto != null && result.taskDto.answers != null && !#lists.isEmpty(result.taskDto.answers)}">
+                                    <div class="answer-btn-group">
+                                        <label th:each="answer, iterStat : ${result.taskDto.answers}"
+                                               th:for="'answer-' + ${iterStat.index}"
+                                               class="answer-btn"
+                                               th:data-correct="${answer.isCorrect}"
+                                               th:data-explanation="${answer.explanation}">
+                                            <input class="form-check-input" type="radio" name="selectedAnswerId"
+                                                   th:id="'answer-' + ${iterStat.index}"
+                                                   th:value="${answer.id}" required>
+                                            <span th:text="${answer.content}"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="solutionBlock" class="solution-block" style="display:none;">
+                                <div class="row w-100">
+                                    <div class="col-md-4 col-sm-12 text-center">
+                                        <img id="memeGif" class="meme-gif" style="display:none;" alt="meme gif"/>
+                                    </div>
+                                    <div class="col-md-8 col-sm-12 position-relative">
+                                        <span class="solution-emoji" id="solutionEmoji" aria-hidden="true">💡</span>
+                                        <div class="solution-content-wrap">
+                                            <h5 id="solutionTitle">Ответ</h5>
+                                            <div id="solutionContent"></div>
+                                            <div id="solutionExplanation" style="margin-top: 1rem;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="next-btn-center">
+                                <button id="nextBtn" type="button" class="btn btn-start mt-3" style="display:none;"
+                                        onclick="nextQuestion(this)">Следующий вопрос
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer th:insert="~{fragments/footer.html}"></footer>
+</div>
+
+<div id="fullSolutionModal">
+    <div class="modal-content">
+        <button onclick="closeSolutionModal()">&times;</button>
+        <h5>Полный разбор</h5>
+        <div id="fullSolutionText"></div>
+    </div>
+</div>
+
+<div id="suggestCorrectionModal" class="modal" style="opacity: 0; display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Предложить исправление</h5>
+                <button type="button" class="btn-close" id="closeSuggestCorrectionModal" aria-label="Закрыть">×</button>
+            </div>
+            <div class="modal-body">
+                <textarea id="suggestCorrectionText" class="form-control" rows="4" maxlength="1000"
+                          placeholder="Опишите, что можно улучшить или исправить в этом вопросе..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="sendSuggestCorrectionBtn">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

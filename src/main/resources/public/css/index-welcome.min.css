@@ -1,0 +1,49 @@
+.welcome-block{background:#f8fbff;border:2px solid #e0f2fe;border-radius:24px;padding:2.5rem 3.5rem 2rem;margin-bottom:2rem;box-shadow:0 10px 50px 0 rgba(30,41,59,.08);max-width:1100px;width:100%;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.21, .61, .35, 1),box-shadow .4s cubic-bezier(.21, .61, .35, 1)}
+.welcome-block:hover{transform:translateY(-5px);box-shadow:0 15px 60px rgba(30,41,59,.12)}
+.welcome-block::before{display:none}
+.welcome-block h1{color:#3b82f6;font-size:1.8rem;font-weight:700;margin-bottom:1.2rem;letter-spacing:.5px;position:relative;z-index:1}
+.welcome-block p.lead{font-size:1.15rem;color:#1e293b;margin-bottom:1.7rem;font-weight:500;line-height:1.6;position:relative;z-index:1}
+.btn-header-style{background:linear-gradient(135deg,#3b82f6,#2563eb)!important;color:#fff!important;border:none;border-radius:14px;box-shadow:0 4px 14px 0 rgba(59,130,246,.3);font-weight:600;font-size:1.1rem;padding:.8rem 2.4rem;min-width:120px;transition:.3s cubic-bezier(.175, .885, .32, 1.275);position:relative;overflow:hidden;z-index:1}
+.btn-header-style::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#60a5fa,#3b82f6);z-index:-1;transition:opacity .3s;opacity:0}
+.btn-header-style:focus,.btn-header-style:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 6px 20px rgba(59,130,246,.4)}
+.btn-header-style:focus::after,.btn-header-style:hover::after{opacity:1}
+@media (max-width:768px){
+.welcome-block{padding:2rem 1.5rem 1.5rem;border-radius:20px}
+.welcome-block h1{font-size:1.6rem}
+.btn-header-style{font-size:1rem;padding:.7rem 1.8rem}
+}
+.top5-block{background:#fff;border-radius:16px;padding:2rem;box-shadow:0 10px 30px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.01);border:1px solid #e0e7ef;transition:.4s cubic-bezier(.21, .61, .35, 1);max-width:800px;margin:0 auto;position:relative;overflow:hidden}
+.top5-block:hover{transform:translateY(-5px);box-shadow:0 15px 60px rgba(0,0,0,.1)}
+.top5-block::before{display:none}
+.top5-block .card-title{color:gold;font-weight:800;font-size:1.8rem;margin-bottom:1.5rem;text-align:center;position:relative;z-index:1}
+.top5-block .card-title::after{content:"";display:block;width:80px;height:3px;background:linear-gradient(90deg,rgba(255,215,0,.7),rgba(255,215,0,.1));margin:.8rem auto 0;border-radius:2px}
+.top5-table{margin:0;border-collapse:separate;border-spacing:0;width:100%;position:relative;z-index:1}
+.top5-table thead{background-color:rgba(247,250,252,.8);border-bottom:2px solid rgba(255,215,0,.3)}
+.top5-table th{color:#1e293b;font-weight:700;border:none;padding:1rem .75rem;text-align:center;font-size:1.5em;position:relative}
+.top5-table th .rank-icon,.top5-table th .score-icon,.top5-table th .user-icon{font-size:1.5em;margin-right:.5rem;display:inline-block;vertical-align:middle}
+.top5-table th .score-icon{color:#bfa14a}
+.top5-table tbody tr{border-bottom:1px solid rgba(226,232,240,.6);transition:.2s}
+.top5-table tbody tr:hover{background-color:rgba(247,250,252,.5);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.top5-table tbody tr:last-child{border-bottom:none}
+.top5-table td{border:none;padding:1rem .75rem;text-align:center;vertical-align:middle}
+.top5-row-1{font-weight:900;color:gold;font-size:2.2rem;text-shadow:0 2px 10px rgba(255,215,0,.3)}
+.top5-row-2{font-weight:700;color:#6e84a3;font-size:1.5rem}
+.top5-row-3{font-weight:500;color:#b26a00;font-size:1.12rem}
+.top5-row{font-weight:400;color:#1e293b}
+@media (max-width:768px){
+.top5-block{padding:1.5rem 1rem;border-radius:14px}
+.top5-block .card-title{font-size:1.5rem}
+.top5-table td,.top5-table th{padding:.75rem .5rem}
+}
+@media (max-width:576px){
+.top5-block{padding:.9rem .5rem;max-width:98%;transform:scale(.92);margin-top:-15px;margin-bottom:-15px}
+.top5-block .card-title{font-size:1.2rem;margin-bottom:.6rem}
+.top5-block .card-title::after{width:50px;height:2px;margin:.4rem auto 0}
+.top5-table{transform:scale(.92);margin:-5px auto}
+.top5-table td,.top5-table th{padding:.4rem .2rem}
+.top5-table th .rank-icon,.top5-table th .score-icon,.top5-table th .user-icon{font-size:1.1em;margin-right:0}
+.top5-table tr td{font-size:.95rem!important}
+.top5-table tr:first-child td{font-size:1.4rem!important}
+.top5-table tr:nth-child(2) td{font-size:1.2rem!important}
+.top5-table tr:nth-child(3) td{font-size:1.05rem!important}
+}

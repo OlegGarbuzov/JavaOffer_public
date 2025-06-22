@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:fragment="css-link(href)">
+        <link th:href="@{${@cssUtils.getCssPath(href)}}" rel="stylesheet">
+    </th:block>
+    
+    <th:block th:fragment="base-css">
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        
+        <link th:href="@{${@cssUtils.getCssPath('/css/app.css')}}" rel="stylesheet">
+        <link th:href="@{${@cssUtils.getCssPath('/css/cover.css')}}" rel="stylesheet">
+        <link th:href="@{${@cssUtils.getCssPath('/css/theme-dark.css')}}" rel="stylesheet">
+    </th:block>
+    
+    <th:block th:fragment="auth-css">
+        <th:block th:replace="~{fragments/css-includes :: base-css}"></th:block>
+        <link th:href="@{${@cssUtils.getCssPath('/css/sign-in.css')}}" rel="stylesheet">
+    </th:block>
+    
+    <th:block th:fragment="exam-css">
+        <th:block th:replace="~{fragments/css-includes :: base-css}"></th:block>
+        <link th:href="@{${@cssUtils.getCssPath('/css/exam-styles.css')}}" rel="stylesheet">
+        <link th:href="@{${@cssUtils.getCssPath('/css/solution-block.css')}}" rel="stylesheet">
+        <link th:href="@{${@cssUtils.getCssPath('/css/testing.css')}}" rel="stylesheet">
+    </th:block>
+    
+    <th:block th:fragment="mode-select-css">
+        <th:block th:replace="~{fragments/css-includes :: base-css}"></th:block>
+        <link th:href="@{${@cssUtils.getCssPath('/css/exam-styles.css')}}" rel="stylesheet">
+        <link th:href="@{${@cssUtils.getCssPath('/css/mode-select.css')}}" rel="stylesheet">
+        <link th:href="@{${@cssUtils.getCssPath('/css/mode-select-dark.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </th:block>
+    
+    <th:block th:fragment="index-css">
+        <th:block th:replace="~{fragments/css-includes :: base-css}"></th:block>
+        <link th:href="@{${@cssUtils.getCssPath('/css/index-welcome.css')}}" rel="stylesheet">
+    </th:block>
+    
+    <th:block th:fragment="admin-css">
+        <th:block th:replace="~{fragments/css-includes :: base-css}"></th:block>
+        <link th:href="@{${@cssUtils.getCssPath('/css/header.css')}}" rel="stylesheet">
+        <link th:href="@{${@cssUtils.getCssPath('/css/burger.css')}}" rel="stylesheet">
+        <link th:href="@{${@cssUtils.getCssPath('/css/admin-burger.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </th:block>
+    
+    <th:block th:fragment="admin-users-css">
+        <th:block th:replace="~{fragments/css-includes :: admin-css}"></th:block>
+        <link th:href="@{${@cssUtils.getCssPath('/css/admin/users.css')}}" rel="stylesheet">
+    </th:block>
+    
+    <th:block th:fragment="admin-questions-css">
+        <th:block th:replace="~{fragments/css-includes :: admin-css}"></th:block>
+        <link th:href="@{${@cssUtils.getCssPath('/css/admin/question-preview.css')}}" rel="stylesheet">
+    </th:block>
+    
+    <th:block th:fragment="admin-cache-debug-css">
+        <th:block th:replace="~{fragments/css-includes :: admin-css}"></th:block>
+        <link th:href="@{${@cssUtils.getCssPath('/css/admin/cache-debug.css')}}" rel="stylesheet">
+    </th:block>
+    
+</head>
+</html> 

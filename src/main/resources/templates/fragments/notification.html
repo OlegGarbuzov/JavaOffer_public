@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link th:href="@{${@cssUtils.getCssPath('/css/notification.css')}}" rel="stylesheet">
+</head>
+<body>
+
+<div th:fragment="errorNotification(message, isVisible)" id="error-notification" 
+     th:data-show="${isVisible}" th:data-message="${message}">
+  <button onclick="closeNotification()">&times;</button>
+  <div>
+    <strong>Внимание</strong>
+    <span>Сообщение об ошибке</span>
+  </div>
+</div>
+
+<script th:fragment="notificationScript" src="/js/notification.min.js"></script>
+
+</body>
+</html> 

@@ -1,0 +1,247 @@
+/*
+ * Стили для страницы отладки кэша
+ */
+
+/* Карточки с общей статистикой */
+.stats-card {
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.stats-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Стили для индикации статуса */
+.status-ok {
+    color: #198754;
+}
+
+.status-warning {
+    color: #ffc107;
+}
+
+.status-danger {
+    color: #dc3545;
+}
+
+/* Стили для бейджей типов экзаменов */
+.badge-rating {
+    background-color: #7e5f02;
+    color: white;
+}
+
+.badge-free {
+    background-color: #004c96;
+    color: white;
+}
+
+/* Кнопка быстрого обновления */
+.refresh-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+.refresh-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.refresh-button:active {
+    transform: scale(0.95);
+}
+
+/* Стили для кнопки в темной теме */
+[data-bs-theme="dark"] .refresh-button {
+    background-color: #0d6efd;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4);
+}
+
+[data-bs-theme="dark"] .refresh-button:hover {
+    background-color: #0b5ed7;
+    box-shadow: 0 6px 15px rgba(13, 110, 253, 0.5);
+    color: #fff;
+}
+
+/* Стили для кнопки автообновления */
+#autoRefreshToggle {
+    transition: all 0.3s ease;
+}
+
+#autoRefreshToggle.btn-success {
+    animation: refreshing 1s infinite;
+}
+
+@keyframes refreshing {
+    0% {
+        box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 5px rgba(25, 135, 84, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(25, 135, 84, 0);
+    }
+}
+
+/* Максимальная высота таблицы с прокруткой */
+.table-responsive {
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+/* Анимации для предупреждений */
+.heartbeat-warning {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: rgba(255, 193, 7, 0.1);
+    }
+    50% {
+        background-color: rgba(255, 193, 7, 0.3);
+    }
+    100% {
+        background-color: rgba(255, 193, 7, 0.1);
+    }
+}
+
+.heartbeat-danger {
+    animation: pulseDanger 2s infinite;
+}
+
+@keyframes pulseDanger {
+    0% {
+        background-color: rgba(220, 53, 69, 0.1);
+    }
+    50% {
+        background-color: rgba(220, 53, 69, 0.3);
+    }
+    100% {
+        background-color: rgba(220, 53, 69, 0.1);
+    }
+}
+
+/* Стили для тёмной темы */
+[data-bs-theme="dark"] .stats-card {
+    background-color: #2b3035;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .stats-number {
+    color: #fff;
+}
+
+[data-bs-theme="dark"] .stats-card h3 {
+    color: #adb5bd;
+}
+
+[data-bs-theme="dark"] .heartbeat-warning {
+    animation: pulse-dark 2s infinite;
+}
+
+@keyframes pulse-dark {
+    0% {
+        background-color: rgba(255, 193, 7, 0.05);
+    }
+    50% {
+        background-color: rgba(255, 193, 7, 0.15);
+    }
+    100% {
+        background-color: rgba(255, 193, 7, 0.05);
+    }
+}
+
+[data-bs-theme="dark"] .heartbeat-danger {
+    animation: pulseDanger-dark 2s infinite;
+}
+
+@keyframes pulseDanger-dark {
+    0% {
+        background-color: rgba(220, 53, 69, 0.05);
+    }
+    50% {
+        background-color: rgba(220, 53, 69, 0.15);
+    }
+    100% {
+        background-color: rgba(220, 53, 69, 0.05);
+    }
+}
+
+/* Высокоприоритетные стили для кнопки Обновить в темной теме */
+html[data-bs-theme="dark"] .card-header .btn-primary,
+html[data-bs-theme="dark"] .card-header .btn-sm.btn-primary,
+html[data-theme="dark"] .card-header .btn-primary,
+html[data-theme="dark"] .card-header .btn-sm.btn-primary,
+body[data-bs-theme="dark"] .card-header .btn-primary,
+body[data-theme="dark"] .card-header .btn-primary {
+    color: #ffffff !important;
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+}
+
+html[data-bs-theme="dark"] .card-header .btn-primary:hover,
+html[data-bs-theme="dark"] .card-header .btn-sm.btn-primary:hover,
+html[data-theme="dark"] .card-header .btn-primary:hover,
+html[data-theme="dark"] .card-header .btn-sm.btn-primary:hover,
+body[data-bs-theme="dark"] .card-header .btn-primary:hover,
+body[data-theme="dark"] .card-header .btn-primary:hover {
+    color: #ffffff !important;
+    background-color: #0b5ed7 !important;
+    border-color: #0a58ca !important;
+}
+
+/* Стили для кнопки с конкретным ID */
+#cacheRefreshButton {
+    color: #ffffff !important;
+}
+
+html[data-bs-theme="dark"] #cacheRefreshButton,
+html[data-theme="dark"] #cacheRefreshButton,
+body[data-bs-theme="dark"] #cacheRefreshButton,
+body[data-theme="dark"] #cacheRefreshButton,
+[data-bs-theme="dark"] #cacheRefreshButton,
+[data-theme="dark"] #cacheRefreshButton {
+    color: #ffffff !important;
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+}
+
+html[data-bs-theme="dark"] #cacheRefreshButton:hover,
+html[data-theme="dark"] #cacheRefreshButton:hover,
+body[data-bs-theme="dark"] #cacheRefreshButton:hover,
+body[data-theme="dark"] #cacheRefreshButton:hover,
+[data-bs-theme="dark"] #cacheRefreshButton:hover,
+[data-theme="dark"] #cacheRefreshButton:hover {
+    color: #ffffff !important;
+    background-color: #0b5ed7 !important;
+    border-color: #0a58ca !important;
+} 

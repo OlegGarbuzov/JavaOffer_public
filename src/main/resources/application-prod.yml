@@ -1,0 +1,59 @@
+# ============================
+# PRODUCTION ПРОФИЛЬ
+# ============================
+# Этот файл используется при запуске с spring.profiles.active=prod
+
+# ============================
+# CSS И МИНИФИКАЦИЯ ДЛЯ ПРОДАКШЕНА
+# ============================
+app:
+  css:
+    minified: true
+
+# ============================
+# НАСТРОЙКИ JPA ДЛЯ ПРОДАКШЕНА
+# ============================
+spring:
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+# ============================
+# ЛОГИРОВАНИЕ ДЛЯ ПРОДАКШЕНА
+# ============================
+# Используется конфигурация из logback-spring.xml
+# (файлы: logs/app.log, logs/system.log)
+
+# ============================
+# КЕШИРОВАНИЕ ДЛЯ ПРОДАКШЕНА
+# ============================
+cache:
+  quiz:
+    maximumSize: 10000
+    expireAfterWriteMinutes: 10
+
+# ============================
+# СЖАТИЕ КОНТЕНТА ДЛЯ ПРОДАКШЕНА
+# ============================
+server:
+  compression:
+    enabled: true
+    mime-types:
+      - text/html
+      - text/css
+      - text/javascript
+      - application/javascript
+      - application/json
+      - text/plain
+    min-response-size: 1024
+
+# ============================
+# ANTI-CHEAT ДЛЯ ПРОДАКШЕНА (строгие настройки)
+# ============================
+exam:
+  anticheat:
+    maxTabSwitchViolations: 3
+    maxTextCopyViolations: 3
+    maxHeartbeatMissed: 10 

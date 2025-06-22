@@ -1,0 +1,51 @@
+# ============================
+# DEVELOPMENT ПРОФИЛЬ
+# ============================
+# Этот файл используется при запуске с spring.profiles.active=dev
+
+# ============================
+# CSS И МИНИФИКАЦИЯ ДЛЯ РАЗРАБОТКИ
+# ============================
+app:
+  css:
+    minified: false
+
+# ============================
+# НАСТРОЙКИ JPA ДЛЯ РАЗРАБОТКИ
+# ============================
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  
+  # Включаем devtools для горячей перезагрузки
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+# ============================
+# ЛОГИРОВАНИЕ ДЛЯ РАЗРАБОТКИ
+# ============================
+# Используется конфигурация из logback-spring.xml
+# (файлы: logs/app.log, logs/system.log)
+
+# ============================
+# КЕШИРОВАНИЕ ДЛЯ РАЗРАБОТКИ
+# ============================
+cache:
+  quiz:
+    maximumSize: 1000
+    expireAfterWriteMinutes: 5
+
+# ============================
+# ANTI-CHEAT ДЛЯ РАЗРАБОТКИ (мягкие настройки)
+# ============================
+exam:
+  anticheat:
+    maxTabSwitchViolations: 10
+    maxTextCopyViolations: 10
+    maxHeartbeatMissed: 20 

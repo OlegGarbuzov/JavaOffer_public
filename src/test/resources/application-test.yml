@@ -1,0 +1,65 @@
+# ============================
+# TEST ПРОФИЛЬ ДЛЯ ТЕСТОВЫХ РЕСУРСОВ
+# ============================
+# Этот файл используется для всех тестов
+
+# ============================
+# НАСТРОЙКИ БАЗЫ ДАННЫХ ДЛЯ ТЕСТОВ
+# ============================
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.H2Dialect
+  
+  # Отключаем Liquibase для тестов
+  liquibase:
+    enabled: false
+  
+  h2:
+    console:
+      enabled: true
+
+# ============================
+# ЛОГИРОВАНИЕ ДЛЯ ТЕСТОВ (минимальное)
+# ============================
+logging:
+  level:
+    root: ERROR
+    com.example.javaoffer: WARN
+
+# ============================
+# НАСТРОЙКИ CSS ДЛЯ ТЕСТОВ
+# ============================
+app:
+  css:
+    minified: false
+
+# ============================
+# КЕШИРОВАНИЕ ДЛЯ ТЕСТОВ
+# ============================
+cache:
+  quiz:
+    maximumSize: 10
+    expireAfterWriteMinutes: 1
+
+# ============================
+# АНТИОКР И АНТИ-ЧИТ ДЛЯ ТЕСТОВ (отключено)
+# ============================
+exam:
+  antiocr:
+    enabled: false
+  anticheat:
+    maxTabSwitchViolations: 3
+    maxTextCopyViolations: 3
+    maxHeartbeatMissed: 10

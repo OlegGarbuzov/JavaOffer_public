@@ -1,0 +1,280 @@
+﻿<!doctype html>
+<html lang="ru" class="h-100" data-bs-theme="light" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.145.0">
+    <title>Отладка кеша</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+
+    <th:block th:replace="~{fragments/css-includes :: admin-cache-debug-css}"></th:block>
+
+    <link rel="apple-touch-icon" th:href="@{/img/favicons/apple-touch-icon.png}" sizes="180x180">
+    <link rel="icon" th:href="@{/img/favicons/favicon-32x32.png}" sizes="32x32" type="image/png">
+    <link rel="icon" th:href="@{/img/favicons/favicon-16x16.png}" sizes="16x16" type="image/png">
+    <link rel="manifest" th:href="@{/img/favicons/site.webmanifest}">
+    <link rel="icon" th:href="@{/img/favicons/favicon.ico}">
+
+    <meta name="theme-color" content="#712cf9">
+</head>
+<body class="d-flex flex-column min-vh-100">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    
+    <div th:insert="~{fragments/header.html}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-header}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-burger-menu}"></div>
+    <div th:replace="~{fragments/admin-header.html :: admin-scripts}"></div>
+
+    <main class="flex-grow-1">
+        <div class="px-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="h3">Текущее состояние кэша тестирования</h1>
+                <div>
+                    <span class="text-muted" th:text="${'Обновлено: ' + timestamp}"></span>
+                </div>
+            </div>
+
+            
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="stats-card bg-light">
+                        <i class="fas fa-database text-primary"></i>
+                        <h3>Всего записей</h3>
+                        <div class="stats-number" th:text="${totalEntries}">0</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card bg-light">
+                        <i class="fas fa-star text-warning"></i>
+                        <h3>Рейтинговый режим</h3>
+                        <div class="stats-number" th:text="${ratingCount}">0</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card bg-light">
+                        <i class="fas fa-walking text-secondary"></i>
+                        <h3>Свободный режим</h3>
+                        <div class="stats-number" th:text="${freeCount}">0</div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">Активные экзаменационные сессии</h4>
+                    <div>
+                        <button id="autoRefreshToggle" class="btn btn-sm btn-outline-success me-2">
+                            <i class="fas fa-sync-alt me-1"></i> Обновлять автоматически
+                        </button>
+                        <a th:href="@{/admin/debug/cache/progress}" class="btn btn-sm btn-primary"
+                           id="cacheRefreshButton">
+                            <i class="fas fa-sync-alt me-1"></i> Обновить
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body p-0 p-md-3">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover align-middle">
+                            <thead class="table-light sticky-top">
+                            <tr>
+                                <th>ID экзамена</th>
+                                <th>Режим</th>
+                                <th>Сложность</th>
+                                <th>Длительность</th>
+                                <th>Ответы (верно/всего)</th>
+                                <th>Баллы</th>
+                                <th>Нарушения</th>
+                                <th>Heartbeat (сек)</th>
+                                <th>Статус</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="entry : ${entries}"
+                                th:class="${entry.heartbeatStatus == 'ПРОБЛЕМА' ? 'heartbeat-danger' : (entry.lastHeartbeatSecondsAgo != null && entry.lastHeartbeatSecondsAgo > 10 ? 'heartbeat-warning' : '')}">
+                                <td>
+                                    <span th:text="${#strings.substring(entry.examId.toString(), 0, 8) + '...'}"></span>
+                                    <span th:if="${entry.terminatedByViolations}"
+                                          class="badge bg-danger ms-1">Прерван</span>
+                                </td>
+                                <td>
+                                    <span th:if="${entry.examMode.name() == 'RATING'}" class="badge badge-rating">Рейтинговый</span>
+                                    <span th:if="${entry.examMode.name() == 'FREE'}"
+                                          class="badge badge-free">Свободный</span>
+                                </td>
+                                <td th:text="${entry.currentDifficulty}">MEDIUM</td>
+                                <td th:text="${entry.durationMinutes != null ? entry.durationMinutes + ' мин' : 'N/A'}">
+                                    10 мин
+                                </td>
+                                <td th:text="${entry.successAnswersCountAbsolute + ' / ' + (entry.successAnswersCountAbsolute + entry.failAnswersCountAbsolute)}">
+                                    0/0
+                                </td>
+                                <td th:text="${entry.currentBasePoint}">0</td>
+                                <td>
+                                    <span th:if="${entry.tabSwitchViolationCount > 0}"
+                                          class="badge bg-warning text-dark me-1"
+                                          th:text="'Tab: ' + ${entry.tabSwitchViolationCount}"></span>
+                                    <span th:if="${entry.textCopyViolationCount > 0}"
+                                          class="badge bg-warning text-dark me-1"
+                                          th:text="'Copy: ' + ${entry.textCopyViolationCount}"></span>
+                                    <span th:if="${entry.heartbeatMissedCount > 0}"
+                                          class="badge bg-warning text-dark me-1"
+                                          th:text="'HB: ' + ${entry.heartbeatMissedCount}"></span>
+                                    <span th:if="${entry.devToolsViolationCount > 0}"
+                                          class="badge bg-danger text-white me-1"
+                                          th:text="'DT: ' + ${entry.devToolsViolationCount}"></span>
+                                    <span th:if="${entry.domTamperingViolationCount > 0}"
+                                          class="badge bg-danger text-white me-1"
+                                          th:text="'DOM: ' + ${entry.domTamperingViolationCount}"></span>
+                                    <span th:if="${entry.functionTamperingViolationCount > 0}"
+                                          class="badge bg-danger text-white me-1"
+                                          th:text="'Fn: ' + ${entry.functionTamperingViolationCount}"></span>
+                                    <span th:if="${entry.moduleTamperingViolationCount > 0}"
+                                          class="badge bg-danger text-white me-1"
+                                          th:text="'Mod: ' + ${entry.moduleTamperingViolationCount}"></span>
+                                    <span th:if="${entry.pageCloseViolationCount > 0}"
+                                          class="badge bg-danger text-white me-1"
+                                          th:text="'Close: ' + ${entry.pageCloseViolationCount}"></span>
+                                    <span th:if="${entry.antiOcrTamperingViolations > 0}"
+                                          class="badge bg-danger text-white me-1"
+                                          th:text="'Ocr: ' + ${entry.antiOcrTamperingViolations}"></span>
+                                    <span th:if="${entry.externalContentViolationCount > 0}"
+                                          class="badge bg-danger text-white me-1"
+                                          th:text="'Ext: ' + ${entry.externalContentViolationCount}"></span>
+                                </td>
+                                <td th:text="${entry.lastHeartbeatSecondsAgo != null ? entry.lastHeartbeatSecondsAgo : 'N/A'}">
+                                    0
+                                </td>
+                                <td>
+                                    <i th:if="${entry.heartbeatStatus == 'OK'}" class="fas fa-check-circle status-ok"
+                                       title="Статус OK"></i>
+                                    <i th:if="${entry.heartbeatStatus == 'ПРОБЛЕМА'}"
+                                       class="fas fa-exclamation-triangle status-danger"
+                                       title="Проблема с соединением"></i>
+                                    <i th:if="${entry.heartbeatStatus == 'Нет данных'}"
+                                       class="fas fa-question-circle status-warning" title="Нет данных"></i>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(entries)}">
+                                <td colspan="9" class="text-center py-5">
+                                    <i class="fas fa-database text-muted mb-3" style="font-size: 3rem;"></i>
+                                    <p class="h4 text-muted">Нет активных сессий в кэше</p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="mb-0">Информация о системе кэширования</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Общие сведения</h5>
+                            <ul class="list-group mb-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Тип кэша
+                                    <span class="badge bg-primary rounded-pill">Caffeine</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Статус
+                                    <span class="badge bg-success rounded-pill">Активен</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Параметры Heartbeat</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Интервал проверки heartbeat
+                                    <span class="badge bg-secondary rounded-pill">5-15 сек</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Допустимое количество нарушений
+                                    <span class="badge bg-secondary rounded-pill">3</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center" th:insert="~{fragments/footer.html}"></footer>
+</div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const autoRefreshToggle = document.getElementById('autoRefreshToggle');
+        let refreshInterval;
+
+        // Проверяем сохраненное состояние из localStorage
+        const isAutoRefreshEnabled = localStorage.getItem('cacheAutoRefresh') === 'true';
+
+        // Устанавливаем начальное состояние кнопки
+        updateButtonState(isAutoRefreshEnabled);
+
+        // Если автообновление было включено, запускаем его
+        if (isAutoRefreshEnabled) {
+            startAutoRefresh();
+        }
+
+        // Обработчик нажатия на кнопку
+        autoRefreshToggle.addEventListener('click', function () {
+            const isCurrentlyEnabled = autoRefreshToggle.classList.contains('btn-success');
+
+            if (isCurrentlyEnabled) {
+                // Выключаем автообновление
+                stopAutoRefresh();
+                updateButtonState(false);
+                localStorage.setItem('cacheAutoRefresh', 'false');
+            } else {
+                // Включаем автообновление
+                startAutoRefresh();
+                updateButtonState(true);
+                localStorage.setItem('cacheAutoRefresh', 'true');
+            }
+        });
+
+        // Функция для запуска автообновления
+        function startAutoRefresh() {
+            refreshInterval = setInterval(function () {
+                window.location.reload();
+            }, 5000); // Обновление каждые 5 секунд
+        }
+
+        // Функция для остановки автообновления
+        function stopAutoRefresh() {
+            clearInterval(refreshInterval);
+        }
+
+        // Функция для обновления состояния кнопки
+        function updateButtonState(isEnabled) {
+            if (isEnabled) {
+                autoRefreshToggle.classList.remove('btn-outline-success');
+                autoRefreshToggle.classList.add('btn-success');
+                autoRefreshToggle.innerHTML = '<i class="fas fa-sync-alt me-1"></i> Отключить автообновление';
+            } else {
+                autoRefreshToggle.classList.remove('btn-success');
+                autoRefreshToggle.classList.add('btn-outline-success');
+                autoRefreshToggle.innerHTML = '<i class="fas fa-sync-alt me-1"></i> Обновлять автоматически';
+            }
+        }
+    });
+</script>
+
+</body>
+</html> 

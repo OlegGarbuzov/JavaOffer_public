@@ -1,0 +1,14 @@
+#usersTable td,#usersTable th{vertical-align:middle}
+#usersTable .btn-link{color:#0d6efd;text-decoration:underline;cursor:pointer}
+#usersTable .btn-link:hover{color:#0a58ca}
+#usersTable .edit-user-btn{min-width:110px}
+#userScoreHistoriesContent table{font-size:.95em}
+#userScoreHistoriesContent td,#userScoreHistoriesContent th{text-align:center}
+.modal .form-label{font-weight:500}
+#createUserForm .form-control,#editUserForm .form-control{font-size:1em}
+#createUserForm .btn,#editUserForm .btn{min-width:100px}
+.card-header h4{font-size:1.2em;font-weight:600}
+@media (max-width:768px){
+#usersTable td,#usersTable th{font-size:.95em;padding:.4rem}
+.card-header h4{font-size:1em}
+}
