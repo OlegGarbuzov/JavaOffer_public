@@ -1,5 +1,6 @@
 package com.example.javaoffer.controllerTest;
 
+import com.example.javaoffer.TestDataInitializer;
 import com.example.javaoffer.exam.cache.TemporaryExamProgress;
 import com.example.javaoffer.exam.cache.dto.TemporaryExamProgressDTO;
 import com.example.javaoffer.exam.dto.ExamResumeResponseDTO;
@@ -84,6 +85,9 @@ class ExamControllerStartExamTest {
 	@Autowired
 	private CacheManager cacheManager;
 
+	@Autowired
+	private TestDataInitializer testDataInitializer;
+
 	/**
 	 * Очищает кэш перед каждым тестом для обеспечения изоляции тестов.
 	 */
@@ -93,6 +97,8 @@ class ExamControllerStartExamTest {
 		org.springframework.cache.Cache cache = cacheManager.getCache("allTasksByDifficulty");
 		cache.clear();
 		log.trace("Кэш 'allTasksByDifficulty' очищен");
+		testDataInitializer.init();
+		log.debug("Переинициализируем вопросы в БД");
 	}
 
 	/**

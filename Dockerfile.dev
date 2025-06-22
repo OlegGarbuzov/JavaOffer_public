@@ -1,0 +1,10 @@
+FROM openjdk:22
+
+WORKDIR /app
+
+COPY target/javaOffer.jar /app/javaOffer.jar
+
+EXPOSE 8090
+EXPOSE 5005
+
+ENTRYPOINT ["java", "-cp", "/app/target/classes/:/app/target/dependency/*", "com.example.javaoffer.JavaOfferApplication"]
