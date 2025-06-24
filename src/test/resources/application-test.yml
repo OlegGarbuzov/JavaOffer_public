@@ -63,3 +63,17 @@ exam:
     maxTabSwitchViolations: 3
     maxTextCopyViolations: 3
     maxHeartbeatMissed: 10
+
+# ============================
+# НАСТРОЙКИ JWT ДЛЯ ТЕСТОВ
+# ============================
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428476B4B6250645367566B5971
+  access-token-expiration: 86400000
+  refresh-token-expiration: 604800000
+
+# ============================
+# НАСТРОЙКИ СЕРВЕРА ДЛЯ ТЕСТОВ
+# ============================
+server:
+  port: 8080

@@ -445,35 +445,81 @@ public class TaskService {
 	}
 
 	/**
-	 * Фильтрует задания по теме, сложности, грейду и поисковому запросу.
+	 * Фильтрует задания по теме, сложности, грейду, поисковому запросу и показу дублей.
 	 * <p>
 	 * Метод возвращает список заданий, соответствующих указанным критериям фильтрации.
 	 * Если какой-либо параметр фильтрации не указан (null или пустая строка),
 	 * фильтрация по этому критерию не выполняется.
 	 *
-	 * @param topic      фильтр по теме задания (может быть null)
-	 * @param difficulty фильтр по сложности задания (может быть null)
-	 * @param grade      фильтр по грейду задания (может быть null)
-	 * @param search     поисковый запрос для фильтрации по тексту вопроса (может быть null)
+	 * @param topic          фильтр по теме задания (может быть null)
+	 * @param difficulty     фильтр по сложности задания (может быть null)
+	 * @param grade          фильтр по грейду задания (может быть null)
+	 * @param search         поисковый запрос для фильтрации по тексту вопроса (может быть null)
+	 * @param showDuplicates показывать только задания с дублирующимся текстом вопроса
 	 * @return список отфильтрованных заданий в формате DTO
 	 */
 	@Transactional(readOnly = true)
-	public List<TaskDTO> filterTasks(String topic, String difficulty, String grade, String search) {
-		log.debug("Фильтрация заданий: topic={}, difficulty={}, grade={}, search={}",
-				topic, difficulty, grade, search);
+	public List<TaskDTO> filterTasks(String topic, String difficulty, String grade, String search, Boolean showDuplicates) {
+		log.debug("Фильтрация заданий: topic={}, difficulty={}, grade={}, search={}, showDuplicates={}",
+				topic, difficulty, grade, search, showDuplicates);
 
 		List<Task> tasks = taskRepository.findAll();
 		log.trace("Получено {} заданий из базы данных для фильтрации", tasks.size());
 
-		List<TaskDTO> filteredTasks = tasks.stream()
-				.filter(task -> topic == null || topic.isEmpty() || task.getTopic().name().equalsIgnoreCase(topic))
-				.filter(task -> difficulty == null || difficulty.isEmpty() || task.getDifficulty().name().equalsIgnoreCase(difficulty))
-				.filter(task -> grade == null || grade.isEmpty() || task.getGrade().name().equalsIgnoreCase(grade))
-				.filter(task -> search == null || search.isEmpty() || task.getQuestion().toLowerCase().contains(search.toLowerCase()))
-				.map(this::convertToDTOWithoutAnswersDetails)
-				.toList();
+		// Если нужно показывать дубли, сначала найдем ID заданий с дублирующимся текстом
+		Set<Long> duplicateTaskIds = new HashSet<>();
+		if (showDuplicates != null && showDuplicates) {
+			Map<String, List<Task>> tasksByQuestion = tasks.stream()
+					.collect(Collectors.groupingBy(Task::getQuestion));
+
+			duplicateTaskIds = tasksByQuestion.entrySet().stream()
+					.filter(entry -> entry.getValue().size() > 1)
+					.flatMap(entry -> entry.getValue().stream())
+					.map(Task::getId)
+					.collect(Collectors.toSet());
+
+			log.debug("Найдено {} заданий с дублирующимся текстом", duplicateTaskIds.size());
+		}
+
+		List<TaskDTO> filteredTasks = applyFilters(tasks, topic, difficulty, grade, search, duplicateTaskIds, showDuplicates);
 
 		log.debug("После фильтрации осталось {} заданий", filteredTasks.size());
 		return filteredTasks;
 	}
+
+	/**
+	 * Применяет фильтры к списку заданий и преобразует их в DTO.
+	 * <p>
+	 * Приватный метод для выполнения фильтрации заданий по всем критериям
+	 * и преобразования результата в список DTO без деталей ответов.
+	 *
+	 * @param tasks            список всех заданий для фильтрации
+	 * @param topic            фильтр по теме задания (может быть null)
+	 * @param difficulty       фильтр по сложности задания (может быть null)
+	 * @param grade            фильтр по грейду задания (может быть null)
+	 * @param search           поисковый запрос для фильтрации по тексту вопроса (может быть null)
+	 * @param duplicateTaskIds множество ID заданий с дублирующимся текстом
+	 * @param showDuplicates   показывать только задания с дублирующимся текстом
+	 * @return отфильтрованный список заданий в формате DTO
+	 */
+	private List<TaskDTO> applyFilters(List<Task> tasks, String topic, String difficulty, String grade,
+									   String search, Set<Long> duplicateTaskIds, Boolean showDuplicates) {
+
+		return tasks.stream()
+				.filter(task -> topic == null || topic.isEmpty() || task.getTopic().name().equalsIgnoreCase(topic))
+				.filter(task -> difficulty == null || difficulty.isEmpty() || task.getDifficulty().name().equalsIgnoreCase(difficulty))
+				.filter(task -> grade == null || grade.isEmpty() || task.getGrade().name().equalsIgnoreCase(grade))
+				.filter(task -> search == null || search.isEmpty() || task.getQuestion().toLowerCase().contains(search.toLowerCase()))
+				.filter(task -> {
+					// Фильтр дублей: если showDuplicates = true, показываем только дубли; если false - показываем все
+					if (showDuplicates == null || !showDuplicates) {
+						return true; // Показываем все задания
+					} else {
+						return duplicateTaskIds.contains(task.getId()); // Показываем только дубли
+					}
+				})
+				.map(this::convertToDTOWithoutAnswersDetails)
+				.toList();
+	}
+
 }

@@ -3,7 +3,8 @@ package com.example.javaoffer.admin.controller;
 import com.example.javaoffer.admin.dto.ImportExportHistoryDTO;
 import com.example.javaoffer.admin.entity.ImportExportHistory;
 import com.example.javaoffer.admin.service.ImportExportHistoryService;
-import com.example.javaoffer.admin.service.QuestionImportExportService;
+import com.example.javaoffer.admin.service.QuestionExportService;
+import com.example.javaoffer.admin.service.QuestionImportService;
 import com.example.javaoffer.user.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -34,7 +35,6 @@ import static com.example.javaoffer.common.constants.ViewConstant.VIEW_TEMPLATE_
  *   <li>Импорта вопросов из Excel-файла</li>
  *   <li>Очистки истории импорта/экспорта</li>
  * </ul>
- * 
  *
  * @author Garbuzov Oleg
  */
@@ -43,7 +43,8 @@ import static com.example.javaoffer.common.constants.ViewConstant.VIEW_TEMPLATE_
 @Slf4j
 public class ImportExportHistoryController {
 	private final ImportExportHistoryService historyService;
-	private final QuestionImportExportService questionImportExportService;
+	private final QuestionExportService questionExportService;
+	private final QuestionImportService questionImportService;
 
 	/**
 	 * Отображает страницу с историей импорта и экспорта вопросов.
@@ -83,7 +84,7 @@ public class ImportExportHistoryController {
 		response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
 
 		try {
-			questionImportExportService.exportQuestionsToExcel(response.getOutputStream(), history);
+			questionExportService.exportQuestionsToExcel(response.getOutputStream(), history);
 			log.info("Экспорт вопросов в Excel успешно завершен пользователем: {}", user.getUsername());
 		} catch (Exception e) {
 			log.error("Ошибка при экспорте вопросов в Excel: {}", e.getMessage(), e);
@@ -107,7 +108,7 @@ public class ImportExportHistoryController {
 		log.debug("Создана запись истории импорта с id: {}", history.getId());
 
 		try {
-			questionImportExportService.importQuestionsAsync(file, history);
+			questionImportService.importQuestionsAsync(file, history);
 			log.debug("Запущен асинхронный процесс импорта вопросов из файла '{}'", file.getOriginalFilename());
 		} catch (Exception e) {
 			log.error("Ошибка при запуске импорта вопросов из Excel-файла: {}", e.getMessage(), e);

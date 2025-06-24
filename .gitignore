@@ -43,3 +43,5 @@ pgdata/
 
 src/main/resources/public/js/ui/*.js
 !src/main/resources/public/js/ui/*.min.js
+
+/src/main/java/com/example/javaoffer/exam/testDataInitializer/

@@ -25,6 +25,7 @@ services:
       - JWT_SECRET=${JWT_SECRET}
       - JWT_ACCESS_TOKEN_EXPIRATION=${JWT_ACCESS_TOKEN_EXPIRATION}
       - JWT_REFRESH_TOKEN_EXPIRATION=${JWT_REFRESH_TOKEN_EXPIRATION}
+      - ANTI_CHEAT_TOKEN_SECRET=${ANTI_CHEAT_TOKEN_SECRET}
       - SERVER_PORT=${SERVER_PORT}
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
     depends_on:

@@ -86,6 +86,14 @@
                             </select>
                         </div>
                         <div class="col-auto">
+                            <div class="form-check form-check-sm">
+                                <input class="form-check-input" type="checkbox" id="showDuplicatesFilter">
+                                <label class="form-check-label" for="showDuplicatesFilter">
+                                    Показать дубли
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-auto">
                             <button class="btn btn-outline-secondary btn-sm" id="resetFilters" style="min-width:32px;">
                                 <i class="fa-solid fa-rotate"></i>
                             </button>
@@ -143,10 +151,10 @@
                         <div class="d-flex align-items-center mb-2 mb-md-0">
                             <label class="me-2">Заданий на странице:</label>
                             <select class="form-select form-select-sm" id="pageSize" style="width: auto;">
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
+                                <option value="50" selected>50</option>
                                 <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="all">Все</option>
                             </select>
                         </div>
                         <nav aria-label="Навигация по страницам">

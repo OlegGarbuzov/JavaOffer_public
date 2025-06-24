@@ -37,13 +37,14 @@ public class QuestionFilterController {
 	 * Обрабатывает AJAX-запросы для фильтрации вопросов.
 	 * <p>
 	 * Возвращает HTML-фрагмент с отфильтрованными вопросами для динамического обновления таблицы.
-	 * Поддерживает фильтрацию по теме, сложности, оценке и текстовому поиску.
+	 * Поддерживает фильтрацию по теме, сложности, оценке, текстовому поиску и показ дублей.
 	 *
-	 * @param topic      тема для фильтрации (опционально)
-	 * @param difficulty уровень сложности для фильтрации (опционально)
-	 * @param grade      оценка для фильтрации (опционально)
-	 * @param search     строка поиска по тексту вопроса (опционально)
-	 * @param model      модель для передачи данных в представление
+	 * @param topic          тема для фильтрации (опционально)
+	 * @param difficulty     уровень сложности для фильтрации (опционально)
+	 * @param grade          оценка для фильтрации (опционально)
+	 * @param search         строка поиска по тексту вопроса (опционально)
+	 * @param showDuplicates показывать только вопросы с дублирующимся текстом как строка (опционально)
+	 * @param model          модель для передачи данных в представление
 	 * @return имя фрагмента с отфильтрованными строками таблицы вопросов
 	 */
 	@GetMapping(URL_ADMIN_FILTER_QUESTIONS)
@@ -52,12 +53,15 @@ public class QuestionFilterController {
 			@RequestParam(required = false) String difficulty,
 			@RequestParam(required = false) String grade,
 			@RequestParam(required = false) String search,
+			@RequestParam(required = false, defaultValue = "false") String showDuplicates,
 			Model model) {
 
-		log.debug("Запрос на фильтрацию вопросов с параметрами: topic={}, difficulty={}, grade={}, search={}",
-				topic, difficulty, grade, search);
+		Boolean showDuplicatesBool = "true".equalsIgnoreCase(showDuplicates);
 
-		List<TaskDTO> filtered = taskService.filterTasks(topic, difficulty, grade, search);
+		log.debug("Запрос на фильтрацию вопросов с параметрами: topic={}, difficulty={}, grade={}, search={}, showDuplicates={}",
+				topic, difficulty, grade, search, showDuplicatesBool);
+
+		List<TaskDTO> filtered = taskService.filterTasks(topic, difficulty, grade, search, showDuplicatesBool);
 
 		log.trace("Отфильтровано {} вопросов", filtered.size());
 

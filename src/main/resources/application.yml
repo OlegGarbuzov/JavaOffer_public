@@ -89,7 +89,7 @@ exam:
     minHeartbeatInterval: 5000
     maxHeartbeatInterval: 15000
     heartbeatTolerance: 4000
-    tokenSecret: 97HG487TGHO8GH8374WGB8OW4BGW4O8GHTW487GHW84GT
+    tokenSecret: ${ANTI_CHEAT_TOKEN_SECRET}
     tokenValiditySeconds: 300
   
   # ============================

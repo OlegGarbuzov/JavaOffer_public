@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
     <name>JavaOffer</name>
     <description>Java Interview Platform - система для проведения тестирования по Java</description>
-    <url>github.com/OlegGarbuzov/JavaOffer</url>
+    <url>github.com/OlegGarbuzov/JavaOffer_public</url>
     <licenses>
         <license>
             <name>Proprietary License</name>

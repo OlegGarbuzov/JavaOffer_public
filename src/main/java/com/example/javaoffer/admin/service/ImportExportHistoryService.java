@@ -6,6 +6,7 @@ import com.example.javaoffer.admin.repository.ImportExportHistoryRepository;
 import com.example.javaoffer.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +24,6 @@ import java.util.List;
  *   <li>Удаления всех записей</li>
  *   <li>Фильтрации записей по различным критериям</li>
  * </ul>
- * 
  *
  * @author Garbuzov Oleg
  */
@@ -37,14 +37,18 @@ public class ImportExportHistoryService {
 	 * Получает список всех записей истории импорта/экспорта.
 	 * <p>
 	 * Преобразует сущности в DTO для передачи в слой представления.
-	 * 
+	 * Записи сортируются по дате начала операции от новых к старым.
 	 *
-	 * @return список DTO с информацией об истории импорта/экспорта
+	 * @return список DTO с информацией об истории импорта/экспорта, отсортированный по дате (сначала новые)
 	 */
 	@Transactional(readOnly = true)
 	public List<ImportExportHistoryDTO> findAll() {
 		log.debug("Запрос на получение всех записей истории импорта/экспорта");
-		List<ImportExportHistoryDTO> result = repository.findAll().stream()
+
+		// Сортировка по дате начала операции от новых к старым
+		Sort sort = Sort.by(Sort.Direction.DESC, "startedAt");
+
+		List<ImportExportHistoryDTO> result = repository.findAll(sort).stream()
 				.map(this::convertToDTO)
 				.toList();
 		log.trace("Получено {} записей истории импорта/экспорта", result.size());
