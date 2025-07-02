@@ -677,6 +677,4 @@ open docs/index.html
 
 **⭐ Если проект понравился, поставьте звезду на GitHub! ⭐**
 
-Made with ❤️ and ☕ by JavaOffer Team
-
 </div> 
